@@ -1,0 +1,41 @@
+.boxImg {
+  max-width: 1280px;
+  height: 812px;
+  background-image: url(../../img/main-mob-1x.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  margin: 0 auto;
+}
+
+@media screen and (min-resolution: 192dpi) {
+  .boxImg {
+    background-image: url(../../img/main-mob-2x.jpg);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .boxImg {
+    height: 1024px;
+    background-image: url(../../img/main-tab-1x.jpg);
+  }
+
+  @media screen and (min-resolution: 192dpi) {
+    .boxImg {
+      background-image: url(../../img/main-tab-2x.jpg);
+    }
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .boxImg {
+    height: 800px;
+    background-image: url(../../img/main-desktop-1x.jpg);
+  }
+
+  @media screen and (min-resolution: 192dpi) {
+    .boxImg {
+      background-image: url(../../img/main-desktop-2x.jpg);
+    }
+  }
+}
