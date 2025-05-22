@@ -1,16 +1,17 @@
 import s from "./MainLayoutPage.module.css";
 import sprite from "../../img/icon/icon-sprite.svg";
+import { NavLink } from "react-router-dom";
 
 export default function MainLayoutPage() {
   return (
     <div className={s.boxImg}>
-      <h1>
+      <NavLink to="/home" className={s.title}>
         petl
-        <svg width={28} height={28}>
+        <svg className={s.titleIcon}>
           <use href={`${sprite}#icon-heart-circle`} />
         </svg>
         ve
-      </h1>
+      </NavLink>
     </div>
   );
 }

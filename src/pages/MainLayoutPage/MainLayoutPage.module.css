@@ -1,17 +1,36 @@
 .boxImg {
-  max-width: 1280px;
+  /* max-width: 1280px; */
   height: 812px;
   background-image: url(../../img/main-mob-1x.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
   margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (min-resolution: 192dpi) {
   .boxImg {
     background-image: url(../../img/main-mob-2x.jpg);
   }
+}
+
+.title {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: #fff;
+  display: flex;
+  align-items: flex-end;
+}
+
+.titleIcon {
+  width: 44px;
+  height: 44px;
 }
 
 @media screen and (min-width: 768px) {
@@ -24,6 +43,15 @@
     .boxImg {
       background-image: url(../../img/main-tab-2x.jpg);
     }
+  }
+
+  .title {
+    font-size: 100px;
+  }
+
+  .titleIcon {
+    width: 82px;
+    height: 82px;
   }
 }
 

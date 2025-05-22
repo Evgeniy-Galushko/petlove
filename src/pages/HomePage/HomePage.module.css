@@ -1,0 +1,141 @@
+.sectionHome {
+  box-sizing: border-box;
+  max-width: 375px;
+  padding: 10px 20px;
+  margin: 0 auto;
+}
+
+.listHome {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.titleBox {
+  background-color: #f6b83d;
+  padding: 18px 20px;
+  border-radius: 30px;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.boxUser {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
+.user {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  background-color: #fff4df;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.iconUser {
+  width: 20px;
+  height: 20px;
+}
+
+.name {
+  display: none;
+}
+
+.menuButton {
+  padding: 0;
+  height: 32px;
+  width: 32px;
+  display: flex;
+  justify-content: center;
+  border: none;
+  background-color: #f6b83d;
+}
+
+.iconMenu {
+  width: 24px;
+  height: 24px;
+}
+
+.title {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 0.96;
+  letter-spacing: -0.03em;
+  color: #fff;
+  margin-top: 60px;
+}
+
+.colorTitle {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.paragraph {
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-top: 24px;
+}
+
+.homeImg {
+  border-radius: 30px;
+  width: 335px;
+  height: 402px;
+  background-image: url(../../img/homeMob_1x.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+@media screen and (min-resolution: 192dpi) {
+  .homeImg {
+    background-image: url(../../img/homeMob_2x.jpg);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  /* .boxImg {
+    height: 1024px;
+    background-image: url(../../img/main-tab-1x.jpg);
+  }
+
+  @media screen and (min-resolution: 192dpi) {
+    .boxImg {
+      background-image: url(../../img/main-tab-2x.jpg);
+    }
+  }
+
+  .title {
+    font-size: 100px;
+  }
+
+  .titleIcon {
+    width: 82px;
+    height: 82px;
+  } */
+}
+
+@media screen and (min-width: 1280px) {
+  /* .boxImg {
+    height: 800px;
+    background-image: url(../../img/main-desktop-1x.jpg);
+  }
+
+  @media screen and (min-resolution: 192dpi) {
+    .boxImg {
+      background-image: url(../../img/main-desktop-2x.jpg);
+    }
+  } */
+}

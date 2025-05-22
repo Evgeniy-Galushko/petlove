@@ -1,0 +1,11 @@
+.header {
+  max-width: 375px;
+  padding: 10px 20px;
+}
+
+.sectionHeader {
+  background-color: #f6b83d;
+  padding: 18px 20px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
