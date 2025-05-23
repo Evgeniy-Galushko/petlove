@@ -1,0 +1,49 @@
+.link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.user {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  background-color: #fff4df;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.iconUser {
+  width: 20px;
+  height: 20px;
+}
+
+.name {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .user {
+    width: 50px;
+    height: 50px;
+  }
+  .name {
+    display: block;
+    font-family: "Manrope", sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: #fff;
+  }
+
+  .iconUser {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+}

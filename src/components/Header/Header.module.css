@@ -1,6 +1,8 @@
 .header {
+  box-sizing: border-box;
   max-width: 375px;
   padding: 10px 20px;
+  margin: 0 auto;
 }
 
 .sectionHeader {
@@ -8,4 +10,76 @@
   padding: 18px 20px;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav {
+  display: none;
+}
+
+.boxUser {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.menuButton {
+  padding: 0;
+  height: 32px;
+  width: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: #f6b83d;
+}
+
+.iconMenu {
+  width: 24px;
+  height: 24px;
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    max-width: 768px;
+    padding: 16px 32px;
+  }
+
+  .sectionHeader {
+    background-color: #f6b83d;
+    padding: 16px 32px;
+  }
+
+  .name {
+    display: block;
+    font-family: "Manrope", sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: #fff;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .header {
+    max-width: 1280px;
+  }
+
+  .sectionHeader {
+    background-color: #f6b83d;
+    padding: 16px 64px;
+  }
+
+  .nav {
+    display: flex;
+  }
+  .menuButton {
+    display: none;
+  }
 }

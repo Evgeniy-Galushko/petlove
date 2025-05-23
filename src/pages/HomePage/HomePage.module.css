@@ -1,8 +1,9 @@
 .sectionHome {
   box-sizing: border-box;
   max-width: 375px;
-  padding: 10px 20px;
+  padding: 0px 20px 10px 20px;
   margin: 0 auto;
+  margin-top: -11px;
 }
 
 .listHome {
@@ -14,55 +15,8 @@
 .titleBox {
   background-color: #f6b83d;
   padding: 18px 20px;
-  border-radius: 30px;
-}
-
-.header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.boxUser {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 12px;
-}
-
-.user {
-  width: 40px;
-  height: 40px;
-  border-radius: 100%;
-  background-color: #fff4df;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.iconUser {
-  width: 20px;
-  height: 20px;
-}
-
-.name {
-  display: none;
-}
-
-.menuButton {
-  padding: 0;
-  height: 32px;
-  width: 32px;
-  display: flex;
-  justify-content: center;
-  border: none;
-  background-color: #f6b83d;
-}
-
-.iconMenu {
-  width: 24px;
-  height: 24px;
+  border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 30px;
 }
 
 .title {
@@ -72,7 +26,7 @@
   line-height: 0.96;
   letter-spacing: -0.03em;
   color: #fff;
-  margin-top: 60px;
+  margin-top: 40px;
 }
 
 .colorTitle {
@@ -106,36 +60,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  /* .boxImg {
-    height: 1024px;
-    background-image: url(../../img/main-tab-1x.jpg);
-  }
-
-  @media screen and (min-resolution: 192dpi) {
-    .boxImg {
-      background-image: url(../../img/main-tab-2x.jpg);
-    }
-  }
-
-  .title {
-    font-size: 100px;
-  }
-
-  .titleIcon {
-    width: 82px;
-    height: 82px;
-  } */
 }
 
 @media screen and (min-width: 1280px) {
-  /* .boxImg {
-    height: 800px;
-    background-image: url(../../img/main-desktop-1x.jpg);
-  }
-
-  @media screen and (min-resolution: 192dpi) {
-    .boxImg {
-      background-image: url(../../img/main-desktop-2x.jpg);
-    }
-  } */
 }

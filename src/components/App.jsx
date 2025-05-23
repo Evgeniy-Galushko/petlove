@@ -2,7 +2,8 @@ import { lazy, Suspense, useState } from "react";
 import sprite from "../img/icon/icon-sprite.svg";
 
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
+import Header from "./Header/Header.jsx";
 
 const HomePage = lazy(() => import("../pages/HomePage/HomePage.jsx"));
 const NewsPage = lazy(() => import("../pages/NewsPage/NewsPage.jsx"));
@@ -22,22 +23,31 @@ const MainLayoutPage = lazy(() =>
   import("../pages/MainLayoutPage/MainLayoutPage.jsx")
 );
 
+const ProfilePage = lazy(() => import("../pages/ProfilePage/ProfilePage.jsx"));
+
 function App() {
   // const [count, setCount] = useState(0)
+  const location = useLocation();
+
+  // console.log(location.pathname !== "/");
 
   return (
-    <Suspense fallback={"Loader"}>
-      <Routes>
-        <Route path="/" element={<MainLayoutPage />} />
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/news" element={<NewsPage />} />
-        <Route path="/notices" element={<NoticesPage />} />
-        <Route path="/friends" element={<OurFriendsPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegistrationPage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </Suspense>
+    <>
+      {location.pathname !== "/" && <Header />}
+      <Suspense fallback={"Loader"}>
+        <Routes>
+          <Route path="/" element={<MainLayoutPage />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/news" element={<NewsPage />} />
+          <Route path="/notices" element={<NoticesPage />} />
+          <Route path="/friends" element={<OurFriendsPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegistrationPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Suspense>
+    </>
   );
 }
 

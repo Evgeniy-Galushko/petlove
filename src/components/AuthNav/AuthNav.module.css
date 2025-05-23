@@ -1,0 +1,36 @@
+.boxAuthNav {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .boxAuthNav {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .link {
+    font-family: "Manrope", sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.25;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    color: #fff;
+
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 30px;
+  }
+}
+
+.linkLogin {
+  padding: 15px 35px;
+}
+
+.linkRegister {
+  padding: 15px 20px;
+}
+
+@media screen and (min-width: 1280px) {
+}
