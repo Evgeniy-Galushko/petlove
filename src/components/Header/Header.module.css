@@ -44,6 +44,40 @@
   height: 24px;
 }
 
+.modalMenu {
+  position: absolute;
+  width: 218px;
+  height: 812px;
+  background-color: #fff;
+  top: 0%;
+  /* left: 43%; */
+
+  background-color: #544934;
+}
+
+.btnLogOut {
+  display: block;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 30px;
+  padding: 15px 35px;
+  background-color: #f6b83d;
+
+  box-sizing: border-box;
+
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #fff;
+
+  &:hover {
+    background-color: #fff4df;
+    color: #f6b83d;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .header {
     max-width: 768px;

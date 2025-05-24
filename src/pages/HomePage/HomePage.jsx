@@ -19,14 +19,6 @@ export default function HomePage() {
         </li>
         <li className={s.homeImg}></li>
       </ul>
-      <ul>
-        <li>
-          <NavLink to="/news">News</NavLink>
-          <NavLink to="/notices">Find pet</NavLink>
-          <NavLink to="/friends">Our friends</NavLink>
-        </li>
-        <li></li>
-      </ul>
     </section>
   );
 }

@@ -18,4 +18,9 @@
   line-height: 1.25;
   letter-spacing: -0.03em;
   color: #fff;
+
+  &:hover {
+    background-color: #fff4df;
+    color: #f6b83d;
+  }
 }
