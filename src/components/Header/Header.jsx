@@ -4,12 +4,16 @@ import sprite from "../../img/icon/icon-sprite.svg";
 import s from "./Header.module.css";
 import AuthNav from "../AuthNav/AuthNav.jsx";
 import UserNav from "../UserNav/UserNav.jsx";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useState } from "react";
 import LogOutBtn from "../LogOutBtn/LogOutBtn.jsx";
+import clsx from "clsx";
 
 export default function Header() {
   const [menuWindow, setMenuWindow] = useState(false);
+
+  const location = useLocation();
+  console.log(location.pathname);
 
   const authorization = false;
 
@@ -32,7 +36,7 @@ export default function Header() {
         </li>
 
         <li className={s.boxUser}>
-          {authorization ? <AuthNav /> : <UserNav />}
+          {authorization ? <UserNav /> : <AuthNav />}
           <button
             className={s.menuButton}
             type="button"
@@ -45,28 +49,79 @@ export default function Header() {
         </li>
       </ul>
       {menuWindow && (
-        <ul className={s.modalMenu}>
-          <li>
+        <ul
+          className={clsx(
+            s.modalMenu,
+            location.pathname === "/home"
+              ? s.modalMenuColorWhite
+              : s.modalMenuColorYellow
+          )}
+        >
+          <li className={s.boxButtonClose}>
             <button
               className={s.buttonClose}
               type="button"
               onClick={handleMenuClose}
             >
-              <svg className={s.iconMenu}>
+              <svg className={s.iconMenuClose}>
                 <use href={`${sprite}#icon-close`} />
               </svg>
             </button>
           </li>
-          <li>
-            <NavLink to="/news">News</NavLink>
-            <NavLink to="/notices">Find pet</NavLink>
-            <NavLink to="/friends">Our friends</NavLink>
+          <li className={s.boxLink}>
+            <NavLink
+              to="/news"
+              className={clsx(
+                s.linkMenu,
+                location.pathname === "/home"
+                  ? s.linkMenuBCWhite
+                  : s.linkMenuBCYellow
+              )}
+            >
+              News
+            </NavLink>
+            <NavLink
+              to="/notices"
+              className={clsx(
+                s.linkMenu,
+                location.pathname === "/home"
+                  ? s.linkMenuBCWhite
+                  : s.linkMenuBCYellow
+              )}
+            >
+              Find pet
+            </NavLink>
+            <NavLink
+              to="/friends"
+              className={clsx(
+                s.linkMenu,
+                location.pathname === "/home"
+                  ? s.linkMenuBCWhite
+                  : s.linkMenuBCYellow
+              )}
+            >
+              Our friends
+            </NavLink>
           </li>
-          <li>
-            <button className={s.btnLogOut} type="button">
-              Log out
-            </button>
-          </li>
+          {authorization ? (
+            <li>
+              <button className={s.btnLogOut} type="button">
+                Log out
+              </button>
+            </li>
+          ) : (
+            <li className={s.boxAuthNav}>
+              <NavLink to="/login" className={clsx(s.linkAuthNav, s.login)}>
+                Log In
+              </NavLink>
+              <NavLink
+                to="/register"
+                className={clsx(s.linkAuthNav, s.registration)}
+              >
+                Registration
+              </NavLink>
+            </li>
+          )}
         </ul>
       )}
     </header>

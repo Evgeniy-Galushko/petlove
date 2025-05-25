@@ -1,4 +1,5 @@
 .header {
+  position: relative;
   box-sizing: border-box;
   max-width: 375px;
   padding: 10px 20px;
@@ -39,42 +40,156 @@
   background-color: #f6b83d;
 }
 
-.iconMenu {
-  width: 24px;
-  height: 24px;
-}
-
 .modalMenu {
   position: absolute;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   width: 218px;
   height: 812px;
-  background-color: #fff;
-  top: 0%;
-  /* left: 43%; */
+  top: 0;
+  right: 19px;
+  padding: 28px 20px;
+}
 
-  background-color: #544934;
+.modalMenuColorWhite {
+  background-color: #fff;
+}
+
+.modalMenuColorYellow {
+  background-color: #f6b83d;
+}
+
+.boxButtonClose {
+  margin-top: -5px;
+}
+
+.buttonClose {
+  display: flex;
+  align-items: center;
+  margin-left: 148px;
+  padding: 0;
+
+  background-color: inherit;
+  border: none;
+}
+
+.iconMenuClose {
+  width: 32px;
+  height: 32px;
+}
+
+.boxLink {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* margin-top: 236px; */
+  /* margin-left: 30px; */
+}
+
+.linkMenu {
+  box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 30px;
+  padding: 15px 20px;
+  width: 119px;
+  height: 48px;
+
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.03em;
+
+  text-align: center;
+}
+
+.linkMenuBCWhite {
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  color: #262626;
+
+  &:hover {
+    border: 1px solid #f6b83d;
+  }
+}
+
+.linkMenuBCYellow {
+  color: #fff;
+  &:hover {
+    background-color: #fff4df;
+    color: #f6b83d;
+  }
 }
 
 .btnLogOut {
   display: block;
+  box-sizing: border-box;
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 30px;
-  padding: 15px 35px;
+  padding: 12px 35px;
+  width: 178px;
+  height: 42px;
   background-color: #f6b83d;
-
-  box-sizing: border-box;
+  /* margin-top: 280px; */
 
   font-family: "Manrope", sans-serif;
   font-weight: 700;
-  font-size: 16px;
-  line-height: 1.25;
+  font-size: 14px;
+  line-height: 1.29;
   letter-spacing: -0.03em;
   text-transform: uppercase;
   color: #fff;
+  text-align: center;
 
   &:hover {
     background-color: #fff4df;
     color: #f6b83d;
+  }
+}
+
+.boxAuthNav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.linkAuthNav {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #fff;
+
+  box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 30px;
+}
+
+.login {
+  padding: 12px 62px;
+  background-color: #f6b83d;
+  width: 178px;
+  height: 42px;
+
+  &:hover {
+    background-color: #fff4df;
+    color: #f6b83d;
+  }
+}
+
+.registration {
+  padding: 12.5px 32px;
+  color: #f6b83d;
+  background-color: #fff4df;
+  width: 178px;
+  height: 42px;
+
+  &:hover {
+    background-color: #fbe7c1;
   }
 }
 
@@ -97,6 +212,51 @@
     line-height: 1;
     letter-spacing: -0.03em;
     color: #fff;
+  }
+
+  .modalMenu {
+    width: 374px;
+    height: 1024px;
+  }
+
+  .linkMenu {
+    font-size: 16px;
+    line-height: 1.25;
+    width: 125px;
+    height: 48px;
+  }
+
+  .boxAuthNav {
+    display: none;
+
+    /* display: flex;
+    flex-direction: row;
+    gap: 8px; */
+  }
+
+  .linkAuthNav {
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
+  .login {
+    padding: 15px 34px;
+    width: 119px;
+    height: 50px;
+  }
+
+  .registration {
+    padding: 15px 20px;
+
+    width: 149px;
+    height: 50px;
+  }
+
+  .btnLogOut {
+    display: none;
+
+    /* font-size: 16px;
+    line-height: 1.25; */
   }
 }
 
