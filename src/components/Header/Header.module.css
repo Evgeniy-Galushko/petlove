@@ -2,19 +2,26 @@
   position: relative;
   box-sizing: border-box;
   max-width: 375px;
-  padding: 10px 20px;
+  padding: 18px 20px;
   margin: 0 auto;
 }
 
 .sectionHeader {
-  background-color: #f6b83d;
-  padding: 18px 20px;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+.sectionHeaderWhite {
+  background-color: #fff;
+}
+
+.sectionHeaderYellow {
+  padding: 10px 20px;
+  background-color: #f6b83d;
 }
 
 .nav {
@@ -37,7 +44,7 @@
   justify-content: center;
   align-items: center;
   border: none;
-  background-color: #f6b83d;
+  background-color: inherit;
 }
 
 .modalMenu {
@@ -194,13 +201,30 @@
 }
 
 @media screen and (min-width: 768px) {
+  .buttonClose {
+    position: relative;
+    bottom: 378px;
+    left: 65px;
+  }
+
+  .modalMenu {
+    padding: 39px 32px;
+    justify-content: center;
+    width: 374px;
+    height: 1024px;
+  }
+
   .header {
     max-width: 768px;
     padding: 16px 32px;
   }
 
   .sectionHeader {
-    background-color: #f6b83d;
+    border-top-left-radius: 60px;
+    border-top-right-radius: 60px;
+  }
+
+  .sectionHeaderYellow {
     padding: 16px 32px;
   }
 
@@ -212,11 +236,6 @@
     line-height: 1;
     letter-spacing: -0.03em;
     color: #fff;
-  }
-
-  .modalMenu {
-    width: 374px;
-    height: 1024px;
   }
 
   .linkMenu {
@@ -265,8 +284,7 @@
     max-width: 1280px;
   }
 
-  .sectionHeader {
-    background-color: #f6b83d;
+  .sectionHeaderYellow {
     padding: 16px 64px;
   }
 

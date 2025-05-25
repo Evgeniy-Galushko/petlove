@@ -3,7 +3,7 @@
   max-width: 375px;
   padding: 0px 20px 10px 20px;
   margin: 0 auto;
-  margin-top: -11px;
+  margin-top: -19px;
 }
 
 .listHome {
@@ -60,7 +60,82 @@
 }
 
 @media screen and (min-width: 768px) {
+  .sectionHome {
+    max-width: 768px;
+    padding: 16px 32px;
+    margin-top: -33px;
+  }
+
+  .listHome {
+    gap: 0px;
+  }
+
+  .titleBox {
+    padding: 18px 32px;
+    border-bottom-right-radius: 60px;
+    border-bottom-left-radius: 60px;
+  }
+
+  .title {
+    font-size: 80px;
+  }
+
+  .paragraph {
+    margin-left: 385px;
+    width: 257px;
+    font-size: 18px;
+    line-height: 1.22;
+  }
+
+  .homeImg {
+    width: 704px;
+    height: 496px;
+    border-radius: 60px;
+    background-image: url(../../img/homeTab_1x.jpg);
+  }
+
+  @media screen and (min-resolution: 192dpi) {
+    .homeImg {
+      background-image: url(../../img/homeTab_2x.jpg);
+    }
+  }
 }
 
 @media screen and (min-width: 1280px) {
+  .sectionHome {
+    max-width: 1280px;
+    margin-top: -33px;
+  }
+
+  .titleBox {
+    background-color: #f6b83d;
+    padding: 32px 64px;
+    display: flex;
+    flex-direction: row;
+    gap: 73px;
+  }
+
+  .title {
+    font-size: 90px;
+    width: 760px;
+  }
+
+  .paragraph {
+    align-self: flex-end;
+    margin-left: 0px;
+    font-size: 18px;
+    line-height: 1.22;
+  }
+
+  .homeImg {
+    width: 1216px;
+    height: 384px;
+    background-image: url(../../img/homeDesktop_1x.jpg);
+  }
+
+  @media screen and (min-resolution: 192dpi) {
+    .homeImg {
+      background-image: url(../../img/homeDesktop_2x.jpg);
+    }
+  }
 }

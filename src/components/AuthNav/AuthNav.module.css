@@ -17,24 +17,32 @@
     letter-spacing: -0.03em;
     text-transform: uppercase;
     color: #fff;
+    background-color: #f6b83d;
 
     box-sizing: border-box;
     border: 1px solid rgba(255, 255, 255, 0.4);
     border-radius: 30px;
-
-    &:hover {
-      background-color: #fff4df;
-      color: #f6b83d;
-    }
   }
 }
 
 .linkLogin {
   padding: 15px 35px;
+
+  &:hover {
+    background-color: #fff4df;
+    color: #f6b83d;
+  }
 }
 
 .linkRegister {
   padding: 15px 20px;
+  background-color: #fff4df;
+  color: #f6b83d;
+
+  &:hover {
+    background-color: #fbe7c1;
+    color: #f6b83d;
+  }
 }
 
 @media screen and (min-width: 1280px) {

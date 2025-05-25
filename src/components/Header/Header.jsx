@@ -13,9 +13,8 @@ export default function Header() {
   const [menuWindow, setMenuWindow] = useState(false);
 
   const location = useLocation();
-  console.log(location.pathname);
 
-  const authorization = false;
+  const authorization = true;
 
   const handleMenuOpen = () => {
     setMenuWindow(true);
@@ -27,9 +26,16 @@ export default function Header() {
 
   return (
     <header className={s.header}>
-      <ul className={s.sectionHeader}>
+      <ul
+        className={clsx(
+          s.sectionHeader,
+          location.pathname === "/home"
+            ? s.sectionHeaderYellow
+            : s.sectionHeaderWhite
+        )}
+      >
         <li>
-          <Logo style={"white"} />
+          <Logo />
         </li>
         <li className={s.nav}>
           <Nav />
@@ -71,6 +77,7 @@ export default function Header() {
           <li className={s.boxLink}>
             <NavLink
               to="/news"
+              onClick={handleMenuClose}
               className={clsx(
                 s.linkMenu,
                 location.pathname === "/home"
@@ -82,6 +89,7 @@ export default function Header() {
             </NavLink>
             <NavLink
               to="/notices"
+              onClick={handleMenuClose}
               className={clsx(
                 s.linkMenu,
                 location.pathname === "/home"
@@ -93,6 +101,7 @@ export default function Header() {
             </NavLink>
             <NavLink
               to="/friends"
+              onClick={handleMenuClose}
               className={clsx(
                 s.linkMenu,
                 location.pathname === "/home"
@@ -111,11 +120,16 @@ export default function Header() {
             </li>
           ) : (
             <li className={s.boxAuthNav}>
-              <NavLink to="/login" className={clsx(s.linkAuthNav, s.login)}>
+              <NavLink
+                to="/login"
+                onClick={handleMenuClose}
+                className={clsx(s.linkAuthNav, s.login)}
+              >
                 Log In
               </NavLink>
               <NavLink
                 to="/register"
+                onClick={handleMenuClose}
                 className={clsx(s.linkAuthNav, s.registration)}
               >
                 Registration

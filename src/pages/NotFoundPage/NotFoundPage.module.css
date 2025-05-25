@@ -1,0 +1,36 @@
+.notFoundPage {
+  box-sizing: border-box;
+  max-width: 375px;
+  padding: 0 20px 20px 20px;
+  margin: 0 auto;
+}
+
+.boxNotFound {
+  background-color: #f6b83d;
+  border-radius: 30px;
+  height: 712px;
+}
+
+@media screen and (min-width: 768px) {
+  .notFoundPage {
+    max-width: 768px;
+    padding: 0 32px 32px 32px;
+  }
+
+  .boxNotFound {
+    border-radius: 60px;
+    height: 878px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .notFoundPage {
+    max-width: 1280px;
+    padding: 0 32px 32px 32px;
+  }
+
+  .boxNotFound {
+    border-radius: 60px;
+    height: 654px;
+  }
+}

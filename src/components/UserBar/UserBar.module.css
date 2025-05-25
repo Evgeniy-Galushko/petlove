@@ -37,7 +37,14 @@
     font-size: 20px;
     line-height: 1;
     letter-spacing: -0.03em;
+  }
+
+  .nameYellow {
     color: #fff;
+  }
+
+  .nameWhite {
+    color: #262626;
   }
 
   .iconUser {
