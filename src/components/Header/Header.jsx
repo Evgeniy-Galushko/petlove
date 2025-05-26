@@ -14,7 +14,7 @@ export default function Header() {
 
   const location = useLocation();
 
-  const authorization = true;
+  const authorization = false;
 
   const handleMenuOpen = () => {
     setMenuWindow(true);
