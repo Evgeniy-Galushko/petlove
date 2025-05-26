@@ -10,14 +10,14 @@ export default function NotFoundPage() {
           <span className={s.imgBox}>
             <picture className={s.img}>
               <source
-                srcSet="public/catMob404-1x.png 1x, public/catMob404-2x.png 2x"
+                srcSet="/catMob404-1x.png 1x, /catMob404-2x.png 2x"
                 media="(max-width: 767px)"
               />
               <source
-                srcSet="public/catTab-Pc404-1x.png 1x, public/catTab-Pc404-2x.png 2x"
+                srcSet="/catTab-Pc404-1x.png 1x, /catTab-Pc404-2x.png 2x"
                 media="(min-width: 768px)"
               />
-              <img src="public/catMob404-1x.png" alt="cat" />
+              <img src="/catMob404-1x.png" alt="cat" />
             </picture>
           </span>
           <span className={s.number}>4</span>
