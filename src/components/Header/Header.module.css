@@ -4,6 +4,7 @@
   max-width: 375px;
   padding: 18px 20px;
   margin: 0 auto;
+  background-color: inherit;
 }
 
 .sectionHeader {
@@ -16,7 +17,7 @@
 }
 
 .sectionHeaderWhite {
-  background-color: #fff;
+  /* background-color: #fff; */
 }
 
 .sectionHeaderYellow {

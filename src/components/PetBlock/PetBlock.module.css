@@ -51,12 +51,7 @@
   }
 
   .imgPetBlock {
-    margin: 0;
-    /* width: 512px; */
-    /* height: 660px; */
-  }
-
-  .imgPictures {
+    margin-left: 40px;
     width: 512px;
     height: 660px;
   }

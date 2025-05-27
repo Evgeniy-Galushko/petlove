@@ -1,0 +1,203 @@
+.boxLogin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.paragraphGreeting {
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.02em;
+  color: #262626;
+}
+
+.formikBox {
+  margin-top: 24px;
+}
+
+.boxInput {
+  position: relative;
+}
+
+.input {
+  box-sizing: border-box;
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  border-radius: 30px;
+  padding: 12px 38px 12px 12px;
+  width: 295px;
+  height: 42px;
+
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.03em;
+  color: rgba(38, 38, 38, 0.8);
+
+  &::placeholder {
+    font-family: "Manrope", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: -0.03em;
+    color: rgba(38, 38, 38, 0.5);
+  }
+}
+
+.errorEmail {
+  position: absolute;
+  left: 18px;
+  top: 45px;
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  color: #ef2447;
+}
+
+.errorPassword {
+  position: absolute;
+  left: 18px;
+  top: 70px;
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  color: #ef2447;
+}
+
+.labelPassword {
+  display: block;
+  position: relative;
+  width: 26px;
+  height: 26px;
+
+  top: 38px;
+  left: 260px;
+}
+
+.buttonSubmit {
+  border-radius: 30px;
+  padding: 12px 126px;
+  width: 295px;
+  height: 42px;
+  background-color: #f6b83d;
+  border: none;
+  margin-top: 40px;
+
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #fff;
+
+  &:hover {
+    background-color: #f9b020;
+  }
+}
+
+.paragraphAccount {
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: -0.03em;
+  color: rgba(38, 38, 38, 0.5);
+
+  margin-top: 12px;
+}
+
+.navParagraphAccount {
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: -0.03em;
+  color: #f6b83d;
+}
+
+@media screen and (min-width: 768px) {
+  .boxLogin {
+    margin-top: 16px;
+  }
+
+  .paragraphGreeting {
+    font-size: 18px;
+    line-height: 1.22;
+    letter-spacing: -0.02em;
+    color: #262626;
+  }
+
+  .formikBox {
+    margin-top: 32px;
+  }
+
+  .input {
+    padding: 16px 43px 16px 16px;
+    width: 424px;
+    height: 52px;
+
+    font-size: 16px;
+    line-height: 1.25;
+
+    &::placeholder {
+      font-size: 16px;
+      line-height: 1.25;
+    }
+  }
+
+  .errorEmail {
+    position: absolute;
+    left: 18px;
+    top: 55px;
+
+    font-size: 12px;
+    line-height: 1.17;
+  }
+
+  .errorPassword {
+    position: absolute;
+    left: 18px;
+    top: 79px;
+
+    font-size: 12px;
+    line-height: 1.17;
+  }
+
+  .labelPassword {
+    top: 41px;
+    left: 385px;
+  }
+
+  .buttonSubmit {
+    padding: 16px 187px;
+    width: 424px;
+    height: 52px;
+    margin-top: 64px;
+
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
+  .paragraphAccount {
+    font-size: 14px;
+    line-height: 1.43;
+
+    margin-top: 16px;
+  }
+
+  .navParagraphAccount {
+    font-size: 14px;
+    line-height: 1.43;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+}

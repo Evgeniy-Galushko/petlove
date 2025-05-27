@@ -6,6 +6,18 @@
 }
 
 .login {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.boxLogin {
+  background-color: #fff;
+  box-sizing: border-box;
+  border-radius: 30px;
+  padding: 60px 20px;
+  width: 335px;
+  height: 422px;
 }
 
 @media screen and (min-width: 768px) {
@@ -14,10 +26,35 @@
     padding: 0px 32px;
     margin: 0 auto;
   }
+
+  .login {
+    gap: 16px;
+  }
+
+  .boxLogin {
+    border-radius: 60px;
+    box-sizing: border-box;
+    padding: 71px 140px;
+    width: 704px;
+    height: 560px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
-  .petBlock {
+  .loginSection {
+    max-width: 1280px;
+    padding: 0px 32px 32px 32px;
+    margin: 0 auto;
+  }
+
+  .login {
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  .boxLogin {
+    box-sizing: border-box;
+    padding: 118px 84px;
     width: 592px;
     height: 654px;
   }

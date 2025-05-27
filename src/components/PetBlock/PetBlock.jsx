@@ -1,6 +1,6 @@
 import s from "./PetBlock.module.css";
 
-export default function PetBlock({ children, src, alt }) {
+export default function PetBlock({ children }) {
   return (
     <div className={s.petBlock}>
       <picture className={s.imgPetBlock}>{children}</picture>
