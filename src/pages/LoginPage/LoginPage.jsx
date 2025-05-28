@@ -22,7 +22,7 @@ export default function LoginPage() {
               media="(min-width: 1280px)"
             />
 
-            <img src="/dogLoginPc_1x.png" alt="dog" />
+            <img src="/dogLoginMob_1x.png" alt="dog" />
           </PetBlock>
         </li>
         <li className={s.boxLogin}>

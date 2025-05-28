@@ -1,4 +1,4 @@
-.boxLogin {
+.boxRegistration {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,6 +7,7 @@
 
 .paragraphGreeting {
   font-family: "Manrope", sans-serif;
+  text-align: left;
   font-weight: 500;
   font-size: 14px;
   line-height: 1.29;
@@ -15,7 +16,7 @@
 }
 
 .formikBox {
-  margin-top: 24px;
+  margin-top: 20px;
 }
 
 .form {
@@ -94,7 +95,7 @@
   height: 42px;
   background-color: #f6b83d;
   border: none;
-  margin-top: 30px;
+  margin-top: 14px;
 
   font-family: "Manrope", sans-serif;
   font-weight: 700;
@@ -147,7 +148,7 @@
 
 .iconPassword {
   position: absolute;
-  top: 41px;
+  top: 16px;
   left: 240px;
   width: 12px;
   height: 12px;
@@ -214,7 +215,7 @@
     padding: 16px 187px;
     width: 424px;
     height: 52px;
-    margin-top: 48px;
+    margin-top: 16px;
 
     font-size: 16px;
     line-height: 1.25;
@@ -240,7 +241,7 @@
   }
 
   .iconPassword {
-    top: 44px;
+    top: 18px;
     left: 360px;
     width: 16px;
     height: 16px;

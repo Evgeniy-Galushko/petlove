@@ -1,0 +1,61 @@
+.registrationSection {
+  box-sizing: border-box;
+  max-width: 375px;
+  padding: 0px 20px;
+  margin: 0 auto;
+}
+
+.registration {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.boxRegistration {
+  background-color: #fff;
+  box-sizing: border-box;
+  border-radius: 30px;
+  padding: 27px 20px;
+  width: 335px;
+  height: 422px;
+}
+
+@media screen and (min-width: 768px) {
+  .registrationSection {
+    max-width: 768px;
+    padding: 0px 32px;
+    margin: 0 auto;
+  }
+
+  .registration {
+    gap: 16px;
+  }
+
+  .boxRegistration {
+    border-radius: 60px;
+    box-sizing: border-box;
+    padding: 30px 140px;
+    width: 704px;
+    height: 560px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .registrationSection {
+    max-width: 1280px;
+    padding: 0px 32px 32px 32px;
+    margin: 0 auto;
+  }
+
+  .registration {
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  .boxRegistration {
+    box-sizing: border-box;
+    padding: 77px 84px;
+    width: 592px;
+    height: 654px;
+  }
+}

@@ -1,5 +1,5 @@
 import { ErrorMessage, Field, Formik, Form, connect } from "formik";
-import s from "./LoginForm.module.css";
+import s from "./RegistrationForm.module.css";
 import { NavLink } from "react-router-dom";
 import * as Yup from "yup";
 import { useId, useState } from "react";
@@ -7,7 +7,7 @@ import DisplayPassword from "../DisplayPassword/DisplayPassword.jsx";
 import clsx from "clsx";
 import sprite from "../../img/icon/icon-sprite.svg";
 
-export default function LoginForm() {
+export default function RegistrationForm() {
   const [errorsEmailRed, setErrorsEmailRed] = useState(false);
   const [errorsEmailGreen, setErrorsEmailGreen] = useState(false);
 
@@ -47,6 +47,7 @@ export default function LoginForm() {
   };
 
   const initialValues = {
+    name: "",
     email: "",
     password: "",
   };
@@ -83,10 +84,10 @@ export default function LoginForm() {
   };
 
   return (
-    <ul className={s.boxLogin}>
+    <ul className={s.boxRegistration}>
       <li>
         <p className={s.paragraphGreeting}>
-          Welcome! Please enter your credentials to login to the platform:
+          Thank you for your interest in our platform.
         </p>
       </li>
       <li className={s.formikBox}>
@@ -96,6 +97,37 @@ export default function LoginForm() {
           validationSchema={validationSchema}
         >
           <Form className={s.form}>
+            <div className={s.boxInput}>
+              <Field
+                name="name"
+                type="text"
+                placeholder="Name"
+                required
+                className={clsx(
+                  s.input
+                  // errorsEmailRed && s.errBorderRed,
+                  // errorsEmailGreen && s.errBorderGreen
+                )}
+                onBlur={(e) => {
+                  handleErro(e.target.type, e.target.value);
+                }}
+              />
+              {/* <ErrorMessage
+                name="email"
+                component="span"
+                className={s.errorEmail}
+              /> */}
+              {/* {errorsEmailRed && (
+                <svg className={s.iconEmail}>
+                  <use href={`${sprite}#icon-cross-red`} />
+                </svg>
+              )}
+              {errorsEmailGreen && (
+                <svg className={s.iconEmail}>
+                  <use href={`${sprite}#icon-check-mark-green`} />
+                </svg>
+              )} */}
+            </div>
             <div className={s.boxInput}>
               <Field
                 name="email"
@@ -165,6 +197,44 @@ export default function LoginForm() {
                 </svg>
               )}
             </div>
+            <div className={s.boxInput}>
+              <label htmlFor={passwordId} className={s.labelPassword}>
+                <DisplayPassword
+                  displayPassword={displayPassword}
+                  setDisplayPassword={setDisplayPassword}
+                />
+              </label>
+              <Field
+                id={passwordId}
+                name="password"
+                type={displayPassword ? "text" : "password"}
+                placeholder="Confirm password"
+                required
+                className={clsx(
+                  s.input,
+                  errPasswordRed && s.errBorderRed,
+                  errPasswordGreen && s.errBorderGreen
+                )}
+                onBlur={(e) => {
+                  handleErro(e.target.type, e.target.value);
+                }}
+              />
+              <ErrorMessage
+                name="password"
+                component="span"
+                className={s.errorPassword}
+              />
+              {errPasswordRed && (
+                <svg className={s.iconPassword}>
+                  <use href={`${sprite}#icon-cross-red`} />
+                </svg>
+              )}
+              {errPasswordGreen && (
+                <svg className={s.iconPassword}>
+                  <use href={`${sprite}#icon-check-mark-green`} />
+                </svg>
+              )}
+            </div>
             <button type="submit" className={s.buttonSubmit}>
               Log In
             </button>
@@ -173,9 +243,9 @@ export default function LoginForm() {
       </li>
       <li>
         <p className={s.paragraphAccount}>
-          Don’t have an account?{" "}
-          <NavLink to="/register" className={s.navParagraphAccount}>
-            Register
+          Already have an account?
+          <NavLink to="/login" className={s.navParagraphAccount}>
+            Login
           </NavLink>
         </p>
       </li>
