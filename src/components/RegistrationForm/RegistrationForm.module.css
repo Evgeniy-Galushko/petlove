@@ -1,7 +1,7 @@
 .boxRegistration {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   margin-top: 12px;
 }
 
@@ -90,7 +90,7 @@
 
 .buttonSubmit {
   border-radius: 30px;
-  padding: 12px 126px;
+  padding: 12px 99px;
   width: 295px;
   height: 42px;
   background-color: #f6b83d;
@@ -119,6 +119,7 @@
   color: rgba(38, 38, 38, 0.5);
 
   margin-top: 12px;
+  text-align: center;
 }
 
 .navParagraphAccount {
@@ -212,7 +213,7 @@
   }
 
   .buttonSubmit {
-    padding: 16px 187px;
+    padding: 16px 157px;
     width: 424px;
     height: 52px;
     margin-top: 16px;

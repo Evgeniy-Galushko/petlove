@@ -1,11 +1,18 @@
 import PetBlock from "../../components/PetBlock/PetBlock.jsx";
 import RegistrationForm from "../../components/RegistrationForm/RegistrationForm.jsx";
 import Title from "../../components/Title/Title.jsx";
+import { Toaster } from "react-hot-toast";
 import s from "./RegistrationPage.module.css";
 
 export default function RegistrationPage() {
   return (
     <section className={s.registrationSection}>
+      <Toaster
+        position="top-center"
+        toastOptions={{
+          duration: 3000,
+        }}
+      />
       <ul className={s.registration}>
         <li className={s.petBlock}>
           <PetBlock style={"cat"}>

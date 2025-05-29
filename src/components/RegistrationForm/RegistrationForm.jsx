@@ -6,6 +6,8 @@ import { useId, useState } from "react";
 import DisplayPassword from "../DisplayPassword/DisplayPassword.jsx";
 import clsx from "clsx";
 import sprite from "../../img/icon/icon-sprite.svg";
+import DisplayPasswordSecond from "../DisplayPasswordSecond/DisplayPasswordSecond.jsx";
+import toast from "react-hot-toast";
 
 export default function RegistrationForm() {
   const [errorsEmailRed, setErrorsEmailRed] = useState(false);
@@ -13,14 +15,19 @@ export default function RegistrationForm() {
 
   const [errPasswordRed, setErrPasswordRed] = useState(false);
   const [errPasswordGreen, setErrPasswordGreen] = useState(false);
-  const passwordId = useId();
 
-  const [displayPassword, setDisplayPassword] = useState(false);
+  const [errPasswordRedSecond, setErrPasswordRedSecond] = useState(false);
+  const [errPasswordGreenSecond, setErrPasswordGreenSecond] = useState(false);
+
+  const [displayPasswordFirst, setDisplayPasswordFirst] = useState(false);
+  const [displayPasswordSecond, setDisplayPasswordSecond] = useState(false);
+  const passwordId = useId();
+  const passwordIdSecond = useId();
 
   const format = {
     email: /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/,
     password:
-      /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}/,
+      /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{7,}/,
   };
 
   const validationSchema = Yup.object().shape({
@@ -37,12 +44,19 @@ export default function RegistrationForm() {
   });
 
   const handleSubmit = (values, actions) => {
+    if (values.password !== values.passwordSecond) {
+      toast.error("Passwords do not match!");
+      return;
+    }
+
     console.log(values);
 
     setErrorsEmailRed(false);
     setErrorsEmailGreen(false);
     setErrPasswordGreen(false);
     setErrPasswordRed(false);
+    setErrPasswordRedSecond(false);
+    setErrPasswordGreenSecond(false);
     actions.resetForm();
   };
 
@@ -50,12 +64,13 @@ export default function RegistrationForm() {
     name: "",
     email: "",
     password: "",
+    passwordSecond: "",
   };
 
-  const handleErro = (type, value) => {
-    // console.log(format.email.test(value));
-    // console.log(type);
-    if (type === "email") {
+  const handleErro = (name, value) => {
+    console.log(name);
+    // console.log(value);
+    if (name === "email") {
       if (format.email.test(value)) {
         console.log("green");
         setErrorsEmailRed(false);
@@ -68,8 +83,8 @@ export default function RegistrationForm() {
       }
     }
 
-    if (type === "password") {
-      console.log(value.length);
+    if (name === "password") {
+      // console.log(value.length);
       if (format.password.test(value) && value.length >= 7) {
         console.log("green");
         setErrPasswordRed(false);
@@ -81,6 +96,23 @@ export default function RegistrationForm() {
         setErrPasswordRed(true);
       }
     }
+
+    if (name === "passwordSecond") {
+      if (format.password.test(value) && value.length >= 7) {
+        console.log("green");
+        setErrPasswordRedSecond(false);
+        setErrPasswordGreenSecond(true);
+      }
+      if (!format.password.test(value) && value.length < 7) {
+        console.log("red");
+        setErrPasswordGreenSecond(false);
+        setErrPasswordRedSecond(true);
+      }
+    }
+
+    // if () {
+
+    // }
   };
 
   return (
@@ -162,14 +194,14 @@ export default function RegistrationForm() {
             <div className={s.boxInput}>
               <label htmlFor={passwordId} className={s.labelPassword}>
                 <DisplayPassword
-                  displayPassword={displayPassword}
-                  setDisplayPassword={setDisplayPassword}
+                  displayPassword={displayPasswordFirst}
+                  setDisplayPassword={setDisplayPasswordFirst}
                 />
               </label>
               <Field
                 id={passwordId}
                 name="password"
-                type={displayPassword ? "text" : "password"}
+                type={displayPasswordFirst ? "text" : "password"}
                 placeholder="Password"
                 required
                 className={clsx(
@@ -198,45 +230,46 @@ export default function RegistrationForm() {
               )}
             </div>
             <div className={s.boxInput}>
-              <label htmlFor={passwordId} className={s.labelPassword}>
-                <DisplayPassword
-                  displayPassword={displayPassword}
-                  setDisplayPassword={setDisplayPassword}
+              <label htmlFor={passwordIdSecond} className={s.labelPassword}>
+                <DisplayPasswordSecond
+                  displayPassword={displayPasswordSecond}
+                  setDisplayPassword={setDisplayPasswordSecond}
                 />
               </label>
               <Field
-                id={passwordId}
-                name="password"
-                type={displayPassword ? "text" : "password"}
+                id={passwordIdSecond}
+                name="passwordSecond"
+                type={displayPasswordSecond ? "text" : "password"}
                 placeholder="Confirm password"
                 required
                 className={clsx(
                   s.input,
-                  errPasswordRed && s.errBorderRed,
-                  errPasswordGreen && s.errBorderGreen
+                  errPasswordRedSecond && s.errBorderRed,
+                  errPasswordGreenSecond && s.errBorderGreen
                 )}
                 onBlur={(e) => {
-                  handleErro(e.target.type, e.target.value);
+                  // console.log();
+                  handleErro(e.target.name, e.target.value);
                 }}
               />
               <ErrorMessage
-                name="password"
+                name="passwordSecond"
                 component="span"
                 className={s.errorPassword}
               />
-              {errPasswordRed && (
+              {errPasswordRedSecond && (
                 <svg className={s.iconPassword}>
                   <use href={`${sprite}#icon-cross-red`} />
                 </svg>
               )}
-              {errPasswordGreen && (
+              {errPasswordGreenSecond && (
                 <svg className={s.iconPassword}>
                   <use href={`${sprite}#icon-check-mark-green`} />
                 </svg>
               )}
             </div>
             <button type="submit" className={s.buttonSubmit}>
-              Log In
+              Registration
             </button>
           </Form>
         </Formik>
