@@ -4,9 +4,40 @@
   padding: 0px 20px;
   margin: 0 auto;
 }
+.titleAndSearch {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.noticesList {
+  margin-top: 24px;
+}
 
 @media screen and (min-width: 768px) {
+  .sectionNews {
+    max-width: 768px;
+    padding: 0px 32px;
+  }
+
+  .titleAndSearch {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0px;
+  }
+
+  .noticesList {
+    margin-top: 44px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
+  .sectionNews {
+    max-width: 1280px;
+    padding: 0px 64px;
+  }
+
+  .noticesList {
+    margin-top: 60px;
+  }
 }

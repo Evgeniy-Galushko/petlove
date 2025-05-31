@@ -6,6 +6,7 @@ import { selectNews } from "../../redux/news/selectors.js";
 import { useEffect } from "react";
 import { requestNews } from "../../redux/news/operations.js";
 import NoticesList from "../../components/NoticesList/NoticesList.jsx";
+import Pagination from "../../components/Pagination/Pagination.jsx";
 
 export default function NewsPage() {
   const dispatch = useDispatch();
@@ -19,10 +20,15 @@ export default function NewsPage() {
   return (
     <section className={s.sectionNews}>
       <ul>
-        <li>
+        <li className={s.titleAndSearch}>
           <Title>News</Title>
           <SearchField />
+        </li>
+        <li className={s.noticesList}>
           <NoticesList newsData={newsData.results} />
+        </li>
+        <li>
+          <Pagination />
         </li>
       </ul>
     </section>

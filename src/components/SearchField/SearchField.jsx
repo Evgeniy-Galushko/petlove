@@ -14,8 +14,13 @@ export default function SearchField() {
   };
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-      <Form>
-        <Field type="text" name="text" className={s.inputSearch} />
+      <Form className={s.form}>
+        <Field
+          type="text"
+          name="text"
+          className={s.inputSearch}
+          placeholder="Search"
+        />
         <button className={s.buttonSearch}>
           <svg className={s.iconSearch}>
             <use href={`${sprite}#icon-search`} />

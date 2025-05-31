@@ -1,33 +1,78 @@
+.form {
+  position: relative;
+}
+
 .inputSearch {
   box-sizing: border-box;
   border: 1px solid rgba(38, 38, 38, 0.15);
   border-radius: 30px;
-  padding: 12px 33px 12px 12px;
+  padding: 12px 43px 12px 12px;
   width: 335px;
   height: 42px;
   background-color: inherit;
+
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.03em;
+  color: #262626;
+
+  &::placeholder {
+    font-family: "Manrope", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: -0.03em;
+    color: rgba(38, 38, 38, 0.5);
+  }
 }
+
 .buttonSearch {
   box-sizing: border-box;
+  position: absolute;
   border: none;
   padding: 0;
-  /* border-radius: 100%; */
-  display: flex;
-  justify-content: center;
-  align-self: center;
-  align-items: center;
-  height: 42px;
   width: 42px;
-  /* align-items: center; */
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  background-color: inherit;
+
+  top: 0px;
+  left: 292px;
 }
 
 .iconSearch {
-  display: block;
   width: 18px;
   height: 18px;
 }
 
 @media screen and (min-width: 768px) {
+  .inputSearch {
+    padding: 14px 48px 14px 14px;
+    width: 230px;
+    height: 48px;
+    background-color: inherit;
+
+    font-size: 16px;
+    line-height: 1.25;
+
+    &::placeholder {
+      font-size: 16px;
+      line-height: 1.25;
+    }
+  }
+
+  .buttonSearch {
+    width: 48px;
+    height: 48px;
+
+    top: 0px;
+    left: 180px;
+  }
 }
 
 @media screen and (min-width: 1280px) {

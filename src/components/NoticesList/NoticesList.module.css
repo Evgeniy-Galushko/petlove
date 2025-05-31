@@ -1,5 +1,39 @@
+.newsList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.oneCard {
+  border-radius: 15px;
+  width: 335px;
+  height: 359px;
+  display: flex;
+  flex-direction: column;
+}
+
 @media screen and (min-width: 768px) {
+  .newsList {
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    gap: 24px;
+    row-gap: 32px;
+  }
+
+  .oneCard {
+    width: 340px;
+    height: 476px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
+  .newsList {
+    gap: 34px;
+    row-gap: 40px;
+  }
+
+  .oneCard {
+    width: 361px;
+  }
 }
