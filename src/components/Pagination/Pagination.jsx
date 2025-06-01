@@ -1,18 +1,16 @@
 import s from "./Pagination.module.css";
 import sprite from "../../img/icon/icon-sprite.svg";
 import clsx from "clsx";
+import { useEffect } from "react";
 // import { number } from "yup";
 
-export default function Pagination({ numberOfPages, totalPages, setToPage }) {
+export default function Pagination({
+  numberOfPages,
+  totalPages,
+  setToPage,
+  toPage,
+}) {
   if (!numberOfPages) return;
-
-  const button = numberOfPages.map((number, index) => {
-    return (
-      <button key={index} className={s.buttonNumber}>
-        {number}
-      </button>
-    );
-  });
 
   // console.log(totalPages);
 
@@ -32,28 +30,44 @@ export default function Pagination({ numberOfPages, totalPages, setToPage }) {
   const goToLastPage = () => {
     setToPage(totalPages);
   };
+  const goToPage = (e) => {
+    setToPage(Number(e.target.textContent));
+  };
+
+  // console.log(toPage);
+  // useEffect(() => {}, [numberOfPages]);
+
+  const button = numberOfPages.map((number, index) => {
+    return (
+      <button key={index} className={s.buttonNumber} onClick={goToPage}>
+        {number}
+      </button>
+    );
+  });
 
   return (
     <ul className={s.pagination}>
       <li className={s.arrows}>
         <button
           type="button"
+          disabled={toPage !== 1 ? false : true}
           className={clsx(s.buttonTwo, s.rotate)}
           onClick={goToFirstPage}
         >
-          <svg className={s.iconOne}>
+          <svg className={clsx(s.iconOne, toPage === 1 && s.iconDisabl)}>
             <use href={`${sprite}#icon-arrow-left`} />
           </svg>
-          <svg className={s.iconTwo}>
+          <svg className={clsx(s.icon, toPage === 1 && s.iconDisabl)}>
             <use href={`${sprite}#icon-arrow-left`} />
           </svg>
         </button>
         <button
           type="button"
+          disabled={toPage !== 1 ? false : true}
           className={clsx(s.buttonOne, s.rotate)}
           onClick={goToPrev}
         >
-          <svg className={s.icon}>
+          <svg className={clsx(s.icon, toPage === 1 && s.iconDisabl)}>
             <use href={`${sprite}#icon-arrow-left`} />
           </svg>
         </button>
@@ -61,20 +75,34 @@ export default function Pagination({ numberOfPages, totalPages, setToPage }) {
 
       <li className={s.buttonNumBox}>
         {button.slice(0, 2)}
-        {button.length > 1 && <button className={s.buttonNumber}>...</button>}
+        {button.length > 1 && toPage !== totalPages && (
+          <button className={s.buttonNumber}>...</button>
+        )}
       </li>
 
       <li className={s.arrows}>
-        <button type="button" className={s.buttonOne} onClick={goToNext}>
-          <svg className={s.icon}>
+        <button
+          type="button"
+          className={s.buttonOne}
+          onClick={goToNext}
+          disabled={toPage !== totalPages ? false : true}
+        >
+          <svg className={clsx(s.icon, toPage === totalPages && s.iconDisabl)}>
             <use href={`${sprite}#icon-arrow-left`} />
           </svg>
         </button>
-        <button type="button" className={s.buttonTwo} onClick={goToLastPage}>
-          <svg className={s.iconOne}>
+        <button
+          type="button"
+          className={s.buttonTwo}
+          onClick={goToLastPage}
+          disabled={toPage !== totalPages ? false : true}
+        >
+          <svg
+            className={clsx(s.iconOne, toPage === totalPages && s.iconDisabl)}
+          >
             <use href={`${sprite}#icon-arrow-left`} />
           </svg>
-          <svg className={s.iconTwo}>
+          <svg className={clsx(s.icon, toPage === totalPages && s.iconDisabl)}>
             <use href={`${sprite}#icon-arrow-left`} />
           </svg>
         </button>

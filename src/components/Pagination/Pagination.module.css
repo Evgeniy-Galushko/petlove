@@ -27,6 +27,7 @@
 .icon {
   width: 15px;
   height: 15px;
+  /* fill: #262626; */
 }
 
 .buttonTwo {
@@ -41,17 +42,26 @@
   background-color: inherit;
 }
 
+:disabled {
+  cursor: default;
+  border-color: rgba(38, 38, 38, 0.05);
+}
+
+.iconDisabl {
+  fill: rgba(38, 38, 38, 0.5);
+}
+
+.currentPage {
+  background-color: #f6b83d;
+}
+
 .iconOne {
   position: relative;
   width: 15px;
   height: 15px;
+  /* fill: #262626; */
 
   left: 5px;
-}
-
-.iconTwo {
-  width: 15px;
-  height: 15px;
 }
 
 .rotate {

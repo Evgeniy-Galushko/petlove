@@ -10,9 +10,8 @@ import Pagination from "../../components/Pagination/Pagination.jsx";
 import { PaginationButton } from "../../utils/pagination_button.js";
 
 export default function NewsPage() {
-  const [numberOfPages, setNumberOfPages] = useState([]);
-  // const [totalPages, setTotalPages] = useState(null);
-  const [toPage, setToPage] = useState(null);
+  const [search, setSearch] = useState("");
+  const [toPage, setToPage] = useState(1);
   console.log(toPage);
 
   const dispatch = useDispatch();
@@ -21,11 +20,10 @@ export default function NewsPage() {
   // setNumberOfPages(PaginationButton(newsData.totalPages));
   console.log(page);
 
-  console.log(numberOfPages);
+  console.log(toPage);
 
   useEffect(() => {
-    dispatch(requestNews());
-    setNumberOfPages(page);
+    dispatch(requestNews(toPage));
   }, [dispatch, toPage]);
 
   return (
@@ -41,9 +39,10 @@ export default function NewsPage() {
         <li className={s.pagination}>
           {newsData.totalPages > 1 && (
             <Pagination
-              numberOfPages={numberOfPages}
+              numberOfPages={page}
               totalPages={newsData.totalPages}
               setToPage={setToPage}
+              toPage={toPage}
             />
           )}
         </li>

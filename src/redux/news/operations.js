@@ -5,9 +5,9 @@ axios.defaults.baseURL = "https://petlove.b.goit.study/api";
 
 export const requestNews = createAsyncThunk(
   "news/request",
-  async (_, thunkAPI) => {
+  async (page, thunkAPI) => {
     try {
-      const data = await axios.get("/news");
+      const data = await axios.get(`/news?page=${page}`);
       // console.log(data.data);
       return data.data;
     } catch (error) {
