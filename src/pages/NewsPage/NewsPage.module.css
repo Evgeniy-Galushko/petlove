@@ -4,6 +4,7 @@
   padding: 0px 20px;
   margin: 0 auto;
 }
+
 .titleAndSearch {
   display: flex;
   flex-direction: column;
@@ -12,6 +13,10 @@
 
 .noticesList {
   margin-top: 24px;
+}
+
+.pagination {
+  margin-top: 44px;
 }
 
 @media screen and (min-width: 768px) {
