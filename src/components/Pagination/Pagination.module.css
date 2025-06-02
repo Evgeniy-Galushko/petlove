@@ -51,10 +51,6 @@
   fill: rgba(38, 38, 38, 0.5);
 }
 
-.currentPage {
-  background-color: #f6b83d;
-}
-
 .iconOne {
   position: relative;
   width: 15px;
@@ -86,4 +82,8 @@
   font-size: 14px;
   line-height: 1.28571;
   color: #262626;
+}
+
+.currentPage {
+  background-color: #f6b83d;
 }

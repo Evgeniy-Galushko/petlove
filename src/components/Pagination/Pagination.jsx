@@ -1,8 +1,6 @@
 import s from "./Pagination.module.css";
 import sprite from "../../img/icon/icon-sprite.svg";
 import clsx from "clsx";
-import { useEffect } from "react";
-// import { number } from "yup";
 
 export default function Pagination({
   numberOfPages,
@@ -11,12 +9,6 @@ export default function Pagination({
   toPage,
 }) {
   if (!numberOfPages) return;
-
-  // console.log(totalPages);
-
-  const hendleClick = (e) => {
-    console.log(e.target);
-  };
 
   const goToFirstPage = () => {
     setToPage(1);
@@ -34,12 +26,13 @@ export default function Pagination({
     setToPage(Number(e.target.textContent));
   };
 
-  // console.log(toPage);
-  // useEffect(() => {}, [numberOfPages]);
-
   const button = numberOfPages.map((number, index) => {
     return (
-      <button key={index} className={s.buttonNumber} onClick={goToPage}>
+      <button
+        key={index}
+        className={clsx(s.buttonNumber, toPage === number && s.currentPage)}
+        onClick={goToPage}
+      >
         {number}
       </button>
     );
@@ -74,7 +67,7 @@ export default function Pagination({
       </li>
 
       <li className={s.buttonNumBox}>
-        {button.slice(0, 2)}
+        {button.slice(toPage - 1, toPage + 1)}
         {button.length > 1 && toPage !== totalPages && (
           <button className={s.buttonNumber}>...</button>
         )}

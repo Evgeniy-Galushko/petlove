@@ -18,7 +18,7 @@ export default function NewsPage() {
   const newsData = useSelector(selectNews);
   const page = PaginationButton(newsData.totalPages);
   // setNumberOfPages(PaginationButton(newsData.totalPages));
-  console.log(page);
+  // console.log(page);
 
   console.log(toPage);
 
