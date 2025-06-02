@@ -25,6 +25,11 @@
   } */
 }
 
+.active {
+  border: 1px solid #f6b83d;
+  color: #262626;
+}
+
 .linkNavBCWhite {
   border: 1px solid rgba(38, 38, 38, 0.15);
   color: #262626;

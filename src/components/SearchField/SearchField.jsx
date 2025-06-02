@@ -2,13 +2,13 @@ import { Field, Form, Formik } from "formik";
 import sprite from "../../img/icon/icon-sprite.svg";
 import s from "./SearchField.module.css";
 
-export default function SearchField() {
+export default function SearchField({ setRequest }) {
   const initialValues = {
-    search: "",
+    request: "",
   };
 
   const handleSubmit = (values, actions) => {
-    console.log(values);
+    setRequest(values.request);
 
     // actions.resetForm();
   };
@@ -17,11 +17,11 @@ export default function SearchField() {
       <Form className={s.form}>
         <Field
           type="text"
-          name="text"
+          name="request"
           className={s.inputSearch}
           placeholder="Search"
         />
-        <button className={s.buttonSearch}>
+        <button className={s.buttonSearch} type="submit">
           <svg className={s.iconSearch}>
             <use href={`${sprite}#icon-search`} />
           </svg>

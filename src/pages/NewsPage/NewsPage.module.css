@@ -17,6 +17,12 @@
 
 .pagination {
   margin-top: 44px;
+  margin-bottom: 80px;
+}
+
+.spinners {
+  top: 30px;
+  margin: 0 auto;
 }
 
 @media screen and (min-width: 768px) {
@@ -33,6 +39,10 @@
 
   .noticesList {
     margin-top: 44px;
+  }
+
+  .pagination {
+    margin-top: 60px;
   }
 }
 

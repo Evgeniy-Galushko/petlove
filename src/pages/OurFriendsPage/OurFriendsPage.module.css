@@ -1,0 +1,25 @@
+.sectionFriends {
+  box-sizing: border-box;
+  max-width: 375px;
+  padding: 0px 20px;
+  margin: 0 auto;
+}
+
+.spinners {
+  top: 30px;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 768px) {
+  .sectionFriends {
+    max-width: 768px;
+    padding: 0px 32px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .sectionFriends {
+    max-width: 1280px;
+    padding: 0px 64px;
+  }
+}
