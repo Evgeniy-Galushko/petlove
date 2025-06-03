@@ -104,6 +104,7 @@
 @media screen and (min-width: 1280px) {
   .sectionHome {
     max-width: 1280px;
+    padding: 16px 64px;
     margin-top: -33px;
   }
 
@@ -128,7 +129,7 @@
   }
 
   .homeImg {
-    width: 1216px;
+    width: 1152px;
     height: 384px;
     background-image: url(../../img/homeDesktop_1x.jpg);
   }

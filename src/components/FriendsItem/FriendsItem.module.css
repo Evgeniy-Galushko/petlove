@@ -1,0 +1,126 @@
+.boxCard {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.boxImg {
+  display: flex;
+  align-items: center;
+}
+
+.img {
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+}
+
+.workingHours {
+  border-radius: 30px;
+  box-sizing: border-box;
+  padding: 8px;
+  width: 88px;
+  height: 32px;
+  background-color: #fff4df;
+
+  position: relative;
+  bottom: 0px;
+  left: 110px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.paragraphWorkingHours {
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 11.7px;
+  line-height: 1.33;
+  letter-spacing: -0.02em;
+  color: #f6b83d;
+}
+
+.titleCard {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -0.04em;
+  color: #262626;
+
+  /* margin-top: 15px; */
+  margin-bottom: 14px;
+}
+
+.boxContacts {
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
+}
+
+.paragraphContacts {
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.02em;
+  color: rgba(38, 38, 38, 0.5);
+
+  margin-bottom: 8px;
+}
+
+.paragrapContact {
+  display: block;
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.02em;
+  color: #262626;
+}
+
+.contactsLink {
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.02em;
+  color: #262626;
+
+  &:hover {
+    color: #f6b83d;
+    /* color: rgba(38, 38, 38, 0.5); */
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .workingHours {
+    width: 100px;
+    height: 34px;
+
+    left: 95px;
+  }
+
+  .paragraphWorkingHours {
+    font-size: 13.7px;
+    line-height: 1.29;
+  }
+
+  .titleCard {
+    font-size: 20px;
+    line-height: 1.3;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .workingHours {
+    left: 120px;
+  }
+}

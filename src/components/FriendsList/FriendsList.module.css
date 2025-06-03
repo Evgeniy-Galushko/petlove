@@ -1,0 +1,46 @@
+.friendsBox {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.oneCard {
+  box-sizing: border-box;
+  border-radius: 15px;
+  width: 335px;
+  height: 184px;
+  background-color: #fff;
+  padding: 12px 20px;
+
+  /* display: flex; */
+  /* align-items: center; */
+}
+
+@media screen and (min-width: 768px) {
+  .friendsBox {
+    margin-top: 44px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    row-gap: 20px;
+  }
+
+  .oneCard {
+    width: 342px;
+    height: 196px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .friendsBox {
+    margin-top: 60px;
+    gap: 19px;
+    row-gap: 28px;
+  }
+
+  .oneCard {
+    width: 371px;
+    height: 196px;
+  }
+}

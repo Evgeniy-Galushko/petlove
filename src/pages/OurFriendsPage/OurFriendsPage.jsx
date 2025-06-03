@@ -15,7 +15,7 @@ export default function OurFriendsPage() {
   const friendsData = useSelector(selectFriends);
   const isLoading = useSelector(selectIsLoadin);
 
-  console.log(friendsData);
+  // console.log(friendsData);
 
   useEffect(() => {
     dispatch(requestFriends());
