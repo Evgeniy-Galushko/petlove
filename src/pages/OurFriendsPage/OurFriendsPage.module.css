@@ -1,7 +1,7 @@
 .sectionFriends {
   box-sizing: border-box;
   max-width: 375px;
-  padding: 0px 20px;
+  padding: 40px 20px 80px 20px;
   margin: 0 auto;
 }
 
@@ -13,13 +13,13 @@
 @media screen and (min-width: 768px) {
   .sectionFriends {
     max-width: 768px;
-    padding: 0px 32px;
+    padding: 60px 32px 80px 32px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .sectionFriends {
     max-width: 1280px;
-    padding: 0px 64px;
+    padding: 70px 64px 80px 64px;
   }
 }

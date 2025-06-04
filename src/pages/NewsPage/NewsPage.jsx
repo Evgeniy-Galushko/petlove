@@ -18,8 +18,6 @@ export default function NewsPage() {
   const isLoading = useSelector(selectIsLoadin);
   const page = PaginationButton(newsData.totalPages);
   // setNumberOfPages(PaginationButton(newsData.totalPages));
-  console.log(newsData);
-  console.log(request);
 
   useEffect(() => {
     dispatch(requestNews({ toPage: toPage, request: request }));

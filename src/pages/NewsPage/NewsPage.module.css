@@ -1,7 +1,7 @@
 .sectionNews {
   box-sizing: border-box;
   max-width: 375px;
-  padding: 0px 20px;
+  padding: 40px 20px 80px 20px;
   margin: 0 auto;
 }
 
@@ -17,7 +17,6 @@
 
 .pagination {
   margin-top: 44px;
-  margin-bottom: 80px;
 }
 
 .spinners {
@@ -28,7 +27,7 @@
 @media screen and (min-width: 768px) {
   .sectionNews {
     max-width: 768px;
-    padding: 0px 32px;
+    padding: 60px 32px 80px 32px;
   }
 
   .titleAndSearch {
@@ -49,7 +48,7 @@
 @media screen and (min-width: 1280px) {
   .sectionNews {
     max-width: 1280px;
-    padding: 0px 64px;
+    padding: 70px 64px 80px 64px;
   }
 
   .noticesList {

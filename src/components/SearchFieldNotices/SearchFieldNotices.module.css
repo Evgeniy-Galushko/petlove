@@ -1,0 +1,247 @@
+.form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.inputSearch {
+  box-sizing: border-box;
+  border: none;
+  background-color: #fff;
+  border-radius: 30px;
+  padding: 12px 43px 12px 12px;
+  width: 295px;
+  height: 42px;
+
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.03em;
+  color: #262626;
+
+  &::placeholder {
+    font-family: "Manrope", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: -0.03em;
+    color: rgba(38, 38, 38, 0.5);
+  }
+}
+
+.categoriesGender {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.inputCategoriesGender {
+  box-sizing: border-box;
+  border-radius: 30px;
+  border: none;
+  padding: 12px;
+  width: 143px;
+  height: 42px;
+
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.03em;
+  color: #262626;
+  align-items: end;
+}
+
+.inputSpecies {
+  border-radius: 30px;
+  border: none;
+  padding: 12px;
+  width: 295px;
+  height: 42px;
+
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.03em;
+  color: #262626;
+  align-items: end;
+}
+
+.buttonSearch {
+  box-sizing: border-box;
+  position: absolute;
+  border: none;
+  padding: 0;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  background-color: inherit;
+
+  top: 0px;
+  left: 252px;
+}
+
+.iconSearch {
+  width: 18px;
+  height: 18px;
+}
+
+.buttonLocation {
+  box-sizing: border-box;
+  position: absolute;
+  border: none;
+  padding: 0;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  background-color: inherit;
+
+  top: 163px;
+  left: 252px;
+}
+
+.boxPopularityPrice {
+  margin-top: 20px;
+  border-top: 1px solid rgba(38, 38, 38, 0.1);
+  padding-top: 20px;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.buttonPopularityPrice {
+  border-radius: 30px;
+  border: none;
+  padding: 12px;
+  /* width: 72px; */
+  height: 42px;
+  /* background-color: #fff; */
+  background-color: #f6b83d;
+
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.03em;
+  color: #262626;
+  display: flex;
+  justify-content: center;
+}
+
+.buttonPopularityPriceColor {
+  background-color: #f6b83d;
+  color: #fff;
+}
+
+.icon {
+  margin-left: 8px;
+  width: 18px;
+  height: 18px;
+  fill: #fff;
+}
+
+@media screen and (min-width: 768px) {
+  .form {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .inputSearch {
+    padding: 14px 48px 14px 14px;
+    width: 265px;
+    height: 48px;
+
+    font-size: 16px;
+    line-height: 1.25;
+
+    &::placeholder {
+      font-size: 16px;
+      line-height: 1.25;
+    }
+  }
+
+  .inputCategoriesGender {
+    padding: 14px;
+    width: 170px;
+    height: 48px;
+
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
+  .categoriesGender {
+    gap: 16px;
+  }
+
+  .inputSpecies {
+    padding: 14px;
+    width: 190px;
+    height: 48px;
+
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
+  .inputSearchWidth {
+    width: 227px;
+    height: 48px;
+  }
+
+  .buttonLocation {
+    top: 68px;
+    left: 385px;
+  }
+
+  .buttonSearch {
+    width: 48px;
+    height: 48px;
+
+    top: 0px;
+    left: 215px;
+  }
+
+  .buttonPopularityPrice {
+    padding: 14px;
+    height: 48px;
+    background-color: #fff;
+
+    font-size: 16px;
+    line-height: 1.25;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .inputSearch {
+    width: 227px;
+  }
+  .buttonSearch {
+    top: 0px;
+    left: 180px;
+  }
+
+  .inputCategoriesGender {
+    width: 190px;
+    height: 48px;
+
+    font-size: 16px;
+    line-height: 1.25;
+    align-items: end;
+  }
+
+  .buttonLocation {
+    top: 3px;
+    left: 1040px;
+  }
+}
