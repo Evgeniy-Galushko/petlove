@@ -55,3 +55,16 @@ export const requestSpecies = createAsyncThunk(
     }
   }
 );
+
+export const requestCitiesLocation = createAsyncThunk(
+  "citiesLocation/request",
+  async (_, thunkAPI) => {
+    try {
+      const data = await axios.get(`/cities/locations`);
+      // console.log(data);
+      return data.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

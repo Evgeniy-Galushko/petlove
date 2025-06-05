@@ -6,6 +6,8 @@ export const selectGender = (state) => state.notices.gender;
 
 export const selectSpecies = (state) => state.notices.species;
 
+export const selectCitiesLocation = (state) => state.notices.citiesLocation;
+
 export const selectIsLoadin = (state) => state.news.isloading;
 
 export const selectError = (state) => state.news.error;

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectIsLoadin, selectNews } from "../../redux/news/selectors.js";
 import { useEffect, useState } from "react";
 import { requestNews } from "../../redux/news/operations.js";
-import NoticesList from "../../components/NoticesList/NoticesList.jsx";
+import NoticesList from "../../components/NewsList/NewsList.jsx";
 import Pagination from "../../components/Pagination/Pagination.jsx";
 import { PaginationButton } from "../../utils/pagination_button.js";
 import { RingLoader } from "react-spinners";

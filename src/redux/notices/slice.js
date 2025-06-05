@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
   requestCategories,
+  requestCitiesLocation,
   requestGender,
   requestNotices,
   requestSpecies,
@@ -22,6 +23,7 @@ const noticesSlise = createSlice({
     categories: [],
     gender: [],
     species: [],
+    citiesLocation: [],
     isloading: false,
     error: null,
   },
@@ -54,7 +56,14 @@ const noticesSlise = createSlice({
         state.error = null;
         state.species = action.payload;
       })
-      .addCase(requestSpecies.rejected, handleRejected);
+      .addCase(requestSpecies.rejected, handleRejected)
+      .addCase(requestCitiesLocation.pending, handlePending)
+      .addCase(requestCitiesLocation.fulfilled, (state, action) => {
+        state.isloading = false;
+        state.error = null;
+        state.citiesLocation = action.payload;
+      })
+      .addCase(requestCitiesLocation.rejected, handleRejected);
   },
 });
 
