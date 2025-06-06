@@ -1,0 +1,27 @@
+.modal {
+  border-radius: 30px;
+  width: 335px;
+  height: 394px;
+  /* padding: 20px; */
+}
+
+.boxImg {
+  border-radius: 100%;
+  background-color: #fff4df;
+  width: 80px;
+  height: 80px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+  .modal {
+    width: 466px;
+    height: 434px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+}

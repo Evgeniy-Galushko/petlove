@@ -1,13 +1,13 @@
 import NoticesItem from "../NoticesItem/NoticesItem.jsx";
 import s from "./NoticesList.module.css";
 
-export default function NoticesList({ data }) {
+export default function NoticesList({ data, setIsModal }) {
   if (!data) return;
 
   console.log(data);
 
   return (
-    <ul>
+    <ul className={s.noticesList}>
       {data.map(
         ({
           _id,
@@ -25,6 +25,7 @@ export default function NoticesList({ data }) {
           return (
             <li key={_id} className={s.oneCard}>
               <NoticesItem
+                id={_id}
                 imgURL={imgURL}
                 title={title}
                 name={name}
@@ -35,6 +36,7 @@ export default function NoticesList({ data }) {
                 comment={comment}
                 price={price}
                 popularity={popularity}
+                setIsModal={setIsModal}
               />
             </li>
           );

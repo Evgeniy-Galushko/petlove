@@ -20,12 +20,14 @@ import {
 import { PaginationButton } from "../../utils/pagination_button.js";
 import SearchFieldNotices from "../../components/SearchFieldNotices/SearchFieldNotices.jsx";
 import NoticesList from "../../components/NoticesList/NoticesList.jsx";
+import ModalAttention from "../../components/ModalAttention/ModalAttention.jsx";
 
 export default function NoticesPage() {
   const [toPage, setToPage] = useState(1);
   const [request, setRequest] = useState({});
   const [popularity, setPopularity] = useState(null);
   const [price, setPrice] = useState(null);
+  const [isModal, setIsModal] = useState(false);
 
   const dispatch = useDispatch();
   const categories = useSelector(selectCategories);
@@ -46,8 +48,13 @@ export default function NoticesPage() {
     dispatch(requestCitiesLocation());
   }, [dispatch, toPage]);
 
+  const closeModal = () => {
+    setIsModal(false);
+  };
+
   return (
     <section className={s.sectionNotices}>
+      <ModalAttention isOpen={isModal} onClose={closeModal} />
       <ul className={s.notices}>
         <li>
           <Title>Find your favorite pet</Title>
@@ -65,7 +72,7 @@ export default function NoticesPage() {
           />
         </li>
         <li>
-          <NoticesList data={notices.results} />
+          <NoticesList data={notices.results} setIsModal={setIsModal} />
         </li>
         <li>
           {notices.totalPages > 1 && (
