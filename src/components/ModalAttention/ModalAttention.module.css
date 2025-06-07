@@ -2,7 +2,19 @@
   border-radius: 30px;
   width: 335px;
   height: 394px;
-  /* padding: 20px; */
+  padding: 20px 20px 40px 20px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* gap: 20px; */
+}
+
+.buttonClose {
+  border: none;
+  background-color: inherit;
+  margin-left: 271px;
 }
 
 .boxImg {
@@ -16,10 +28,121 @@
   align-items: center;
 }
 
+.title {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: #f6b83d;
+  text-align: center;
+
+  margin-top: 20px;
+}
+
+.messsage {
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: #2b2b2a;
+
+  margin-top: 20px;
+}
+
+.boxLink {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.linkLogin {
+  display: block;
+  box-sizing: border-box;
+  border-radius: 30px;
+  padding: 12px 46px;
+  width: 132px;
+  height: 42px;
+  background-color: #f6b83d;
+
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.03em;
+  color: #fff;
+
+  &:hover {
+    background-color: #f9b020;
+  }
+}
+
+.linkRegister {
+  box-sizing: border-box;
+  display: block;
+  border-radius: 30px;
+  padding: 12px 24px;
+  width: 132px;
+  height: 42px;
+  background-color: #fff4df;
+
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.03em;
+  color: #f6b83d;
+
+  &:hover {
+    background-color: #fbe7c1;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .modal {
     width: 466px;
     height: 434px;
+    padding: 20px 60px 60px 60px;
+  }
+
+  .buttonClose {
+    margin-left: 395px;
+  }
+
+  .title {
+    font-size: 24px;
+    line-height: 1.17;
+  }
+
+  .messsage {
+    font-size: 14px;
+    line-height: 1.29;
+  }
+
+  .boxLink {
+    margin-top: 28px;
+  }
+
+  .linkLogin {
+    padding: 14px 48px;
+    width: 140px;
+    height: 48px;
+
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
+  .linkRegister {
+    padding: 14px 24px;
+    width: 140px;
+    height: 48px;
+
+    font-size: 16px;
+    line-height: 1.25;
   }
 }
 

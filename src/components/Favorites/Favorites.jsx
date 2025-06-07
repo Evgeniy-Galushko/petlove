@@ -3,7 +3,7 @@ import sprite from "../../img/icon/icon-sprite.svg";
 import s from "./Favorites.module.css";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function Favorites({ id }) {
+export default function Favorites({ id, openModal }) {
   const [favorites, setFavorites] = useState(false);
   const dispatch = useDispatch();
   // const favoritesList = useSelector();
@@ -20,8 +20,9 @@ export default function Favorites({ id }) {
         type="checkbox"
         onChange={handlChange}
         checked={favorites}
+        onClick={openModal}
       />
-      <label htmlFor={id}>
+      <label htmlFor={id} className={s.label}>
         {favorites ? (
           <svg className={s.iconHeart}>
             <use href={`${sprite}#icon-basket`} />

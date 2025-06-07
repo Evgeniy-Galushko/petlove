@@ -25,6 +25,9 @@ import ModalAttention from "../../components/ModalAttention/ModalAttention.jsx";
 export default function NoticesPage() {
   const [toPage, setToPage] = useState(1);
   const [request, setRequest] = useState({});
+  const [category, setCategory] = useState("");
+  const [genders, setGenders] = useState("");
+  const [specie, setSpecie] = useState("");
   const [popularity, setPopularity] = useState(null);
   const [price, setPrice] = useState(null);
   const [isModal, setIsModal] = useState(false);
@@ -35,18 +38,32 @@ export default function NoticesPage() {
   const species = useSelector(selectSpecies);
   const notices = useSelector(selectNotices);
   const citiesLocation = useSelector(selectCitiesLocation);
-
   const page = PaginationButton(notices.totalPages);
 
-  // console.log(notices.results);
+  console.log(specie);
+
+  // console.log(request);
+  // console.log(popularity);
+  // console.log(price);
 
   useEffect(() => {
-    dispatch(requestNotices({ page: toPage }));
+    dispatch(
+      requestNotices({
+        page: toPage,
+        byPopularity: popularity,
+        byPrice: price,
+        keyword: request.request,
+        category: category,
+        species: specie,
+        // locationId: request.location,
+        sex: genders,
+      })
+    );
     dispatch(requestCategories());
     dispatch(requestGender());
     dispatch(requestSpecies());
     dispatch(requestCitiesLocation());
-  }, [dispatch, toPage]);
+  }, [dispatch, request, genders, specie, category, toPage, price, popularity]);
 
   const closeModal = () => {
     setIsModal(false);
@@ -69,6 +86,10 @@ export default function NoticesPage() {
             price={price}
             setPopularity={setPopularity}
             popularity={popularity}
+            setCategory={setCategory}
+            citiesLocation={citiesLocation}
+            setGenders={setGenders}
+            setSpecie={setSpecie}
           />
         </li>
         <li>

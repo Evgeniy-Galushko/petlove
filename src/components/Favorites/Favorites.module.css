@@ -11,4 +11,30 @@
 .iconHeart {
   width: 18px;
   height: 18px;
+
+  cursor: pointer;
+}
+
+.label {
+  box-sizing: border-box;
+  display: block;
+  border-radius: 30px;
+  padding: 14px;
+  width: 46px;
+  height: 46px;
+  background-color: #fff4df;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: #fbe7c1;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .label {
+    padding: 15px;
+    width: 48px;
+    height: 48px;
+  }
 }

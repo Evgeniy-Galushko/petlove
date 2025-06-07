@@ -4,8 +4,6 @@ import s from "./NoticesList.module.css";
 export default function NoticesList({ data, setIsModal }) {
   if (!data) return;
 
-  console.log(data);
-
   return (
     <ul className={s.noticesList}>
       {data.map(

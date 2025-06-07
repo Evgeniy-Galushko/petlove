@@ -11,7 +11,7 @@ export default function ModalAttention({ isOpen, onClose }) {
     content: {
       border: "none",
       overflow: "auto",
-      padding: "20px",
+      padding: "none",
       borderRadius: "30px",
       top: "50%",
       left: "50%",
@@ -27,7 +27,7 @@ export default function ModalAttention({ isOpen, onClose }) {
   return (
     <Modal isOpen={isOpen} onRequestClose={onClose} style={customStyles}>
       <ul className={s.modal}>
-        <button onClick={onClose}>
+        <button onClick={onClose} className={s.buttonClose}>
           <svg className={s.icon} width={24} height={24}>
             <use href={`${sprite}#icon-close`} />
           </svg>
@@ -36,20 +36,20 @@ export default function ModalAttention({ isOpen, onClose }) {
           <img src="/🐶.png" alt="" width={44} height={44} />
         </li>
         <li>
-          <h3>Attention</h3>
-          <p>
+          <h3 className={s.title}>Attention</h3>
+          <p className={s.messsage}>
             We would like to remind you that certain functionality is available
             only to authorized users.If you have an account, please log in with
             your credentials. If you do not already have an account, you must
             register to access these features
           </p>
         </li>
-        <li>
-          <NavLink to="/login" className={s.navParagraphAccount}>
-            Login
+        <li className={s.boxLink}>
+          <NavLink to="/login" className={s.linkLogin}>
+            Log In
           </NavLink>
-          <NavLink to="/register" className={s.navParagraphAccount}>
-            Register
+          <NavLink to="/register" className={s.linkRegister}>
+            Registration
           </NavLink>
         </li>
       </ul>

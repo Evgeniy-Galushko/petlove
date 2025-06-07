@@ -39,6 +39,7 @@
 
 .inputCategoriesGender {
   box-sizing: border-box;
+  appearance: none;
   border-radius: 30px;
   border: none;
   padding: 12px;
@@ -55,6 +56,7 @@
 }
 
 .inputSpecies {
+  appearance: none;
   border-radius: 30px;
   border: none;
   padding: 12px;
@@ -109,11 +111,18 @@
   left: 252px;
 }
 
-.boxPopularityPrice {
+.boxPopularityReset {
   margin-top: 20px;
   border-top: 1px solid rgba(38, 38, 38, 0.1);
   padding-top: 20px;
 
+  display: flex;
+  flex-direction: row;
+  /* flex-wrap: wrap; */
+  justify-content: space-between;
+}
+
+.popularityPrice {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -154,6 +163,50 @@
   width: 18px;
   height: 18px;
   fill: #fff;
+}
+
+.categoriesLabel {
+  position: absolute;
+  left: 115px;
+  top: 65px;
+}
+
+.iconLabel {
+  width: 12px;
+  height: 12px;
+  rotate: 90deg;
+}
+
+.genderLabel {
+  position: absolute;
+  left: 265px;
+  top: 65px;
+}
+
+.typeLabel {
+  position: absolute;
+  left: 265px;
+  top: 120px;
+}
+
+.reset {
+  box-sizing: border-box;
+  border-radius: 30px;
+  border: none;
+  padding: 12px 18px;
+  /* width: 72px; */
+  height: 42px;
+  /* background-color: #fff; */
+  background-color: #f6b83d;
+
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.29;
+  letter-spacing: -0.03em;
+  color: #fff;
+  display: flex;
+  justify-content: center;
 }
 
 @media screen and (min-width: 768px) {
@@ -225,6 +278,27 @@
     font-size: 16px;
     line-height: 1.25;
   }
+
+  .categoriesLabel {
+    left: 422px;
+    top: 15px;
+  }
+
+  /* .iconLabel {
+    width: 12px;
+    height: 12px;
+    rotate: 90deg;
+  } */
+
+  .genderLabel {
+    left: 610px;
+    top: 15px;
+  }
+
+  .typeLabel {
+    left: 160px;
+    top: 80px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
@@ -248,5 +322,15 @@
   .buttonLocation {
     top: 3px;
     left: 1040px;
+  }
+
+  .categoriesLabel {
+    left: 402px;
+    top: 15px;
+  }
+
+  .typeLabel {
+    left: 815px;
+    top: 15px;
   }
 }

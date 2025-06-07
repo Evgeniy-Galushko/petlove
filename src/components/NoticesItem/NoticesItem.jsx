@@ -43,10 +43,14 @@ export default function NoticesItem({
           </li>
           <li>
             <p className={s.description}>Birthday</p>
-            <p className={s.meaning}>
-              {birthday.slice(8, 10)}.{birthday.slice(5, 7)}.
-              {birthday.slice(0, 4)}
-            </p>
+            {birthday ? (
+              <p className={s.meaning}>
+                {birthday.slice(8, 10)}.{birthday.slice(5, 7)}.
+                {birthday.slice(0, 4)}
+              </p>
+            ) : (
+              <p className={s.meaning}>No birthday</p>
+            )}
           </li>
           <li>
             <p className={s.description}>Gender</p>
@@ -79,7 +83,7 @@ export default function NoticesItem({
           </button>
         </li>
         <li className={s.favorites}>
-          <Favorites id={id} />
+          <Favorites id={id} openModal={openModal} />
         </li>
       </ul>
     </>

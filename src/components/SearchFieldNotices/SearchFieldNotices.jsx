@@ -13,18 +13,26 @@ export default function SearchFieldNotices({
   price,
   setPopularity,
   popularity,
+  citiesLocation,
+  setCategory,
+  setGenders,
+  setSpecie,
 }) {
   const popularId = useId();
   const unpopularId = useId();
   const cheapId = useId();
   const expensiveId = useId();
 
+  const categoryId = useId();
+  const genderId = useId();
+  const typeId = useId();
+
   const initialValues = {
     request: "",
-    categories: "",
-    gender: "",
-    species: "",
-    location: "",
+    // categories: "",
+    // gender: "",
+    // species: "",
+    // location: "",
   };
 
   const handleSubmit = (values, actions) => {
@@ -32,6 +40,21 @@ export default function SearchFieldNotices({
     setRequest(values);
 
     // actions.resetForm();
+  };
+
+  const handleChangeCetegory = (e) => {
+    setCategory(e.target.value);
+    // console.log(e.target.value);
+  };
+
+  const handleChangeGender = (e) => {
+    setGenders(e.target.value);
+    // console.log(e.target.value);
+  };
+
+  const handleChangeSpecies = (e) => {
+    setSpecie(e.target.value);
+    // console.log(e.target.value);
   };
 
   const handlePopularyChange = (e) => {
@@ -47,73 +70,28 @@ export default function SearchFieldNotices({
     if (e.target.name === "expensive") {
       setPrice(e.target.value);
     }
-    // setPopularity(e.target.value);
+  };
 
-    // console.log(e.target.value);
-    // console.log(e.target.name);
-    // setPopularity();
+  const handleReset = () => {
+    setPrice(null);
+    setPopularity(null);
+    setRequest({});
+    setCategory("");
+    setGenders("");
+    setSpecie("");
   };
 
   return (
     <ul>
-      <li>
+      <li className={s.form}>
         <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-          <Form className={s.form}>
+          <Form>
             <Field
               type="text"
               name="request"
               className={s.inputSearch}
               placeholder="Search"
             />
-            <div className={s.categoriesGender}>
-              <Field
-                as="select"
-                name="categories"
-                className={s.inputCategoriesGender}
-                // placeholder="Category"
-              >
-                <option>Category</option>
-                {categories.map((categorie, index) => {
-                  return <option key={index}>{categorie}</option>;
-                })}
-              </Field>
-              <Field
-                as="select"
-                name="gender"
-                className={s.inputCategoriesGender}
-                // placeholder="Category"
-              >
-                <option>By gender</option>
-                {gender.map((gen, index) => {
-                  return <option key={index}>{gen}</option>;
-                })}
-              </Field>
-            </div>
-            <Field
-              as="select"
-              name="species"
-              className={s.inputSpecies}
-              // placeholder="Category"
-            >
-              <option>By type</option>
-              {species.map((specie, index) => {
-                return <option key={index}>{specie}</option>;
-              })}
-            </Field>
-
-            <Field
-              type="text"
-              name="location"
-              className={clsx(s.inputSearch, s.inputSearchWidth)}
-              placeholder="Location"
-            />
-
-            <button className={s.buttonLocation} type="submit">
-              <svg className={s.iconSearch}>
-                <use href={`${sprite}#icon-search`} />
-              </svg>
-            </button>
-
             <button className={s.buttonSearch} type="submit">
               <svg className={s.iconSearch}>
                 <use href={`${sprite}#icon-search`} />
@@ -121,104 +99,188 @@ export default function SearchFieldNotices({
             </button>
           </Form>
         </Formik>
+        <div className={s.categoriesGender}>
+          <label htmlFor={categoryId} className={s.categoriesLabel}>
+            <svg className={clsx(s.iconLabel)}>
+              <use href={`${sprite}#icon-arrow-left`} />
+            </svg>
+          </label>
+          <select
+            // as="select"
+            name="categories"
+            className={s.inputCategoriesGender}
+            id={categoryId}
+            onChange={handleChangeCetegory}
+          >
+            <option value={""}>All category</option>
+            {categories.map((categorie, index) => {
+              return (
+                <option key={index} value={categorie}>
+                  {categorie}
+                </option>
+              );
+            })}
+          </select>
+          <label htmlFor={genderId} className={s.genderLabel}>
+            <svg className={clsx(s.iconLabel)}>
+              <use href={`${sprite}#icon-arrow-left`} />
+            </svg>
+          </label>
+          <select
+            // as="select"
+            name="gender"
+            className={s.inputCategoriesGender}
+            id={genderId}
+            onChange={handleChangeGender}
+          >
+            <option value={""}>All by gender</option>
+            {gender.map((gen, index) => {
+              return (
+                <option key={index} value={gen}>
+                  {gen}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+        <label htmlFor={typeId} className={s.typeLabel}>
+          <svg className={clsx(s.iconLabel)}>
+            <use href={`${sprite}#icon-arrow-left`} />
+          </svg>
+        </label>
+        <select
+          // as="select"
+          name="species"
+          className={s.inputSpecies}
+          id={typeId}
+          onChange={handleChangeSpecies}
+        >
+          <option value={""}>All type</option>
+          {species.map((specie, index) => {
+            return (
+              <option key={index} value={specie}>
+                {specie}
+              </option>
+            );
+          })}
+        </select>
+
+        <select
+          type="text"
+          name="location"
+          className={clsx(s.inputSearch, s.inputSearchWidth)}
+          placeholder="Location"
+        />
+
+        {/* <button className={s.buttonLocation} type="submit">
+              <svg className={s.iconSearch}>
+                <use href={`${sprite}#icon-search`} />
+              </svg>
+            </button> */}
       </li>
 
-      <li className={s.boxPopularityPrice}>
-        <label
-          htmlFor={popularId}
-          className={clsx(
-            s.inputPopularityPrice,
-            popularity === "true" && s.inputPopularityPriceColor
-          )}
-        >
-          Popular
-          {popularity === "true" && (
-            <svg className={clsx(s.icon)}>
-              <use href={`${sprite}#icon-x`} />
-            </svg>
-          )}
-        </label>
-        <input
-          id={popularId}
-          type="radio"
-          name="popular"
-          value="true"
-          onChange={handlePopularyChange}
-          checked={popularity === "true"}
-          className={s.labelRadio}
-        />
-        <label
-          htmlFor={unpopularId}
-          className={clsx(
-            s.inputPopularityPrice,
-            popularity === "false" && s.inputPopularityPriceColor
-          )}
-        >
-          Unpopular{" "}
-          {popularity === "false" && (
-            <svg className={clsx(s.icon)}>
-              <use href={`${sprite}#icon-x`} />
-            </svg>
-          )}
-        </label>
-        <input
-          id={unpopularId}
-          type="radio"
-          name="unpopular"
-          value="false"
-          onChange={handlePopularyChange}
-          checked={popularity === "false"}
-          className={s.labelRadio}
-          // className={clsx(s.inputSearch, s.inputSearchWidth)}
-        />
-        <label
-          htmlFor={cheapId}
-          className={clsx(
-            s.inputPopularityPrice,
-            price === "true" && s.inputPopularityPriceColor
-          )}
-        >
-          Cheap{" "}
-          {price === "true" && (
-            <svg className={clsx(s.icon)}>
-              <use href={`${sprite}#icon-x`} />
-            </svg>
-          )}
-        </label>
-        <input
-          id={cheapId}
-          type="radio"
-          name="cheap"
-          value="true"
-          onChange={handlePopularyChange}
-          checked={price === "true"}
-          className={s.labelRadio}
-          // className={clsx(s.inputSearch, s.inputSearchWidth)}
-        />
-        <label
-          htmlFor={expensiveId}
-          className={clsx(
-            s.inputPopularityPrice,
-            price === "false" && s.inputPopularityPriceColor
-          )}
-        >
-          Expensive
-          {price === "false" && (
-            <svg className={clsx(s.icon)}>
-              <use href={`${sprite}#icon-x`} />
-            </svg>
-          )}
-        </label>
-        <input
-          id={expensiveId}
-          type="radio"
-          name="expensive"
-          value="false"
-          onChange={handlePopularyChange}
-          checked={price === "false"}
-          className={s.labelRadio}
-          // className={clsx(s.inputSearch, s.inputSearchWidth)}
-        />
+      <li className={s.boxPopularityReset}>
+        <div className={s.popularityPrice}>
+          <label
+            htmlFor={popularId}
+            className={clsx(
+              s.inputPopularityPrice,
+              popularity === "false" && s.inputPopularityPriceColor
+            )}
+          >
+            Popular
+            {popularity === "false" && (
+              <svg className={clsx(s.icon)}>
+                <use href={`${sprite}#icon-x`} />
+              </svg>
+            )}
+          </label>
+          <input
+            id={popularId}
+            type="radio"
+            name="popular"
+            value="false"
+            onChange={handlePopularyChange}
+            checked={popularity === "false"}
+            className={s.labelRadio}
+          />
+          <label
+            htmlFor={unpopularId}
+            className={clsx(
+              s.inputPopularityPrice,
+              popularity === "true" && s.inputPopularityPriceColor
+            )}
+          >
+            Unpopular{" "}
+            {popularity === "true" && (
+              <svg className={clsx(s.icon)}>
+                <use href={`${sprite}#icon-x`} />
+              </svg>
+            )}
+          </label>
+          <input
+            id={unpopularId}
+            type="radio"
+            name="unpopular"
+            value="true"
+            onChange={handlePopularyChange}
+            checked={popularity === "true"}
+            className={s.labelRadio}
+            // className={clsx(s.inputSearch, s.inputSearchWidth)}
+          />
+          <label
+            htmlFor={cheapId}
+            className={clsx(
+              s.inputPopularityPrice,
+              price === "true" && s.inputPopularityPriceColor
+            )}
+          >
+            Cheap{" "}
+            {price === "true" && (
+              <svg className={clsx(s.icon)}>
+                <use href={`${sprite}#icon-x`} />
+              </svg>
+            )}
+          </label>
+          <input
+            id={cheapId}
+            type="radio"
+            name="cheap"
+            value="true"
+            onChange={handlePopularyChange}
+            checked={price === "true"}
+            className={s.labelRadio}
+            // className={clsx(s.inputSearch, s.inputSearchWidth)}
+          />
+          <label
+            htmlFor={expensiveId}
+            className={clsx(
+              s.inputPopularityPrice,
+              price === "false" && s.inputPopularityPriceColor
+            )}
+          >
+            Expensive
+            {price === "false" && (
+              <svg className={clsx(s.icon)}>
+                <use href={`${sprite}#icon-x`} />
+              </svg>
+            )}
+          </label>
+          <input
+            id={expensiveId}
+            type="radio"
+            name="expensive"
+            value="false"
+            onChange={handlePopularyChange}
+            checked={price === "false"}
+            className={s.labelRadio}
+            // className={clsx(s.inputSearch, s.inputSearchWidth)}
+          />
+        </div>
+
+        <button className={s.reset} onClick={handleReset}>
+          Reset
+        </button>
       </li>
     </ul>
   );

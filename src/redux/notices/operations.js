@@ -6,9 +6,30 @@ axios.defaults.baseURL = "https://petlove.b.goit.study/api";
 export const requestNotices = createAsyncThunk(
   "notices/request",
   async (request, thunkAPI) => {
-    // console.log(request);
+    const {
+      byPopularity,
+      byPrice,
+      category,
+      keyword,
+      locationId,
+      page,
+      species,
+      sex,
+    } = request;
+    // console.log(sex);
     try {
-      const data = await axios.get(`/notices?page=${request.page}`);
+      const data = await axios.get(`/notices`, {
+        params: {
+          ...(page && { page }),
+          ...(byPopularity != null && { byPopularity }),
+          ...(byPrice != null && { byPrice }),
+          ...(keyword && { keyword }),
+          ...(category && { category }),
+          ...(species && { species }),
+          ...(locationId && { locationId }),
+          ...(sex && { sex }),
+        },
+      });
       // console.log(data.data);
       return data.data;
     } catch (error) {
