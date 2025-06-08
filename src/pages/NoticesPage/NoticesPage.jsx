@@ -23,11 +23,13 @@ import NoticesList from "../../components/NoticesList/NoticesList.jsx";
 import ModalAttention from "../../components/ModalAttention/ModalAttention.jsx";
 
 export default function NoticesPage() {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [toPage, setToPage] = useState(1);
   const [request, setRequest] = useState({});
   const [category, setCategory] = useState("");
   const [genders, setGenders] = useState("");
   const [specie, setSpecie] = useState("");
+  const [locationId, setLocationId] = useState("");
   const [popularity, setPopularity] = useState(null);
   const [price, setPrice] = useState(null);
   const [isModal, setIsModal] = useState(false);
@@ -40,9 +42,9 @@ export default function NoticesPage() {
   const citiesLocation = useSelector(selectCitiesLocation);
   const page = PaginationButton(notices.totalPages);
 
-  console.log(specie);
+  // console.log(locationId.value);
 
-  // console.log(request);
+  console.log(notices);
   // console.log(popularity);
   // console.log(price);
 
@@ -55,7 +57,7 @@ export default function NoticesPage() {
         keyword: request.request,
         category: category,
         species: specie,
-        // locationId: request.location,
+        locationId: locationId.value,
         sex: genders,
       })
     );
@@ -63,7 +65,21 @@ export default function NoticesPage() {
     dispatch(requestGender());
     dispatch(requestSpecies());
     dispatch(requestCitiesLocation());
-  }, [dispatch, request, genders, specie, category, toPage, price, popularity]);
+
+    const onResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, [
+    dispatch,
+    request,
+    genders,
+    specie,
+    locationId,
+    category,
+    toPage,
+    price,
+    popularity,
+  ]);
 
   const closeModal = () => {
     setIsModal(false);
@@ -90,6 +106,8 @@ export default function NoticesPage() {
             citiesLocation={citiesLocation}
             setGenders={setGenders}
             setSpecie={setSpecie}
+            setLocationId={setLocationId}
+            windowWidth={windowWidth}
           />
         </li>
         <li>

@@ -94,7 +94,7 @@
   height: 18px;
 }
 
-.buttonLocation {
+/* .buttonLocation {
   box-sizing: border-box;
   position: absolute;
   border: none;
@@ -109,6 +109,33 @@
 
   top: 163px;
   left: 252px;
+} */
+
+.inputLocationId {
+  box-sizing: border-box;
+  border: none;
+  background-color: #fff;
+  border-radius: 30px;
+  padding-left: 2pc;
+
+  width: 295px;
+  height: 42px;
+
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.03em;
+  color: #3c3c3c;
+
+  &::placeholder {
+    font-family: "Manrope", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: -0.03em;
+    color: #26262680;
+  }
 }
 
 .boxPopularityReset {
@@ -228,6 +255,20 @@
       font-size: 16px;
       line-height: 1.25;
     }
+  }
+
+  .inputLocationId {
+    padding: 14px 48px 14px 14px;
+    width: 265px;
+    height: 48px;
+
+    font-size: 16px;
+    line-height: 1.25;
+
+    /* &::placeholder {
+      font-size: 16px;
+      line-height: 1.25;
+    } */
   }
 
   .inputCategoriesGender {

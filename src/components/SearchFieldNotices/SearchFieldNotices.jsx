@@ -4,6 +4,9 @@ import s from "./SearchFieldNotices.module.css";
 import clsx from "clsx";
 import { useId } from "react";
 
+import React from "react";
+import Select, { components } from "react-select";
+
 export default function SearchFieldNotices({
   setRequest,
   categories,
@@ -17,6 +20,8 @@ export default function SearchFieldNotices({
   setCategory,
   setGenders,
   setSpecie,
+  setLocationId,
+  windowWidth,
 }) {
   const popularId = useId();
   const unpopularId = useId();
@@ -57,6 +62,11 @@ export default function SearchFieldNotices({
     // console.log(e.target.value);
   };
 
+  // const handleChangeCitiesLocation = (e) => {
+  //   // setSpecie(e.target.value);
+  //   console.log(e.target);
+  // };
+
   const handlePopularyChange = (e) => {
     if (e.target.name === "popular") {
       setPopularity(e.target.value);
@@ -79,6 +89,30 @@ export default function SearchFieldNotices({
     setCategory("");
     setGenders("");
     setSpecie("");
+    setLocationId("");
+  };
+
+  // const options = [
+  //   { value: "chocolate", label: "Chocolate" },
+  //   { value: "strawberry", label: "Strawberry" },
+  //   { value: "vanilla", label: "Vanilla" },
+  // ];
+
+  // console.log(citiesLocation);
+  const options = citiesLocation.map(({ cityEn, countyEn, stateEn, _id }) => {
+    return { value: _id, label: `${stateEn}, ${cityEn}, ${countyEn}` };
+  });
+
+  // console.log(options);
+
+  const CustomDropdownIndicator = (props) => {
+    return (
+      <components.DropdownIndicator {...props}>
+        <svg className={s.iconSearch}>
+          <use href={`${sprite}#icon-search`} />
+        </svg>
+      </components.DropdownIndicator>
+    );
   };
 
   return (
@@ -165,11 +199,42 @@ export default function SearchFieldNotices({
           })}
         </select>
 
-        <select
+        {/* <select
           type="text"
           name="location"
           className={clsx(s.inputSearch, s.inputSearchWidth)}
           placeholder="Location"
+        /> */}
+
+        <Select
+          options={options}
+          onChange={setLocationId}
+          placeholder="Location"
+          styles={{
+            indicatorSeparator: () => null,
+            placeholder: (provided) => ({
+              ...provided,
+              color: "#262626",
+            }),
+            control: (baseStyles, state) => ({
+              ...baseStyles,
+              backgroundColor: "#fff",
+              paddingRight: "5px",
+              paddingLeft: "5px",
+              borderRadius: "30px",
+              boxSizing: "border-box",
+              border: "none",
+              width: windowWidth < 768 ? "295px" : "225px",
+              height: windowWidth < 768 ? "42px" : "48px",
+              fontFamily: "Manrope",
+              fontWeight: "500",
+              fontSize: windowWidth < 768 ? "14px" : "16px",
+              lineGeight: windowWidth < 768 ? "1.29" : "1.25",
+              letterSpacing: "-0.03em",
+              color: "#262626",
+            }),
+          }}
+          components={{ DropdownIndicator: CustomDropdownIndicator }}
         />
 
         {/* <button className={s.buttonLocation} type="submit">
