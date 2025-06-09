@@ -8,13 +8,19 @@ import { NavLink, useLocation } from "react-router-dom";
 import { useState } from "react";
 import LogOutBtn from "../LogOutBtn/LogOutBtn.jsx";
 import clsx from "clsx";
+import { useDispatch, useSelector } from "react-redux";
+import { selectToken } from "../../redux/auth/selectors.js";
+import { signoutRequest } from "../../redux/auth/operations.js";
 
 export default function Header() {
   const [menuWindow, setMenuWindow] = useState(false);
-
+  const token = useSelector(selectToken);
   const location = useLocation();
+  const dispatch = useDispatch();
 
-  const authorization = false;
+  const handleSignout = () => {
+    dispatch(signoutRequest());
+  };
 
   const handleMenuOpen = () => {
     setMenuWindow(true);
@@ -42,7 +48,7 @@ export default function Header() {
         </li>
 
         <li className={s.boxUser}>
-          {authorization ? <UserNav /> : <AuthNav />}
+          {token ? <UserNav /> : <AuthNav />}
           <button
             className={s.menuButton}
             type="button"
@@ -112,9 +118,13 @@ export default function Header() {
               Our friends
             </NavLink>
           </li>
-          {authorization ? (
+          {token ? (
             <li>
-              <button className={s.btnLogOut} type="button">
+              <button
+                className={s.btnLogOut}
+                type="button"
+                onClick={handleSignout}
+              >
                 Log out
               </button>
             </li>

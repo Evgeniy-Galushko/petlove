@@ -7,7 +7,7 @@ import DisplayPassword from "../DisplayPassword/DisplayPassword.jsx";
 import clsx from "clsx";
 import sprite from "../../img/icon/icon-sprite.svg";
 
-export default function LoginForm() {
+export default function LoginForm({ setUserDataLogin }) {
   const [errorsEmailRed, setErrorsEmailRed] = useState(false);
   const [errorsEmailGreen, setErrorsEmailGreen] = useState(false);
 
@@ -20,7 +20,7 @@ export default function LoginForm() {
   const format = {
     email: /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/,
     password:
-      /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}/,
+      /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{7,}/,
   };
 
   const validationSchema = Yup.object().shape({
@@ -37,7 +37,7 @@ export default function LoginForm() {
   });
 
   const handleSubmit = (values, actions) => {
-    console.log(values);
+    setUserDataLogin(values);
 
     setErrorsEmailRed(false);
     setErrorsEmailGreen(false);
@@ -56,26 +56,26 @@ export default function LoginForm() {
     // console.log(type);
     if (type === "email") {
       if (format.email.test(value)) {
-        console.log("green");
+        // console.log("green");
         setErrorsEmailRed(false);
         setErrorsEmailGreen(true);
       }
       if (!format.email.test(value)) {
-        console.log("red");
+        // console.log("red");
         setErrorsEmailGreen(false);
         setErrorsEmailRed(true);
       }
     }
 
     if (type === "password") {
-      console.log(value.length);
+      // console.log(value.length);
       if (format.password.test(value) && value.length >= 7) {
-        console.log("green");
+        // console.log("green");
         setErrPasswordRed(false);
         setErrPasswordGreen(true);
       }
       if (!format.password.test(value) && value.length < 7) {
-        console.log("red");
+        // console.log("red");
         setErrPasswordGreen(false);
         setErrPasswordRed(true);
       }

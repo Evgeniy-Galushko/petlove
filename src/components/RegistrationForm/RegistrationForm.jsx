@@ -9,7 +9,7 @@ import sprite from "../../img/icon/icon-sprite.svg";
 import DisplayPasswordSecond from "../DisplayPasswordSecond/DisplayPasswordSecond.jsx";
 import toast from "react-hot-toast";
 
-export default function RegistrationForm() {
+export default function RegistrationForm({ setUserData }) {
   const [errorsEmailRed, setErrorsEmailRed] = useState(false);
   const [errorsEmailGreen, setErrorsEmailGreen] = useState(false);
 
@@ -48,8 +48,12 @@ export default function RegistrationForm() {
       toast.error("Passwords do not match!");
       return;
     }
-
-    console.log(values);
+    setUserData({
+      name: values.name,
+      email: values.email,
+      password: values.password,
+    });
+    // console.log(values);
 
     setErrorsEmailRed(false);
     setErrorsEmailGreen(false);
@@ -68,16 +72,16 @@ export default function RegistrationForm() {
   };
 
   const handleErro = (name, value) => {
-    console.log(name);
+    // console.log(name);
     // console.log(value);
     if (name === "email") {
       if (format.email.test(value)) {
-        console.log("green");
+        // console.log("green");
         setErrorsEmailRed(false);
         setErrorsEmailGreen(true);
       }
       if (!format.email.test(value)) {
-        console.log("red");
+        // console.log("red");
         setErrorsEmailGreen(false);
         setErrorsEmailRed(true);
       }
@@ -86,12 +90,12 @@ export default function RegistrationForm() {
     if (name === "password") {
       // console.log(value.length);
       if (format.password.test(value) && value.length >= 7) {
-        console.log("green");
+        // console.log("green");
         setErrPasswordRed(false);
         setErrPasswordGreen(true);
       }
       if (!format.password.test(value) && value.length < 7) {
-        console.log("red");
+        // console.log("red");
         setErrPasswordGreen(false);
         setErrPasswordRed(true);
       }
@@ -99,12 +103,12 @@ export default function RegistrationForm() {
 
     if (name === "passwordSecond") {
       if (format.password.test(value) && value.length >= 7) {
-        console.log("green");
+        // console.log("green");
         setErrPasswordRedSecond(false);
         setErrPasswordGreenSecond(true);
       }
       if (!format.password.test(value) && value.length < 7) {
-        console.log("red");
+        // console.log("red");
         setErrPasswordGreenSecond(false);
         setErrPasswordRedSecond(true);
       }

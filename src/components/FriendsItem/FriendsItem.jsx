@@ -13,9 +13,9 @@ export default function FriendsItem({
   const workingHours =
     workDays && workDays.find((objekt) => objekt.isOpen === true);
 
-  if (address) {
-    console.log(address.length > 22 && address.slice(0, 19));
-  }
+  // if (address) {
+  //   console.log(address.length > 22 && address.slice(0, 19));
+  // }
 
   // console.log(phone.lenght);
   return (

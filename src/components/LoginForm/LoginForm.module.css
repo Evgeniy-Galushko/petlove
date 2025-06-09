@@ -147,7 +147,7 @@
 
 .iconPassword {
   position: absolute;
-  top: 41px;
+  top: 16px;
   left: 240px;
   width: 12px;
   height: 12px;
@@ -240,7 +240,7 @@
   }
 
   .iconPassword {
-    top: 44px;
+    top: 20px;
     left: 360px;
     width: 16px;
     height: 16px;

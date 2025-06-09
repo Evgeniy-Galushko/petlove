@@ -2,8 +2,12 @@ import { NavLink, useLocation } from "react-router-dom";
 import sprite from "../../img/icon/icon-sprite.svg";
 import s from "./UserBar.module.css";
 import clsx from "clsx";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../redux/auth/selectors.js";
 
 export default function UserBar() {
+  const user = useSelector(selectUser);
+  console.log(user);
   const location = useLocation();
 
   return (
@@ -19,7 +23,7 @@ export default function UserBar() {
           location.pathname === "/home" ? s.nameYellow : s.nameWhite
         )}
       >
-        Name
+        {user ? user.name : "Name"}
       </p>
     </NavLink>
   );

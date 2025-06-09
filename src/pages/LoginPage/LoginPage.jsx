@@ -1,9 +1,31 @@
+import { useEffect, useState } from "react";
 import LoginForm from "../../components/LoginForm/LoginForm.jsx";
 import PetBlock from "../../components/PetBlock/PetBlock.jsx";
 import Title from "../../components/Title/Title.jsx";
 import s from "./LoginPage.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { loginRequest } from "../../redux/auth/operations.js";
+import { selectToken, selectUser } from "../../redux/auth/selectors.js";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
+  const [userDataLogin, setUserDataLogin] = useState({});
+  const user = useSelector(selectUser);
+  const token = useSelector(selectToken);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(loginRequest(userDataLogin));
+    if (token) {
+      navigate("/profile");
+    }
+  }, [userDataLogin, token]);
+
+  console.log(!!token);
+  // console.log(userDataLogin);
+
   return (
     <section className={s.loginSection}>
       <ul className={s.login}>
@@ -27,7 +49,7 @@ export default function LoginPage() {
         </li>
         <li className={s.boxLogin}>
           <Title>Log in</Title>
-          <LoginForm />
+          <LoginForm setUserDataLogin={setUserDataLogin} />
         </li>
       </ul>
     </section>

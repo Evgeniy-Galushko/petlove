@@ -3,8 +3,29 @@ import RegistrationForm from "../../components/RegistrationForm/RegistrationForm
 import Title from "../../components/Title/Title.jsx";
 import { Toaster } from "react-hot-toast";
 import s from "./RegistrationPage.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { selectToken, selectUser } from "../../redux/auth/selectors.js";
+import { useEffect, useState } from "react";
+import { registrationRequest } from "../../redux/auth/operations.js";
+import { useNavigate } from "react-router-dom";
 
 export default function RegistrationPage() {
+  const [userData, setUserData] = useState({});
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const user = useSelector(selectUser);
+  const token = useSelector(selectToken);
+  // console.log(user);
+  console.log(!!token);
+
+  useEffect(() => {
+    dispatch(registrationRequest(userData));
+    if (token) {
+      navigate("/profile");
+    }
+    const token = useSelector(selectToken);
+  }, [userData, token]);
   return (
     <section className={s.registrationSection}>
       <Toaster
@@ -34,7 +55,7 @@ export default function RegistrationPage() {
         </li>
         <li className={s.boxRegistration}>
           <Title>Registration</Title>
-          <RegistrationForm />
+          <RegistrationForm setUserData={setUserData} />
         </li>
       </ul>
     </section>
