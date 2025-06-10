@@ -4,7 +4,7 @@ import sprite from "../../img/icon/icon-sprite.svg";
 import s from "./Header.module.css";
 import AuthNav from "../AuthNav/AuthNav.jsx";
 import UserNav from "../UserNav/UserNav.jsx";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import LogOutBtn from "../LogOutBtn/LogOutBtn.jsx";
 import clsx from "clsx";
@@ -17,9 +17,11 @@ export default function Header() {
   const token = useSelector(selectToken);
   const location = useLocation();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSignout = () => {
     dispatch(signoutRequest());
+    navigate("/home");
   };
 
   const handleMenuOpen = () => {

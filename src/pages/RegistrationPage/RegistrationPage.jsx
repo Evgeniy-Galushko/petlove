@@ -17,14 +17,13 @@ export default function RegistrationPage() {
   const user = useSelector(selectUser);
   const token = useSelector(selectToken);
   // console.log(user);
-  console.log(!!token);
+  // console.log(!!token);
 
   useEffect(() => {
     dispatch(registrationRequest(userData));
     if (token) {
       navigate("/profile");
     }
-    const token = useSelector(selectToken);
   }, [userData, token]);
   return (
     <section className={s.registrationSection}>

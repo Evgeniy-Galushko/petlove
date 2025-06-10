@@ -5,7 +5,7 @@ import { selectUser } from "../../redux/auth/selectors.js";
 
 export default function EditUserBtn({ setModalUser }) {
   const user = useSelector(selectUser);
-  console.log(user);
+  // console.log(user);
   const openModal = () => {
     setModalUser(true);
   };

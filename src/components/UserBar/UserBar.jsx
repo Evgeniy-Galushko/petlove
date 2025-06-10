@@ -7,7 +7,7 @@ import { selectUser } from "../../redux/auth/selectors.js";
 
 export default function UserBar() {
   const user = useSelector(selectUser);
-  console.log(user);
+  // console.log(user);
   const location = useLocation();
 
   return (

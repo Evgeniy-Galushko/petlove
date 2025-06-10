@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  currentUserRequest,
   loginRequest,
   registrationRequest,
   signoutRequest,
@@ -12,8 +13,10 @@ const authSlise = createSlice({
       name: null,
       email: null,
     },
+    currentUser: {},
     token: null,
     isloading: false,
+    error: null,
   },
   extraReducers: (builder) => {
     builder
@@ -28,6 +31,18 @@ const authSlise = createSlice({
         state.user.email = action.payload.email;
         state.token = action.payload.token;
         state.isloading = true;
+      })
+      .addCase(currentUserRequest.pending, (state) => {
+        state.isloading = true;
+      })
+      .addCase(currentUserRequest.fulfilled, (state, action) => {
+        state.isloading = false;
+        state.error = null;
+        state.currentUser = action.payload;
+      })
+      .addCase(currentUserRequest.rejected, (state, action) => {
+        state.isloading = false;
+        state.error = action.payload;
       })
       .addCase(signoutRequest.fulfilled, (state) => {
         state.user = {
