@@ -1,11 +1,11 @@
 import s from "./EditUserBtn.module.css";
 import sprite from "../../img/icon/icon-sprite.svg";
 import { useSelector } from "react-redux";
-import { selectUser } from "../../redux/auth/selectors.js";
+import { selectCurrentUser } from "../../redux/auth/selectors.js";
 
 export default function EditUserBtn({ setModalUser }) {
-  const user = useSelector(selectUser);
-  // console.log(user);
+  const user = useSelector(selectCurrentUser);
+  console.log(user);
   const openModal = () => {
     setModalUser(true);
   };

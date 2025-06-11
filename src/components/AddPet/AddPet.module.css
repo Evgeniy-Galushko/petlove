@@ -1,13 +1,9 @@
-.button {
+.link {
+  display: block;
   box-sizing: border-box;
-  border: none;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 4px;
   border-radius: 30px;
-  padding: 10px 14px;
-  /* width: 80px; */
+  padding: 10px 16px;
+  width: 103px;
   height: 38px;
   background-color: #f6b83d;
 
@@ -15,18 +11,19 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 1.29;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   color: #fff;
-  text-transform: capitalize;
-}
-
-.iconUser {
-  width: 18px;
-  height: 18px;
-  fill: #fff;
 }
 
 @media screen and (min-width: 768px) {
+  .link {
+    padding: 10px 20px;
+    width: 118px;
+    height: 40px;
+
+    font-size: 16px;
+    line-height: 1.25;
+  }
 }
 
 @media screen and (min-width: 1280px) {

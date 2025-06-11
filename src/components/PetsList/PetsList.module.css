@@ -1,0 +1,14 @@
+.oneCardPets {
+  box-sizing: border-box;
+  padding: 12px;
+  border: 1px solid rgba(38, 38, 38, 0.1);
+  border-radius: 20px;
+  width: 295px;
+  height: 132px;
+}
+
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 1280px) {
+}

@@ -25,6 +25,8 @@ const MainLayoutPage = lazy(() =>
 
 const ProfilePage = lazy(() => import("../pages/ProfilePage/ProfilePage.jsx"));
 
+const AddPetPage = lazy(() => import("../pages/AddPetPage/AddPetPage.jsx"));
+
 function App() {
   // const [count, setCount] = useState(0)
   const location = useLocation();
@@ -44,6 +46,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegistrationPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/add-pet" element={<AddPetPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>

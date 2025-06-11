@@ -4,11 +4,15 @@ import Modal from "react-modal";
 import * as Yup from "yup";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useState } from "react";
+import { currentEdit } from "../../redux/auth/operations.js";
+import { useDispatch } from "react-redux";
 
 export default function ModalEditUser({ closeModal, openModal, currentUser }) {
-  const [linkToPhoto, setLinkToPhoto] = useState();
+  const dispatch = useDispatch();
 
-  // console.log(linkToPhoto);
+  // console.log(currentUser);
+
+  if (!currentUser) return;
 
   const customStyles = {
     overlay: {
@@ -53,8 +57,10 @@ export default function ModalEditUser({ closeModal, openModal, currentUser }) {
   };
 
   const handleSubmit = (values, actions) => {
-    console.log(values.avatar);
-    console.log(values);
+    dispatch(currentEdit({ values, closeModal }));
+    if (currentUser === 200) {
+      closeModal();
+    }
   };
 
   return (
@@ -97,6 +103,7 @@ export default function ModalEditUser({ closeModal, openModal, currentUser }) {
                     value={values.avatar}
                     className={s.inputValuesAvatar}
                     pattern={condition.avatar}
+                    placeholder={currentUser.avatar}
                   />
                   <input
                     className={s.inputSavesImgNone}
@@ -128,7 +135,7 @@ export default function ModalEditUser({ closeModal, openModal, currentUser }) {
                   <Field
                     name="name"
                     type="text"
-                    placeholder="name"
+                    placeholder={currentUser.name}
                     className={s.inputGeneral}
                   />
                   <ErrorMessage
@@ -139,7 +146,7 @@ export default function ModalEditUser({ closeModal, openModal, currentUser }) {
                   <Field
                     name="email"
                     type="text"
-                    placeholder="email"
+                    placeholder={currentUser.email}
                     className={s.inputGeneral}
                   />
                   <ErrorMessage
@@ -150,7 +157,7 @@ export default function ModalEditUser({ closeModal, openModal, currentUser }) {
                   <Field
                     name="phone"
                     type="tel"
-                    placeholder="+380"
+                    placeholder={currentUser.phone}
                     className={s.inputGeneral}
                   />
                   <ErrorMessage

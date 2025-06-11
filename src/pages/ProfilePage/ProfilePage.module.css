@@ -11,20 +11,31 @@
   background-color: #fff;
 }
 
+.spinners {
+  top: 30px;
+  margin: 0 auto;
+}
+
 @media screen and (min-width: 768px) {
   .sectionProfile {
     max-width: 768px;
     padding: 60px 32px 80px 32px;
   }
 
-  .boxFilters {
-    padding: 32px;
+  .profileBox {
+    padding: 40px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .sectionProfile {
     max-width: 1280px;
-    padding: 70px 64px 80px 64px;
+    padding: 16px 64px 80px 64px;
+  }
+
+  .profileBox {
+    padding: 40px;
+    width: 520px;
+    height: 910px;
   }
 }

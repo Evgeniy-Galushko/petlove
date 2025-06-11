@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  currentEdit,
   currentUserRequest,
   loginRequest,
   registrationRequest,
@@ -41,6 +42,18 @@ const authSlise = createSlice({
         state.currentUser = action.payload;
       })
       .addCase(currentUserRequest.rejected, (state, action) => {
+        state.isloading = false;
+        state.error = action.payload;
+      })
+      .addCase(currentEdit.pending, (state) => {
+        state.isloading = true;
+      })
+      .addCase(currentEdit.fulfilled, (state, action) => {
+        state.isloading = false;
+        state.error = null;
+        state.currentUser = action.payload;
+      })
+      .addCase(currentEdit.rejected, (state, action) => {
         state.isloading = false;
         state.error = action.payload;
       })
