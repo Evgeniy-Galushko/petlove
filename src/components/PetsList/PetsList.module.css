@@ -1,6 +1,6 @@
 .oneCardPets {
   box-sizing: border-box;
-  padding: 12px;
+  padding: 14px;
   border: 1px solid rgba(38, 38, 38, 0.1);
   border-radius: 20px;
   width: 295px;
@@ -8,7 +8,17 @@
 }
 
 @media screen and (min-width: 768px) {
+  .oneCardPets {
+    padding: 22px 15px 22px 15px;
+    width: 305px;
+    height: 149px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
+  .oneCardPets {
+    padding: 20px;
+    width: 440px;
+    height: 130px;
+  }
 }

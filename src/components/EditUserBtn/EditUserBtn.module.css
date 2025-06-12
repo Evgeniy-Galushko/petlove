@@ -10,6 +10,7 @@
   /* width: 80px; */
   height: 38px;
   background-color: #f6b83d;
+  margin-bottom: 20px;
 
   font-family: "Manrope", sans-serif;
   font-weight: 500;
@@ -27,6 +28,9 @@
 }
 
 @media screen and (min-width: 768px) {
+  .button {
+    margin-bottom: 0px;
+  }
 }
 
 @media screen and (min-width: 1280px) {

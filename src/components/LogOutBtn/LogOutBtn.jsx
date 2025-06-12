@@ -1,19 +1,13 @@
-import { useDispatch } from "react-redux";
-import { signoutRequest } from "../../redux/auth/operations.js";
+import clsx from "clsx";
 import s from "./LogOutBtn.module.css";
-import { useNavigate } from "react-router-dom";
 
-export default function LogOutBtn() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const handleSignout = () => {
-    dispatch(signoutRequest());
-    navigate("/home");
-  };
-
+export default function LogOutBtn({ openModal, outsideTheHeader }) {
   return (
-    <button className={s.btnLogOut} type="button" onClick={handleSignout}>
+    <button
+      className={clsx(s.btnLogOut, outsideTheHeader && s.outsideTheHeader)}
+      type="button"
+      onClick={openModal}
+    >
       Log out
     </button>
   );

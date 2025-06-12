@@ -19,6 +19,7 @@ import { RingLoader } from "react-spinners";
 export default function ProfilePage() {
   const [modalUser, setModalUser] = useState(false);
   const [changeRequest, setChangeRequest] = useState({});
+  const [modal, setModal] = useState(false);
   const navigate = useNavigate();
   const token = useSelector(selectToken);
   const isLoading = useSelector(selectIsLoadin);
@@ -58,7 +59,12 @@ export default function ProfilePage() {
               currentUser={currentUser}
               setChangeRequest={setChangeRequest}
             />
-            <UserCard setModalUser={setModalUser} currentUser={currentUser} />
+            <UserCard
+              setModalUser={setModalUser}
+              currentUser={currentUser}
+              setModal={setModal}
+              modal={modal}
+            />
           </li>
           <li></li>
         </ul>

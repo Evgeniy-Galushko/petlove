@@ -11,18 +11,20 @@ import clsx from "clsx";
 import { useDispatch, useSelector } from "react-redux";
 import { selectToken } from "../../redux/auth/selectors.js";
 import { signoutRequest } from "../../redux/auth/operations.js";
+import ModalApproveAction from "../ModalApproveAction/ModalApproveAction.jsx";
 
 export default function Header() {
   const [menuWindow, setMenuWindow] = useState(false);
+  const [modal, setModal] = useState(false);
   const token = useSelector(selectToken);
   const location = useLocation();
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const dispatch = useDispatch();
+  // const navigate = useNavigate();
 
-  const handleSignout = () => {
-    dispatch(signoutRequest());
-    navigate("/home");
-  };
+  // const handleSignout = () => {
+  //   dispatch(signoutRequest());
+  //   navigate("/home");
+  // };
 
   const handleMenuOpen = () => {
     setMenuWindow(true);
@@ -32,8 +34,18 @@ export default function Header() {
     setMenuWindow(false);
   };
 
+  const closeModal = () => {
+    setModal(false);
+  };
+
+  const openModal = () => {
+    setMenuWindow(false);
+    setModal(true);
+  };
+
   return (
     <header className={s.header}>
+      <ModalApproveAction isOpen={modal} onClose={closeModal} />
       <ul
         className={clsx(
           s.sectionHeader,
@@ -50,7 +62,7 @@ export default function Header() {
         </li>
 
         <li className={s.boxUser}>
-          {token ? <UserNav /> : <AuthNav />}
+          {token ? <UserNav openModal={openModal} /> : <AuthNav />}
           <button
             className={s.menuButton}
             type="button"
@@ -122,11 +134,7 @@ export default function Header() {
           </li>
           {token ? (
             <li>
-              <button
-                className={s.btnLogOut}
-                type="button"
-                onClick={handleSignout}
-              >
+              <button className={s.btnLogOut} type="button" onClick={openModal}>
                 Log out
               </button>
             </li>

@@ -1,0 +1,131 @@
+.modalApproveAction {
+  width: 335px;
+  height: 270px;
+  background-color: #fff;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonClose {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  background-color: inherit;
+  border: none;
+}
+
+.boxImg {
+  border-radius: 100%;
+  background-color: #fff4df;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 20px;
+}
+
+.img {
+  width: 44px;
+  height: 44px;
+}
+
+.title {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: #262626;
+
+  margin-bottom: 28px;
+}
+
+.boxButton {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.yesButton {
+  box-sizing: border-box;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 57px;
+  width: 135.5px;
+  height: 42px;
+  background-color: #f6b83d;
+
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.03em;
+  color: #fff;
+
+  &:hover {
+    background-color: #f9b020;
+  }
+}
+
+.canselButton {
+  box-sizing: border-box;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 44px;
+  width: 135.5px;
+  height: 42px;
+  background-color: rgba(38, 38, 38, 0.05);
+
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.03em;
+  color: #262626;
+
+  &:hover {
+    border: 1px solid #f6b83d;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .modalApproveAction {
+    width: 448px;
+    height: 364px;
+  }
+
+  .title {
+    font-size: 24px;
+    line-height: 1.17;
+
+    margin-bottom: 28px;
+  }
+
+  .yesButton {
+    padding: 14px 57px;
+    width: 140px;
+    height: 48px;
+
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
+  .canselButton {
+    padding: 14px 44px;
+    width: 140px;
+    height: 48px;
+
+    font-size: 16px;
+    line-height: 1.25;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+}

@@ -91,6 +91,10 @@
   line-height: 1.33;
   letter-spacing: -0.02em;
   color: #262626;
+
+  &:hover {
+    background-color: #fbe7c1;
+  }
 }
 
 .iconInputSavesImg {
@@ -149,4 +153,92 @@
   line-height: 1.29;
   letter-spacing: -0.03em;
   color: #fff;
+
+  &:hover {
+    background-color: #f9b020;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .malalUserInformation {
+    border-radius: 30px;
+    box-sizing: border-box;
+    padding: 50px;
+    width: 480px;
+    height: 580px;
+  }
+
+  .buttonClose {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+
+  .title {
+    font-size: 18px;
+    line-height: 1.33;
+    margin-bottom: 20px;
+  }
+
+  .boxImg {
+    margin-bottom: 12px;
+  }
+
+  .imgUser {
+    width: 86px;
+    height: 86px;
+  }
+
+  .iconUser {
+    padding: 23px;
+  }
+
+  .inputValuesAvatar {
+    padding: 12px;
+    width: 226px;
+    height: 42px;
+
+    font-size: 14px;
+    line-height: 1.29;
+  }
+
+  .inputSavesImg {
+    padding: 12px 16px;
+    width: 146px;
+    height: 42px;
+
+    font-size: 14px;
+    line-height: 1.29;
+  }
+
+  .boxGeneral {
+    margin-top: 20px;
+    gap: 14px;
+  }
+
+  .inputGeneral {
+    padding: 16px;
+    width: 380px;
+    height: 52px;
+
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
+  .buttonSubmit {
+    margin-top: 37px;
+    border-radius: 30px;
+    padding: 16px 173px;
+    width: 380px;
+    height: 52px;
+    background-color: #f6b83d;
+
+    font-size: 16px;
+    line-height: 1.25;
+    letter-spacing: -0.03em;
+    color: #fff;
+  }
+}
+
+@media screen and (min-width: 1280px) {
 }
