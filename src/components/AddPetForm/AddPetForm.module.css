@@ -1,0 +1,393 @@
+.title {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: #262626;
+  margin-bottom: 24px;
+}
+
+.spanTitle {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.29;
+  color: rgba(43, 43, 42, 0.4);
+}
+
+.boxRadio {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.inputRadioGender {
+  display: none;
+}
+
+.labelRadioGender {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 30px;
+  padding: 6px;
+  width: 32px;
+  height: 32px;
+}
+
+.fameli {
+  background-color: #f43f5e;
+}
+.male {
+  background-color: rgba(84, 173, 255, 0.1);
+}
+.multiple {
+  background-color: #fff4df;
+}
+
+.iconRadioGender {
+  width: 20px;
+  height: 20px;
+}
+
+.iconAndImg {
+  display: flex;
+  justify-content: center;
+}
+
+.imgPet {
+  border-radius: 100px;
+  margin: 10px 0px;
+  width: 68px;
+  height: 68px;
+}
+
+.iconImg {
+  margin: 10px 0px;
+  box-sizing: content-box;
+  padding: 17px;
+  border-radius: 50px;
+  background-color: #fff4df;
+  width: 34px;
+  height: 34px;
+}
+
+.boxImgUrl {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.inputValuesImgUrl {
+  box-sizing: border-box;
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  border-radius: 30px;
+  padding: 10px;
+  width: 170px;
+  height: 36px;
+
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.03em;
+  color: #262626;
+
+  &::placeholder {
+    font-family: "Manrope", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: -0.02em;
+    color: rgba(38, 38, 38, 0.5);
+  }
+}
+
+.inputSavesImgNone {
+  display: none;
+}
+
+.inputSavesImg {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  border-radius: 30px;
+  padding: 10px;
+  width: 117px;
+  height: 36px;
+  background-color: #fff4df;
+
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33333;
+  letter-spacing: -0.02em;
+  color: #262626;
+}
+
+.iconInputSavesImg {
+  width: 16px;
+  height: 16px;
+}
+
+.boxGeneral {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.inputGeneral {
+  box-sizing: border-box;
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  border-radius: 30px;
+  padding: 12px;
+  width: 295px;
+  height: 42px;
+
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.03em;
+  color: #262626;
+  align-items: flex-end;
+
+  &::placeholder {
+    font-family: "Manrope", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: -0.02em;
+    color: rgba(38, 38, 38, 0.5);
+  }
+}
+
+.boxDateGender {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  position: relative;
+}
+
+.dateGender {
+  box-sizing: border-box;
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  border-radius: 30px;
+  padding: 12px;
+  width: 144px;
+  height: 42px;
+
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.03em;
+  color: #262626;
+  align-items: flex-end;
+  appearance: none;
+
+  &::placeholder {
+    font-family: "Manrope", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: -0.02em;
+    color: rgba(38, 38, 38, 0.5);
+  }
+}
+
+.inputGeneralBorder {
+  border: 1px solid #f6b83d;
+}
+
+.iconInputSpecies {
+  position: absolute;
+  right: 23px;
+  top: 16px;
+  width: 12px;
+  height: 12px;
+  rotate: 90deg;
+}
+
+.boxButton {
+  margin-top: 31px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.linkBack {
+  box-sizing: border-box;
+  border-radius: 30px;
+  padding: 12px 34px;
+  width: 100px;
+  height: 42px;
+  background-color: rgba(38, 38, 38, 0.05);
+
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.03em;
+  color: #262626;
+
+  &:hover {
+    border: 1px solid #f6b83d;
+  }
+}
+
+.buttonSubmit {
+  box-sizing: border-box;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 26px;
+  width: 100px;
+  height: 42px;
+  background-color: #f6b83d;
+
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.03em;
+  color: #fff;
+
+  &:hover {
+    background-color: #f9b020;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .title {
+    font-size: 32px;
+    margin-bottom: 36px;
+  }
+
+  .spanTitle {
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
+  .labelRadioGender {
+    padding: 8px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .iconRadioGender {
+    width: 24px;
+    height: 24px;
+  }
+
+  .imgPet {
+    margin: 0;
+    margin-bottom: 10px;
+    width: 86px;
+    height: 86px;
+  }
+
+  .iconImg {
+    margin: 0px;
+    margin-bottom: 10px;
+    padding: 21px;
+    width: 44px;
+    height: 44px;
+  }
+
+  .boxImgUrl {
+    margin-bottom: 18px;
+  }
+
+  .inputValuesImgUrl {
+    padding: 12px;
+    width: 278px;
+    height: 42px;
+  }
+
+  .inputSavesImg {
+    padding: 12px;
+    width: 146px;
+    height: 42px;
+
+    font-size: 14px;
+    line-height: 1.29;
+  }
+
+  .iconInputSavesImg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .boxGeneral {
+    gap: 18px;
+  }
+
+  .inputGeneral {
+    padding: 16px;
+    width: 432px;
+    height: 52px;
+
+    font-size: 16px;
+    line-height: 1.25;
+
+    &::placeholder {
+      font-size: 16px;
+      line-height: 1.25;
+    }
+  }
+
+  .boxDateGender {
+    gap: 12px;
+  }
+
+  .dateGender {
+    padding: 16px;
+    width: 210px;
+    height: 52px;
+
+    font-size: 16px;
+    line-height: 1.25;
+
+    &::placeholder {
+      font-size: 16px;
+      line-height: 1.25;
+    }
+  }
+
+  .iconInputSpecies {
+    right: 28px;
+    top: 22px;
+    width: 12px;
+    height: 12px;
+    rotate: 90deg;
+  }
+
+  .linkBack {
+    padding: 14px 67px;
+    width: 170px;
+    height: 48px;
+
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
+  .buttonSubmit {
+    padding: 14px 58px;
+    width: 170px;
+    height: 48px;
+    background-color: #f6b83d;
+
+    font-size: 16px;
+    line-height: 1.25;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+}

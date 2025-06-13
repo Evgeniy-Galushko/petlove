@@ -115,7 +115,7 @@ export default function ModalEditUser({ closeModal, openModal, currentUser }) {
                       const file = e.currentTarget.files[0];
                       if (file) {
                         const url = URL.createObjectURL(file);
-                        setFieldValue("avatar", url.slice(5));
+                        setFieldValue("avatar", url);
                       }
                     }}
                   />

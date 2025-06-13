@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  addPets,
   currentEdit,
   currentUserRequest,
   loginRequest,
@@ -54,6 +55,18 @@ const authSlise = createSlice({
         state.currentUser = action.payload;
       })
       .addCase(currentEdit.rejected, (state, action) => {
+        state.isloading = false;
+        state.error = action.payload;
+      })
+      .addCase(addPets.pending, (state) => {
+        state.isloading = true;
+      })
+      .addCase(addPets.fulfilled, (state, action) => {
+        state.isloading = false;
+        state.error = null;
+        state.currentUser = action.payload;
+      })
+      .addCase(addPets.rejected, (state, action) => {
         state.isloading = false;
         state.error = action.payload;
       })

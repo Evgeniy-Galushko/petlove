@@ -79,6 +79,25 @@ export const currentEdit = createAsyncThunk(
   }
 );
 
+export const addPets = createAsyncThunk(
+  "auth/addPets",
+  async (value, thunkAPI) => {
+    // console.log(value);
+    try {
+      const data = await axios.post("/users/current/edit", value);
+      // console.log(data.status);
+      // if (data.status === 200) {
+      //   value.closeModal();
+      //   toast.success("Changes added");
+      // }
+      setAuthHeader(data.data.token);
+      return data.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const signoutRequest = createAsyncThunk(
   "auth/signout",
   async (_, thunkAPI) => {

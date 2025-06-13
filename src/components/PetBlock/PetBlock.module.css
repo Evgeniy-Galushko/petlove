@@ -1,4 +1,5 @@
 .petBlock {
+  position: relative;
   border-radius: 30px;
   height: 280px;
   background-color: #f6b83d;
@@ -6,6 +7,16 @@
   background-size: 313px 243px;
   background-repeat: no-repeat;
   background-position: 20px 35px;
+}
+
+.addPet {
+  height: 213px;
+}
+
+.addPets {
+  position: absolute;
+  left: 25px;
+  top: 0px;
 }
 
 @media screen and (min-resolution: 192dpi) {
@@ -21,6 +32,10 @@
     background-image: url(../../../public/fonDogTab_1x.png);
     background-size: 531px 249px;
     background-position: 120px 55px;
+  }
+
+  .addPet {
+    height: 248px;
   }
 
   @media screen and (min-resolution: 192dpi) {
@@ -59,6 +74,12 @@
 
   .cat {
     position: absolute;
-    top: 105.5px;
+    top: 22px;
+  }
+
+  .addPets {
+    position: absolute;
+    left: -5px;
+    top: 6.4px;
   }
 }
