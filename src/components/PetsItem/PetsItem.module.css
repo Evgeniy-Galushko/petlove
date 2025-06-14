@@ -23,6 +23,7 @@
   line-height: 1.29;
   color: #2b2b2a;
   margin-bottom: 8px;
+  text-transform: capitalize;
 }
 
 .petDescription {
@@ -111,6 +112,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     gap: 27px;
+    row-gap: 5px;
   }
 
   .buttonDdelete {

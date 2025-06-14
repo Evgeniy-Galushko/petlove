@@ -3,6 +3,7 @@ import {
   addPets,
   currentEdit,
   currentUserRequest,
+  deletePetsRequest,
   loginRequest,
   registrationRequest,
   signoutRequest,
@@ -16,6 +17,7 @@ const authSlise = createSlice({
       email: null,
     },
     currentUser: {},
+    status: null,
     token: null,
     isloading: false,
     error: null,
@@ -64,9 +66,22 @@ const authSlise = createSlice({
       .addCase(addPets.fulfilled, (state, action) => {
         state.isloading = false;
         state.error = null;
-        state.currentUser = action.payload;
+        state.currentUser = action.payload.data;
+        state.status = action.payload.status;
       })
       .addCase(addPets.rejected, (state, action) => {
+        state.isloading = false;
+        state.error = action.payload;
+      })
+      .addCase(deletePetsRequest.pending, (state) => {
+        state.isloading = true;
+      })
+      .addCase(deletePetsRequest.fulfilled, (state, action) => {
+        state.isloading = false;
+        state.error = null;
+        state.currentUser = action.payload;
+      })
+      .addCase(deletePetsRequest.rejected, (state, action) => {
         state.isloading = false;
         state.error = action.payload;
       })

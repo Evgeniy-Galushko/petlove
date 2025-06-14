@@ -5,41 +5,44 @@ import sprite from "../../img/icon/icon-sprite.svg";
 import clsx from "clsx";
 import { NavLink } from "react-router-dom";
 
-export default function AddPetForm({ species }) {
+export default function AddPetForm({ species, handleSubmit }) {
   const condition = {
+    title: /^[а-яА-Яa-zA-Z0-9 ]{3,50}$/,
     name: /^[а-яА-Яa-zA-Z0-9 ]{3,50}$/,
-    email: /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/,
-    avatar: /^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|webp)$/,
-    phone: /^\+38\d{10}$/,
+    // imgURL: /^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|webp)$/,
+    species: /^[а-яА-Яa-zA-Z0-9 ]{3,50}$/,
+    birthday: /^\d{4}-\d{2}-\d{2}$/,
+    sex: /^[а-яА-Яa-zA-Z0-9 ]{3,50}$/,
   };
 
   const pattern = Yup.object().shape({
-    name: Yup.string().matches(condition.name, "Too Short!"),
-    email: Yup.string().matches(condition.email, "Too Short!"),
-    avatar: Yup.string().matches(condition.avatar, "Too Short!"),
-    phone: Yup.string().matches(
-      condition.phone,
-      "The number entered is incorrect +380661234567"
-    ),
+    title: Yup.string()
+      .matches(condition.title, "Too Short!")
+      .required("See short description!"),
+    name: Yup.string()
+      .matches(condition.name, "Too Short!")
+      .required("Enter name!"),
+    imgURL: Yup.string()
+      .matches(condition.imgURL, "Select photo!")
+      .required("Select photo!"),
+    species: Yup.string()
+      .matches(condition.species, "Incorrect format!")
+      .required("Select animal type!"),
+    birthday: Yup.string()
+      .matches(condition.birthday, "Incorrect format!")
+      .required("You have not selected a date!"),
+    sex: Yup.string()
+      .matches(condition.sex, "You have not selected gender!")
+      .required("You have not selected gender!"),
   });
 
   const initialValues = {
-    name: "",
     title: "",
+    name: "",
     imgURL: "",
     species: "",
     birthday: "",
     sex: "",
-  };
-
-  const handleSubmit = (values, actions) => {
-    console.log(values);
-    // dispatch(currentEdit({ values, closeModal }));
-    // if (currentUser === 200) {
-    //   closeModal();
-    // }
-
-    actions.resetForm();
   };
 
   return (
@@ -54,192 +57,221 @@ export default function AddPetForm({ species }) {
       >
         {({ setFieldValue, values }) => (
           <Form>
-            <div className={s.boxRadio}>
-              <Field
-                name="sex"
-                type="radio"
-                value="female"
-                id="female"
-                // placeholder={currentUser.name}
-                className={s.inputRadioGender}
-              />
-              <label
-                htmlFor="female"
-                className={clsx(s.labelRadioGender, s.fameli)}
-              >
-                <svg className={s.iconRadioGender}>
-                  <use href={`${sprite}#icon-femali-white`} />
-                </svg>
-              </label>
-              <Field
-                name="sex"
-                type="radio"
-                value="male"
-                id="male"
-                // placeholder={currentUser.name}
-                className={s.inputRadioGender}
-              />
-              <label
-                htmlFor="male"
-                className={clsx(s.labelRadioGender, s.male)}
-              >
-                <svg className={s.iconRadioGender}>
-                  <use href={`${sprite}#icon-male-blue`} />
-                </svg>
-              </label>
-              <Field
-                name="sex"
-                type="radio"
-                value="multiple"
-                id="multiple"
-                // placeholder={currentUser.name}
-                className={s.inputRadioGender}
-              />
-              <label
-                htmlFor="multiple"
-                className={clsx(s.labelRadioGender, s.multiple)}
-              >
-                <svg className={s.iconRadioGender}>
-                  <use href={`${sprite}#icon-femali-male-yellow`} />
-                </svg>
-              </label>
-            </div>
-            <div className={s.iconAndImg}>
-              {values.imgURL ? (
-                <img
-                  src={values.imgURL ? values.imgURL : null}
-                  alt="foto"
-                  className={s.imgPet}
-                />
-              ) : (
-                <svg className={s.iconImg}>
-                  <use href={`${sprite}#icon-icons8_cat-footprint`} />
-                </svg>
-              )}
-            </div>
-            <div className={s.boxImgUrl}>
-              <input
-                type="text"
-                name="imgURL"
-                value={values.imgURL}
-                className={clsx(
-                  s.inputValuesImgUrl,
-                  values.imgURL.trim() !== "" && s.inputGeneralBorder
-                )}
-                required
-                // pattern={condition.avatar}
-                placeholder="Enter URL"
-              />
-              <input
-                className={s.inputSavesImgNone}
-                // name="imgURL"
-                id="imgURL"
-                type="file"
-                accept="image/*"
-                required
-                onChange={(e) => {
-                  const file = e.currentTarget.files[0];
-                  if (file) {
-                    const url = URL.createObjectURL(file);
-                    setFieldValue("imgURL", url);
-                  }
-                }}
-              />
-              <label htmlFor="imgURL" className={s.inputSavesImg}>
-                Upload photo
-                <svg className={s.iconInputSavesImg}>
-                  <use href={`${sprite}#icon-upload-cloud`} />
-                </svg>
-              </label>
-              <ErrorMessage
-                name="imgURL"
-                component="span"
-                className={s.errorMessage}
-              />
-            </div>
-            <div className={s.boxGeneral}>
-              <Field
-                name="title"
-                type="text"
-                required
-                placeholder="Title"
-                className={clsx(
-                  s.inputGeneral,
-                  values.title.trim() !== "" && s.inputGeneralBorder
-                )}
-              />
-              <ErrorMessage
-                name="title"
-                component="span"
-                className={s.errorMessage}
-              />
-              <Field
-                name="name"
-                type="text"
-                required
-                placeholder="Pet’s Name"
-                className={clsx(
-                  s.inputGeneral,
-                  values.name.trim() !== "" && s.inputGeneralBorder
-                )}
-              />
-              <ErrorMessage
-                name="name"
-                component="span"
-                className={s.errorMessage}
-              />
-              <div className={s.boxDateGender}>
+            {/* {console.log(values.sex)} */}
+            <ul>
+              <li className={clsx(s.boxRadio, s.position)}>
                 <Field
-                  name="birthday"
-                  type="date"
+                  name="sex"
+                  type="radio"
+                  value="female"
+                  id="female"
+                  className={s.inputRadioGender}
                   required
-                  // placeholder={currentUser.phone}
-                  className={clsx(
-                    s.dateGender,
-                    values.birthday !== "" && s.inputGeneralBorder
-                  )}
                 />
-
+                {values.sex === "female" && (
+                  <svg className={s.iconGenderFemaleOk}>
+                    <use href={`${sprite}#icon-check-mark-green`} />
+                  </svg>
+                )}
+                <label
+                  htmlFor="female"
+                  className={clsx(s.labelRadioGender, s.fameli)}
+                >
+                  <svg className={s.iconRadioGender}>
+                    <use href={`${sprite}#icon-femali-white`} />
+                  </svg>
+                </label>
+                <Field
+                  name="sex"
+                  type="radio"
+                  value="male"
+                  id="male"
+                  className={s.inputRadioGender}
+                  required
+                />
+                {values.sex === "male" && (
+                  <svg className={s.iconGenderMaleOk}>
+                    <use href={`${sprite}#icon-check-mark-green`} />
+                  </svg>
+                )}
+                <label
+                  htmlFor="male"
+                  className={clsx(s.labelRadioGender, s.male)}
+                >
+                  <svg className={s.iconRadioGender}>
+                    <use href={`${sprite}#icon-male-blue`} />
+                  </svg>
+                </label>
+                <Field
+                  name="sex"
+                  type="radio"
+                  value="multiple"
+                  id="multiple"
+                  className={s.inputRadioGender}
+                  required
+                />
+                {values.sex === "multiple" && (
+                  <svg className={s.iconGenderMultipleOk}>
+                    <use href={`${sprite}#icon-check-mark-green`} />
+                  </svg>
+                )}
                 <ErrorMessage
-                  name="birthday"
+                  name="sex"
                   component="span"
                   className={s.errorMessage}
                 />
-
-                <Field
-                  name="species"
-                  id="species"
-                  as="select"
-                  required
-                  // placeholder={currentUser.phone}
-                  className={clsx(
-                    s.dateGender,
-                    values.species !== "" && s.inputGeneralBorder
-                  )}
+                <label
+                  htmlFor="multiple"
+                  className={clsx(s.labelRadioGender, s.multiple)}
                 >
-                  <option>Type of pet</option>;
-                  {species.map((specie) => {
-                    return <option value={specie}>{specie}</option>;
-                  })}
-                </Field>
-                <label htmlFor="species">
-                  <svg className={s.iconInputSpecies}>
-                    <use href={`${sprite}#icon-arrow-left`} />
+                  <svg className={s.iconRadioGender}>
+                    <use href={`${sprite}#icon-femali-male-yellow`} />
+                  </svg>
+                </label>
+              </li>
+              <li className={s.iconAndImg}>
+                {values.imgURL ? (
+                  <img
+                    src={values.imgURL ? values.imgURL : null}
+                    alt="foto"
+                    className={s.imgPet}
+                  />
+                ) : (
+                  <svg className={s.iconImg}>
+                    <use href={`${sprite}#icon-icons8_cat-footprint`} />
+                  </svg>
+                )}
+              </li>
+              <li className={clsx(s.boxImgUrl, s.position)}>
+                <Field
+                  type="text"
+                  name="imgURL"
+                  id="imgURL"
+                  // value={values.imgURL}
+                  className={clsx(
+                    s.inputValuesImgUrl,
+                    values.imgURL.trim() !== "" && s.inputGeneralBorder
+                  )}
+                  required
+                  placeholder="Enter URL"
+                />
+                <input
+                  className={s.inputSavesImgNone}
+                  // name="imgURL"
+                  id="imgURL"
+                  type="file"
+                  accept="image/*"
+                  // required
+                  onChange={(e) => {
+                    const file = e.currentTarget.files[0];
+                    if (file) {
+                      const url = URL.createObjectURL(file);
+                      setFieldValue("imgURL", url);
+                    }
+                  }}
+                />
+                <label htmlFor="imgURL" className={s.inputSavesImg}>
+                  Upload photo
+                  <svg className={s.iconInputSavesImg}>
+                    <use href={`${sprite}#icon-upload-cloud`} />
                   </svg>
                 </label>
                 <ErrorMessage
-                  name="species"
+                  name="imgURL"
                   component="span"
                   className={s.errorMessage}
                 />
-              </div>
-            </div>
+              </li>
+              <li className={clsx(s.boxGeneral, s.position)}>
+                <Field
+                  name="title"
+                  type="text"
+                  required
+                  placeholder="Title"
+                  className={clsx(
+                    s.inputGeneral,
+                    values.title.trim() !== "" && s.inputGeneralBorder
+                  )}
+                />
+                <ErrorMessage
+                  name="title"
+                  component="span"
+                  className={clsx(s.errorMessage, s.titlError)}
+                />
+                <Field
+                  name="name"
+                  type="text"
+                  required
+                  placeholder="Pet’s Name"
+                  className={clsx(
+                    s.inputGeneral,
+                    values.name.trim() !== "" && s.inputGeneralBorder
+                  )}
+                />
+                <ErrorMessage
+                  name="name"
+                  component="span"
+                  className={clsx(s.errorMessage, s.name)}
+                />
+                <ul className={s.boxDateGender}>
+                  <li className={s.position}>
+                    <Field
+                      name="birthday"
+                      type="date"
+                      required
+                      // placeholder={currentUser.phone}
+                      className={clsx(
+                        s.dateGender,
+                        values.birthday !== "" && s.inputGeneralBorder
+                      )}
+                    />
+                    <ErrorMessage
+                      name="birthday"
+                      component="span"
+                      className={clsx(s.errorMessage, s.species)}
+                    />
+                  </li>
+                  <li className={s.position}>
+                    <Field
+                      name="species"
+                      id="species"
+                      as="select"
+                      required
+                      // placeholder={currentUser.phone}
+                      className={clsx(
+                        s.dateGender,
+                        values.species !== "" && s.inputGeneralBorder
+                      )}
+                    >
+                      <option>Type of pet</option>;
+                      {species.map((specie, index) => {
+                        return (
+                          <option value={specie} key={index}>
+                            {specie}
+                          </option>
+                        );
+                      })}
+                    </Field>
+                    <label htmlFor="species">
+                      <svg className={s.iconInputSpecies}>
+                        <use href={`${sprite}#icon-arrow-left`} />
+                      </svg>
+                    </label>
+                    <ErrorMessage
+                      name="species"
+                      component="span"
+                      className={clsx(s.errorMessage, s.species)}
+                    />
+                  </li>
+                </ul>
+              </li>
+            </ul>
             <div className={s.boxButton}>
               <NavLink to="/profile" className={s.linkBack}>
                 Back
               </NavLink>
               <button type="submit" className={s.buttonSubmit}>
-                Save
+                Submit
               </button>
             </div>
           </Form>

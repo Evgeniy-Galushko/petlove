@@ -1,3 +1,9 @@
+.petsList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
 .oneCardPets {
   box-sizing: border-box;
   padding: 14px;

@@ -18,7 +18,7 @@ import { RingLoader } from "react-spinners";
 
 export default function ProfilePage() {
   const [modalUser, setModalUser] = useState(false);
-  const [changeRequest, setChangeRequest] = useState({});
+  // const [idPet, setIdPet] = useState("");
   const [modal, setModal] = useState(false);
   const navigate = useNavigate();
   const token = useSelector(selectToken);
@@ -26,14 +26,14 @@ export default function ProfilePage() {
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
 
-  // console.log(currentUser);
+  // console.log(idPet);
 
   useEffect(() => {
     dispatch(currentUserRequest());
     if (!token) {
       navigate("/home");
     }
-  }, [dispatch, token]);
+  }, [token, dispatch]);
 
   const closeModal = () => {
     setModalUser(false);
@@ -57,7 +57,7 @@ export default function ProfilePage() {
               closeModal={closeModal}
               openModal={modalUser}
               currentUser={currentUser}
-              setChangeRequest={setChangeRequest}
+              // setChangeRequest={setChangeRequest}
             />
             <UserCard
               setModalUser={setModalUser}

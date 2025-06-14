@@ -82,14 +82,40 @@ export const currentEdit = createAsyncThunk(
 export const addPets = createAsyncThunk(
   "auth/addPets",
   async (value, thunkAPI) => {
-    // console.log(value);
+    console.log(value);
     try {
-      const data = await axios.post("/users/current/edit", value);
-      // console.log(data.status);
-      // if (data.status === 200) {
-      //   value.closeModal();
-      //   toast.success("Changes added");
-      // }
+      const data = await axios.post("/users/current/pets/add", value);
+      console.log(data.status);
+      if (data.status === 200) {
+        toast.success("You have added your pet");
+      }
+      setAuthHeader(data.data.token);
+      return data;
+    } catch (error) {
+      console.log(error.status);
+      if (error.status === 401) {
+        toast.error("You are not logged in!");
+      }
+      if (error.status === 400) {
+        toast.error("Invalid request (You filled it out incorrectly)!");
+      }
+      if (error.status === 404) {
+        toast.error("Service not found!");
+      }
+      if (error.status === 500) {
+        toast.error("Server error!");
+      }
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const deletePetsRequest = createAsyncThunk(
+  "auth/deletePets",
+  async (id, thunkAPI) => {
+    try {
+      const data = await axios.delete(`/users/current/pets/remove/${id}`);
+      // console.log(data.data);
       setAuthHeader(data.data.token);
       return data.data;
     } catch (error) {

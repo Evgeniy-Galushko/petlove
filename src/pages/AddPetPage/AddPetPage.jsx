@@ -4,20 +4,47 @@ import PetBlock from "../../components/PetBlock/PetBlock.jsx";
 import s from "./AddPetPage.module.css";
 import { requestSpecies } from "../../redux/notices/operations.js";
 import { selectSpecies } from "../../redux/notices/selectors.js";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { addPets } from "../../redux/auth/operations.js";
+import { selectStatus, selectToken } from "../../redux/auth/selectors.js";
+import { Toaster } from "react-hot-toast";
 
 export default function AddPetPage() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  const token = useSelector(selectToken);
   const species = useSelector(selectSpecies);
-  console.log(species);
+  const status = useSelector(selectStatus);
+
+  console.log(status);
 
   useEffect(() => {
     dispatch(requestSpecies());
-  }, [dispatch]);
+
+    if (status === 200) {
+      navigate("/profile");
+    }
+
+    if (!token) {
+      navigate("/home");
+    }
+  }, [status, token, dispatch]);
+
+  const handleSubmit = (values, actions) => {
+    dispatch(addPets(values));
+    actions.resetForm();
+  };
 
   return (
     <section className={s.sectionAddPet}>
+      <Toaster
+        toastOptions={{
+          className: "",
+          duration: 4000,
+          style: {},
+        }}
+      />
       <ul className={s.addPet}>
         <li>
           <PetBlock addPet={"addPet"}>
@@ -38,7 +65,7 @@ export default function AddPetPage() {
           </PetBlock>
         </li>
         <li className={s.boxAddPetForm}>
-          <AddPetForm species={species} />
+          <AddPetForm species={species} handleSubmit={handleSubmit} />
         </li>
       </ul>
     </section>

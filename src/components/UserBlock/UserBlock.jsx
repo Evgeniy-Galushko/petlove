@@ -2,7 +2,7 @@ import s from "./UserBlock.module.css";
 import sprite from "../../img/icon/icon-sprite.svg";
 
 export default function UserBlock({ currentUser }) {
-  console.log(currentUser);
+  // console.log(currentUser);
   const { name, email, phone, avatar } = currentUser;
   return (
     <ul>

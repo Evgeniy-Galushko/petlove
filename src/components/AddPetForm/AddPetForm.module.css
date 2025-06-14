@@ -26,6 +26,30 @@
   display: none;
 }
 
+.iconGenderFemaleOk {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  left: 25px;
+  top: -5px;
+}
+
+.iconGenderMaleOk {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  left: 60px;
+  top: -5px;
+}
+
+.iconGenderMultipleOk {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  left: 100px;
+  top: -5px;
+}
+
 .labelRadioGender {
   box-sizing: border-box;
   display: flex;
@@ -264,6 +288,35 @@
   }
 }
 
+.position {
+  position: relative;
+}
+
+.errorMessage {
+  position: absolute;
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.16667;
+  letter-spacing: -0.03em;
+  color: #ef2447;
+}
+
+.species {
+  top: 40px;
+  left: 15px;
+}
+
+.titlError {
+  top: 40px;
+  left: 15px;
+}
+
+.name {
+  top: 90px;
+  left: 15px;
+}
+
 @media screen and (min-width: 768px) {
   .title {
     font-size: 32px;
@@ -386,6 +439,36 @@
 
     font-size: 16px;
     line-height: 1.25;
+  }
+
+  .species {
+    top: 50px;
+    left: 20px;
+  }
+
+  .titlError {
+    top: 50px;
+    left: 20px;
+  }
+
+  .name {
+    top: 120px;
+    left: 20px;
+  }
+
+  .iconGenderFemaleOk {
+    left: 28px;
+    top: -5px;
+  }
+
+  .iconGenderMaleOk {
+    left: 73px;
+    top: -5px;
+  }
+
+  .iconGenderMultipleOk {
+    left: 124px;
+    top: -5px;
   }
 }
 

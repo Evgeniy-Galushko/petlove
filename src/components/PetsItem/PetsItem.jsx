@@ -1,7 +1,10 @@
 import s from "./PetsItem.module.css";
 import sprite from "../../img/icon/icon-sprite.svg";
+import { useDispatch } from "react-redux";
+import { deletePetsRequest } from "../../redux/auth/operations.js";
 
 export default function PetsItem({
+  id,
   birthday,
   createdAt,
   imgURL,
@@ -10,6 +13,10 @@ export default function PetsItem({
   species,
   title,
 }) {
+  const dispatch = useDispatch();
+  const handleClick = (e) => {
+    dispatch(deletePetsRequest(e.currentTarget.id));
+  };
   return (
     <ul className={s.aboutPet}>
       <li className={s.boxImg}>
@@ -42,7 +49,12 @@ export default function PetsItem({
         </ul>
       </li>
       <li>
-        <button type="button" className={s.buttonDdelete}>
+        <button
+          id={id}
+          type="button"
+          className={s.buttonDdelete}
+          onClick={handleClick}
+        >
           <svg className={s.iconDelete}>
             <use href={`${sprite}#icon-basket`} />
           </svg>
