@@ -3,6 +3,9 @@ import sprite from "../../img/icon/icon-sprite.svg";
 import clsx from "clsx";
 import Favorites from "../Favorites/Favorites.jsx";
 import { useState } from "react";
+import { requestIdFriend } from "../../redux/notices/operations.js";
+import { useDispatch, useSelector } from "react-redux";
+import { selectToken } from "../../redux/auth/selectors.js";
 
 export default function NoticesItem({
   id,
@@ -17,7 +20,19 @@ export default function NoticesItem({
   price,
   popularity,
   setIsModal,
+  setIdOneFriend,
 }) {
+  const token = useSelector(selectToken);
+  const dispatch = useDispatch();
+
+  const openModalFriend = (id) => {
+    setIsModal(true);
+
+    dispatch(requestIdFriend(id));
+
+    // setIdOneFriend(id);
+  };
+
   const openModal = () => {
     setIsModal(true);
   };
@@ -77,13 +92,28 @@ export default function NoticesItem({
           <button
             type="button"
             className={s.buttonLearnMore}
-            onClick={openModal}
+            onClick={
+              token
+                ? () => {
+                    openModalFriend(id);
+                  }
+                : openModal
+            }
           >
             Learn more
           </button>
         </li>
         <li className={s.favorites}>
-          <Favorites id={id} openModal={openModal} />
+          <Favorites
+            id={id}
+            openModal={
+              token
+                ? () => {
+                    openModalFriend(id);
+                  }
+                : openModal
+            }
+          />
         </li>
       </ul>
     </>

@@ -1,7 +1,7 @@
 import NoticesItem from "../NoticesItem/NoticesItem.jsx";
 import s from "./NoticesList.module.css";
 
-export default function NoticesList({ data, setIsModal }) {
+export default function NoticesList({ data, setIsModal, setIdOneFriend }) {
   if (!data) return;
 
   return (
@@ -35,6 +35,7 @@ export default function NoticesList({ data, setIsModal }) {
                 price={price}
                 popularity={popularity}
                 setIsModal={setIsModal}
+                setIdOneFriend={setIdOneFriend}
               />
             </li>
           );

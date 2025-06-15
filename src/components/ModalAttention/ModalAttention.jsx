@@ -16,8 +16,6 @@ export default function ModalAttention({ isOpen, onClose }) {
       top: "50%",
       left: "50%",
       right: "auto",
-      // with: "auto",
-      // height: "auto",
       bottom: "auto",
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
@@ -25,7 +23,12 @@ export default function ModalAttention({ isOpen, onClose }) {
   };
 
   return (
-    <Modal isOpen={isOpen} onRequestClose={onClose} style={customStyles}>
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={onClose}
+      style={customStyles}
+      ariaHideApp={false}
+    >
       <ul className={s.modal}>
         <button onClick={onClose} className={s.buttonClose}>
           <svg className={s.icon} width={24} height={24}>

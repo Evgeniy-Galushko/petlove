@@ -8,6 +8,8 @@ export const selectSpecies = (state) => state.notices.species;
 
 export const selectCitiesLocation = (state) => state.notices.citiesLocation;
 
-export const selectIsLoadin = (state) => state.news.isloading;
+export const selectIsLoadin = (state) => state.notices.isloading;
 
-export const selectError = (state) => state.news.error;
+export const selectError = (state) => state.notices.error;
+
+export const selectdFriend = (state) => state.notices.oneFriend;

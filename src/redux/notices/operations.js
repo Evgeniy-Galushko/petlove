@@ -89,3 +89,16 @@ export const requestCitiesLocation = createAsyncThunk(
     }
   }
 );
+
+export const requestIdFriend = createAsyncThunk(
+  "requestIdFriend/request",
+  async (id, thunkAPI) => {
+    try {
+      const data = await axios.get(`notices/${id}`);
+      // console.log(data);
+      return data.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

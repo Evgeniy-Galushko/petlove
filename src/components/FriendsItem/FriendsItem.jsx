@@ -43,7 +43,7 @@ export default function FriendsItem({
               {email}
             </a>
           ) : (
-            <p className={s.paragrapContact}>website only</p>
+            <p className={s.paragrapContact}>no email</p>
           )}
         </div>
 

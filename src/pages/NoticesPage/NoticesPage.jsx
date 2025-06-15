@@ -7,12 +7,14 @@ import {
   requestCategories,
   requestCitiesLocation,
   requestGender,
+  requestIdFriend,
   requestNotices,
   requestSpecies,
 } from "../../redux/notices/operations.js";
 import {
   selectCategories,
   selectCitiesLocation,
+  selectdFriend,
   selectGender,
   selectNotices,
   selectSpecies,
@@ -21,6 +23,8 @@ import { PaginationButton } from "../../utils/pagination_button.js";
 import SearchFieldNotices from "../../components/SearchFieldNotices/SearchFieldNotices.jsx";
 import NoticesList from "../../components/NoticesList/NoticesList.jsx";
 import ModalAttention from "../../components/ModalAttention/ModalAttention.jsx";
+import { selectToken } from "../../redux/auth/selectors.js";
+import ModalNotice from "../../components/ModalNotice/ModalNotice.jsx";
 
 export default function NoticesPage() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -32,7 +36,9 @@ export default function NoticesPage() {
   const [locationId, setLocationId] = useState("");
   const [popularity, setPopularity] = useState(null);
   const [price, setPrice] = useState(null);
-  const [isModal, setIsModal] = useState(false);
+  const [isModalAttention, setIsModalAttention] = useState(false);
+  const [isModaOneFriend, setIsModalOneFriend] = useState(false);
+  const [idOneFriend, setIdOneFriend] = useState("");
 
   const dispatch = useDispatch();
   const categories = useSelector(selectCategories);
@@ -41,12 +47,10 @@ export default function NoticesPage() {
   const notices = useSelector(selectNotices);
   const citiesLocation = useSelector(selectCitiesLocation);
   const page = PaginationButton(notices.totalPages);
+  const token = useSelector(selectToken);
+  const friend = useSelector(selectdFriend);
 
-  // console.log(locationId.value);
-
-  console.log(notices);
-  // console.log(popularity);
-  // console.log(price);
+  // console.log(friend);
 
   useEffect(() => {
     dispatch(
@@ -61,6 +65,7 @@ export default function NoticesPage() {
         sex: genders,
       })
     );
+    // dispatch(requestIdFriend(idOneFriend));
     dispatch(requestCategories());
     dispatch(requestGender());
     dispatch(requestSpecies());
@@ -81,13 +86,22 @@ export default function NoticesPage() {
     popularity,
   ]);
 
-  const closeModal = () => {
-    setIsModal(false);
+  const closeModalAttention = () => {
+    setIsModalAttention(false);
+  };
+
+  const closeModalOneFriend = () => {
+    setIsModalOneFriend(false);
   };
 
   return (
     <section className={s.sectionNotices}>
-      <ModalAttention isOpen={isModal} onClose={closeModal} />
+      <ModalNotice
+        isOpen={isModaOneFriend}
+        onClose={closeModalOneFriend}
+        friend={friend}
+      />
+      <ModalAttention isOpen={isModalAttention} onClose={closeModalAttention} />
       <ul className={s.notices}>
         <li>
           <Title>Find your favorite pet</Title>
@@ -111,7 +125,11 @@ export default function NoticesPage() {
           />
         </li>
         <li>
-          <NoticesList data={notices.results} setIsModal={setIsModal} />
+          <NoticesList
+            data={notices.results}
+            setIsModal={token ? setIsModalOneFriend : setIsModalAttention}
+            setIdOneFriend={setIdOneFriend}
+          />
         </li>
         <li>
           {notices.totalPages > 1 && (

@@ -3,6 +3,7 @@ import {
   requestCategories,
   requestCitiesLocation,
   requestGender,
+  requestIdFriend,
   requestNotices,
   requestSpecies,
 } from "./operations.js";
@@ -24,6 +25,7 @@ const noticesSlise = createSlice({
     gender: [],
     species: [],
     citiesLocation: [],
+    oneFriend: null,
     isloading: false,
     error: null,
   },
@@ -63,7 +65,17 @@ const noticesSlise = createSlice({
         state.error = null;
         state.citiesLocation = action.payload;
       })
-      .addCase(requestCitiesLocation.rejected, handleRejected);
+      .addCase(requestCitiesLocation.rejected, handleRejected)
+      .addCase(requestIdFriend.pending, (state) => {
+        state.isloading = true;
+        state.oneFriend = null;
+      })
+      .addCase(requestIdFriend.fulfilled, (state, action) => {
+        state.isloading = false;
+        state.error = null;
+        state.oneFriend = action.payload;
+      })
+      .addCase(requestIdFriend.rejected, handleRejected);
   },
 });
 
