@@ -6,9 +6,21 @@
 }
 
 .profileBox {
+  /* padding: 18px 20px 40px 20px;
+  border-radius: 30px; */
+  /* background-color: #fff; */
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.userCard {
   padding: 18px 20px 40px 20px;
   border-radius: 30px;
   background-color: #fff;
+}
+
+.myNotices {
 }
 
 .spinners {
@@ -22,7 +34,7 @@
     padding: 60px 32px 80px 32px;
   }
 
-  .profileBox {
+  .userCard {
     padding: 40px;
   }
 }
@@ -34,6 +46,11 @@
   }
 
   .profileBox {
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  .userCard {
     padding: 40px;
     width: 520px;
     /* height: 910px; */

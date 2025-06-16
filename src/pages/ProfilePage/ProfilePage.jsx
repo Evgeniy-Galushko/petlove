@@ -15,6 +15,7 @@ import {
 } from "../../redux/auth/operations.js";
 import { Toaster } from "react-hot-toast";
 import { RingLoader } from "react-spinners";
+import MyNotices from "../../components/MyNotices/MyNotices.jsx";
 
 export default function ProfilePage() {
   const [modalUser, setModalUser] = useState(false);
@@ -26,7 +27,7 @@ export default function ProfilePage() {
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
 
-  // console.log(idPet);
+  // console.log(currentUser);
 
   useEffect(() => {
     dispatch(currentUserRequest());
@@ -52,7 +53,7 @@ export default function ProfilePage() {
         <RingLoader color="#f6b83d" className={s.spinners} size={70} />
       ) : (
         <ul className={s.profileBox}>
-          <li>
+          <li className={s.userCard}>
             <ModalEditUser
               closeModal={closeModal}
               openModal={modalUser}
@@ -66,7 +67,9 @@ export default function ProfilePage() {
               modal={modal}
             />
           </li>
-          <li></li>
+          <li className={s.myNotices}>
+            <MyNotices />
+          </li>
         </ul>
       )}
     </section>

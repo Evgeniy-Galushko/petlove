@@ -98,16 +98,18 @@ export default function ModalEditUser({ closeModal, openModal, currentUser }) {
             {({ setFieldValue, values }) => (
               <Form>
                 <div className={s.boxAvatar}>
-                  <input
+                  <Field
                     type="text"
-                    value={values.avatar}
+                    name="avatar"
+                    id="avatar"
+                    // value={values.avatar}
                     className={s.inputValuesAvatar}
-                    pattern={condition.avatar}
+                    // pattern={condition.avatar}
                     placeholder={currentUser.avatar}
                   />
                   <input
                     className={s.inputSavesImgNone}
-                    name="avatar"
+                    // name="avatar"
                     id="avatar"
                     type="file"
                     accept="image/*"

@@ -20,7 +20,8 @@ export default function NoticesItem({
   price,
   popularity,
   setIsModal,
-  setIdOneFriend,
+  favorites,
+  boxFavorite,
 }) {
   const token = useSelector(selectToken);
   const dispatch = useDispatch();
@@ -39,10 +40,15 @@ export default function NoticesItem({
 
   return (
     <>
-      <img src={imgURL} alt={name} width={287} className={s.img} />
+      <img
+        src={imgURL}
+        alt={name}
+        width={287}
+        className={clsx(s.img, favorites && s.imgFav)}
+      />
       <div>
         <div className={s.boxTitlePopular}>
-          <h2 className={s.title}>{title}</h2>
+          <h2 className={clsx(s.title, favorites && s.titleFav)}>{title}</h2>
           <p className={s.popularity}>
             <svg className={clsx(s.icon)} width={16} height={16}>
               <use href={`${sprite}#icon-star`} />
@@ -80,11 +86,13 @@ export default function NoticesItem({
             <p className={s.meaning}>{category}</p>
           </li>
         </ul>
-        <p className={s.comment}>{comment}</p>
+        <p className={clsx(s.comment, favorites && s.commentFav)}>{comment}</p>
         {!price ? (
-          <p className={s.price}>No price</p>
+          <p className={clsx(s.price, favorites && s.priceFav)}>No price</p>
         ) : (
-          <p className={s.price}>&#x24;{price}</p>
+          <p className={clsx(s.price, favorites && s.priceFav)}>
+            &#x24;{price}
+          </p>
         )}
       </div>
       <ul className={s.boxButtonAndFavorite}>
@@ -103,18 +111,20 @@ export default function NoticesItem({
             Learn more
           </button>
         </li>
-        <li className={s.favorites}>
-          <Favorites
-            id={id}
-            openModal={
-              token
-                ? () => {
-                    openModalFriend(id);
-                  }
-                : openModal
-            }
-          />
-        </li>
+        {boxFavorite && (
+          <li className={s.favorites}>
+            <Favorites
+              id={id}
+              openModal={
+                token
+                  ? () => {
+                      openModalFriend(id);
+                    }
+                  : openModal
+              }
+            />
+          </li>
+        )}
       </ul>
     </>
   );

@@ -25,6 +25,7 @@ import NoticesList from "../../components/NoticesList/NoticesList.jsx";
 import ModalAttention from "../../components/ModalAttention/ModalAttention.jsx";
 import { selectToken } from "../../redux/auth/selectors.js";
 import ModalNotice from "../../components/ModalNotice/ModalNotice.jsx";
+import { Toaster } from "react-hot-toast";
 
 export default function NoticesPage() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -38,7 +39,6 @@ export default function NoticesPage() {
   const [price, setPrice] = useState(null);
   const [isModalAttention, setIsModalAttention] = useState(false);
   const [isModaOneFriend, setIsModalOneFriend] = useState(false);
-  const [idOneFriend, setIdOneFriend] = useState("");
 
   const dispatch = useDispatch();
   const categories = useSelector(selectCategories);
@@ -96,6 +96,13 @@ export default function NoticesPage() {
 
   return (
     <section className={s.sectionNotices}>
+      <Toaster
+        toastOptions={{
+          className: "",
+          duration: 4000,
+          style: {},
+        }}
+      />
       <ModalNotice
         isOpen={isModaOneFriend}
         onClose={closeModalOneFriend}
@@ -128,7 +135,6 @@ export default function NoticesPage() {
           <NoticesList
             data={notices.results}
             setIsModal={token ? setIsModalOneFriend : setIsModalAttention}
-            setIdOneFriend={setIdOneFriend}
           />
         </li>
         <li>

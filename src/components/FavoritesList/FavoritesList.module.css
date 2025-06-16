@@ -29,12 +29,9 @@
 }
 
 @media screen and (min-width: 1280px) {
-  .noticesList {
-    gap: 31px;
-    row-gap: 40px;
-  }
-
   .oneCard {
-    width: 363px;
+    padding: 14px;
+    width: 290px;
+    height: 422px;
   }
 }

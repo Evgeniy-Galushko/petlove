@@ -90,6 +90,8 @@ const authSlise = createSlice({
           name: null,
           email: null,
         };
+        state.currentUser = {};
+        state.status = null;
         state.token = null;
         state.isloading = false;
       });

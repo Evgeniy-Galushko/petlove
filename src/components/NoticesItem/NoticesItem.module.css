@@ -134,6 +134,26 @@
     width: 315px;
   }
 
+  .imgFav {
+    width: 262px;
+    height: 162px;
+  }
+
+  .titleFav {
+    font-size: 14px;
+    line-height: 1;
+  }
+
+  .commentFav {
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  .priceFav {
+    font-size: 14px;
+    line-height: 1;
+  }
+
   .buttonLearnMore {
     width: 257px;
     height: 48px;

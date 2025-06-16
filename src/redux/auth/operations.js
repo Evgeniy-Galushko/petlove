@@ -31,7 +31,7 @@ export const loginRequest = createAsyncThunk(
   async (user, thunkAPI) => {
     try {
       const data = await axios.post("/users/signin", user);
-      // console.log(data.data);
+      console.log(data.data);
       setAuthHeader(data.data.token);
       return data.data;
     } catch (error) {
@@ -44,9 +44,14 @@ export const currentUserRequest = createAsyncThunk(
   "auth/currentUser",
   async (_, thunkAPI) => {
     try {
+      const state = thunkAPI.getState();
+      const token = state.auth.token;
+      if (token) {
+        setAuthHeader(token);
+      }
       const data = await axios.get("/users/current/full");
       // console.log(data.data);
-      setAuthHeader(data.data.token);
+      // setAuthHeader(data.data.token);
       return data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -60,6 +65,11 @@ export const currentEdit = createAsyncThunk(
     // console.log(value);
     const { name, email, phone, avatar } = value.values;
     try {
+      const state = thunkAPI.getState();
+      const token = state.auth.token;
+      if (token) {
+        setAuthHeader(token);
+      }
       const data = await axios.patch("/users/current/edit", {
         ...(name && { name }),
         ...(email && { email }),
@@ -71,7 +81,6 @@ export const currentEdit = createAsyncThunk(
         value.closeModal();
         toast.success("Changes added");
       }
-      setAuthHeader(data.data.token);
       return data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -84,15 +93,19 @@ export const addPets = createAsyncThunk(
   async (value, thunkAPI) => {
     console.log(value);
     try {
+      const state = thunkAPI.getState();
+      const token = state.auth.token;
+      if (token) {
+        setAuthHeader(token);
+      }
       const data = await axios.post("/users/current/pets/add", value);
       console.log(data.status);
       if (data.status === 200) {
         toast.success("You have added your pet");
       }
-      setAuthHeader(data.data.token);
       return data;
     } catch (error) {
-      console.log(error.status);
+      // console.log(error.status);
       if (error.status === 401) {
         toast.error("You are not logged in!");
       }
@@ -114,9 +127,14 @@ export const deletePetsRequest = createAsyncThunk(
   "auth/deletePets",
   async (id, thunkAPI) => {
     try {
+      const state = thunkAPI.getState();
+      const token = state.auth.token;
+      if (token) {
+        setAuthHeader(token);
+      }
       const data = await axios.delete(`/users/current/pets/remove/${id}`);
       // console.log(data.data);
-      setAuthHeader(data.data.token);
+      // setAuthHeader(data.data.token);
       return data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -128,10 +146,13 @@ export const signoutRequest = createAsyncThunk(
   "auth/signout",
   async (_, thunkAPI) => {
     try {
-      const data = await axios.post("/users/signout");
-      console.log(data);
+      const state = thunkAPI.getState();
+      const token = state.auth.token;
+      if (token) {
+        setAuthHeader(token);
+      }
+      await axios.post("/users/signout");
       clearAuthHeader();
-      // return data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

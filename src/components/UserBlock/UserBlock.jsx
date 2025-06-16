@@ -20,9 +20,14 @@ export default function UserBlock({ currentUser }) {
       </li>
       <h2 className={s.title}>My information</h2>
       <li className={s.boxInput}>
-        <input type="text" value={name} className={s.input} />
-        <input type="text" value={email} className={s.input} />
-        <input type="text" value={phone} className={s.input} />
+        <input
+          type="text"
+          defaultValue={name}
+          // value={name}
+          className={s.input}
+        />
+        <input type="text" defaultValue={email} className={s.input} />
+        <input type="text" defaultValue={phone} className={s.input} />
       </li>
     </ul>
   );

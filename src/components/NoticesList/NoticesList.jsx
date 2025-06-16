@@ -35,7 +35,7 @@ export default function NoticesList({ data, setIsModal, setIdOneFriend }) {
                 price={price}
                 popularity={popularity}
                 setIsModal={setIsModal}
-                setIdOneFriend={setIdOneFriend}
+                boxFavorite={true}
               />
             </li>
           );

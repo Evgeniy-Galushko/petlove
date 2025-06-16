@@ -4,6 +4,8 @@ import Modal from "react-modal";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { star } from "../../utils/menu.js";
+import { useParams } from "react-router-dom";
+import { requestAddFriend } from "../../redux/notices/operations.js";
 
 export default function ModalNotice({ isOpen, onClose, friend }) {
   if (!friend) return;
@@ -30,6 +32,7 @@ export default function ModalNotice({ isOpen, onClose, friend }) {
   console.log(friend);
 
   const {
+    _id,
     imgURL,
     title,
     popularity,
@@ -59,7 +62,11 @@ export default function ModalNotice({ isOpen, onClose, friend }) {
   //   const arr = star(number);
   // }
 
-  // console.log(user);
+  // console.log(_id);
+
+  const handleClick = () => {
+    dispatch(requestAddFriend(_id));
+  };
   return (
     <Modal
       isOpen={isOpen}
@@ -123,7 +130,7 @@ export default function ModalNotice({ isOpen, onClose, friend }) {
           )}
         </li>
         <li className={s.boxButton}>
-          <button type="button" className={s.buttonAdd}>
+          <button type="button" className={s.buttonAdd} onClick={handleClick}>
             Add to
             <svg width={18} height={18}>
               <use href={`${sprite}#icon-heart-wite`} />

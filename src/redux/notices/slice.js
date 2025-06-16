@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  requestAddFriend,
   requestCategories,
   requestCitiesLocation,
   requestGender,
@@ -25,6 +26,7 @@ const noticesSlise = createSlice({
     gender: [],
     species: [],
     citiesLocation: [],
+    idFavorites: "",
     oneFriend: null,
     isloading: false,
     error: null,
@@ -75,7 +77,13 @@ const noticesSlise = createSlice({
         state.error = null;
         state.oneFriend = action.payload;
       })
-      .addCase(requestIdFriend.rejected, handleRejected);
+      .addCase(requestIdFriend.rejected, handleRejected)
+      .addCase(requestAddFriend.fulfilled, (state, action) => {
+        state.isloading = false;
+        state.error = null;
+        state.idFavorites = action.payload;
+      })
+      .addCase(requestAddFriend.rejected, handleRejected);
   },
 });
 
