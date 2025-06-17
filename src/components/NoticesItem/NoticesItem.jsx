@@ -1,11 +1,10 @@
 import s from "./NoticesItem.module.css";
 import sprite from "../../img/icon/icon-sprite.svg";
 import clsx from "clsx";
-import Favorites from "../Favorites/Favorites.jsx";
-import { useState } from "react";
 import { requestIdFriend } from "../../redux/notices/operations.js";
 import { useDispatch, useSelector } from "react-redux";
 import { selectToken } from "../../redux/auth/selectors.js";
+import { selectIdFavorites } from "../../redux/notices/selectors.js";
 
 export default function NoticesItem({
   id,
@@ -24,15 +23,19 @@ export default function NoticesItem({
   boxFavorite,
 }) {
   const token = useSelector(selectToken);
+  const idFavorites = useSelector(selectIdFavorites);
   const dispatch = useDispatch();
 
   const openModalFriend = (id) => {
     setIsModal(true);
-
     dispatch(requestIdFriend(id));
-
-    // setIdOneFriend(id);
   };
+  // console.log(idFavorites);
+  // console.log(id);
+
+  const buttonFavorite = idFavorites.some((idFavorit) => idFavorit === id);
+
+  // console.log(idFavorites.some((idFavorit) => idFavorit === id));
 
   const openModal = () => {
     setIsModal(true);
@@ -59,31 +62,61 @@ export default function NoticesItem({
 
         <ul className={s.boxCharacteristics}>
           <li>
-            <p className={s.description}>Name</p>
-            <p className={s.meaning}>{name}</p>
+            <p
+              className={clsx(s.description, favorites && s.descriptionFavorit)}
+            >
+              Name
+            </p>
+            <p className={clsx(s.meaning, favorites && s.meaningFavorit)}>
+              {name}
+            </p>
           </li>
           <li>
-            <p className={s.description}>Birthday</p>
+            <p
+              className={clsx(s.description, favorites && s.descriptionFavorit)}
+            >
+              Birthday
+            </p>
             {birthday ? (
-              <p className={s.meaning}>
+              <p className={clsx(s.meaning, favorites && s.meaningFavorit)}>
                 {birthday.slice(8, 10)}.{birthday.slice(5, 7)}.
                 {birthday.slice(0, 4)}
               </p>
             ) : (
-              <p className={s.meaning}>No birthday</p>
+              <p className={clsx(s.meaning, favorites && s.meaningFavorit)}>
+                No birthday
+              </p>
             )}
           </li>
           <li>
-            <p className={s.description}>Gender</p>
-            <p className={s.meaning}>{gender}</p>
+            <p
+              className={clsx(s.description, favorites && s.descriptionFavorit)}
+            >
+              Gender
+            </p>
+            <p className={clsx(s.meaning, favorites && s.meaningFavorit)}>
+              {gender}
+            </p>
           </li>
           <li>
-            <p className={s.description}>Species</p>
-            <p className={s.meaning}>{species}</p>
+            <p
+              className={clsx(s.description, favorites && s.descriptionFavorit)}
+            >
+              Species
+            </p>
+            <p className={clsx(s.meaning, favorites && s.meaningFavorit)}>
+              {species}
+            </p>
           </li>
           <li>
-            <p className={s.description}>Category</p>
-            <p className={s.meaning}>{category}</p>
+            <p
+              className={clsx(s.description, favorites && s.descriptionFavorit)}
+            >
+              Category
+            </p>
+            <p className={clsx(s.meaning, favorites && s.meaningFavorit)}>
+              {category}
+            </p>
           </li>
         </ul>
         <p className={clsx(s.comment, favorites && s.commentFav)}>{comment}</p>
@@ -113,16 +146,39 @@ export default function NoticesItem({
         </li>
         {boxFavorite && (
           <li className={s.favorites}>
-            <Favorites
-              id={id}
-              openModal={
-                token
-                  ? () => {
-                      openModalFriend(id);
-                    }
-                  : openModal
-              }
-            />
+            {buttonFavorite ? (
+              <button
+                className={s.buttonFavorite}
+                type="button"
+                onClick={
+                  token
+                    ? () => {
+                        openModalFriend(id);
+                      }
+                    : openModal
+                }
+              >
+                <svg width={18} height={18}>
+                  <use href={`${sprite}#icon-basket`} />
+                </svg>
+              </button>
+            ) : (
+              <button
+                className={s.buttonFavorite}
+                type="button"
+                onClick={
+                  token
+                    ? () => {
+                        openModalFriend(id);
+                      }
+                    : openModal
+                }
+              >
+                <svg width={18} height={18}>
+                  <use href={`${sprite}#icon-heart`} />
+                </svg>
+              </button>
+            )}
           </li>
         )}
       </ul>

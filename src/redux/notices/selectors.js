@@ -13,3 +13,5 @@ export const selectIsLoadin = (state) => state.notices.isloading;
 export const selectError = (state) => state.notices.error;
 
 export const selectdFriend = (state) => state.notices.oneFriend;
+
+export const selectIdFavorites = (state) => state.notices.idFavorites;

@@ -21,12 +21,18 @@ const authPersistConfig = {
   whitelist: ["token"],
 };
 
+const noticesPersistConfig = {
+  key: "notices",
+  storage,
+  whitelist: ["idFavorites"],
+};
+
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
     news: newsReducer,
     friends: friendsReducer,
-    notices: noticesReducer,
+    notices: persistReducer(noticesPersistConfig, noticesReducer),
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

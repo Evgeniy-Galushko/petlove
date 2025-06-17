@@ -101,7 +101,7 @@ export const requestIdFriend = createAsyncThunk(
     try {
       const state = thunkAPI.getState();
       const token = state.auth.token;
-      console.log(token);
+      // console.log(token);
       if (token) {
         setAuthHeader(token);
       }
@@ -121,7 +121,7 @@ export const requestAddFriend = createAsyncThunk(
     try {
       const state = thunkAPI.getState();
       const token = state.auth.token;
-      console.log(token);
+      // console.log(token);
       if (token) {
         setAuthHeader(token);
       }
@@ -156,7 +156,7 @@ export const requestDeleteFriend = createAsyncThunk(
     try {
       const state = thunkAPI.getState();
       const token = state.auth.token;
-      console.log(token);
+      // console.log(token);
       if (token) {
         setAuthHeader(token);
       }

@@ -1,15 +1,25 @@
 import s from "./ModalNotice.module.css";
 import sprite from "../../img/icon/icon-sprite.svg";
 import Modal from "react-modal";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { star } from "../../utils/menu.js";
 import { useParams } from "react-router-dom";
-import { requestAddFriend } from "../../redux/notices/operations.js";
+import {
+  requestAddFriend,
+  requestDeleteFriend,
+} from "../../redux/notices/operations.js";
+import { selectIdFavorites } from "../../redux/notices/selectors.js";
 
-export default function ModalNotice({ isOpen, onClose, friend }) {
-  if (!friend) return;
-  const dispatch = useDispatch();
+export default function ModalNotice({
+  isOpen,
+  onClose,
+  friend,
+  handleClickAdd,
+  handleClickDelete,
+}) {
+  // if (!friend) return;
+  const idFavorites = useSelector(selectIdFavorites);
 
   const customStyles = {
     overlay: {
@@ -29,7 +39,7 @@ export default function ModalNotice({ isOpen, onClose, friend }) {
     },
   };
 
-  console.log(friend);
+  // console.log(friend);
 
   const {
     _id,
@@ -44,6 +54,8 @@ export default function ModalNotice({ isOpen, onClose, friend }) {
     price,
     user: { email, phone },
   } = friend;
+
+  const buttonFavorite = idFavorites.some((idFavorit) => idFavorit === _id);
 
   // const arr = star(5);
   // let stars;
@@ -64,9 +76,13 @@ export default function ModalNotice({ isOpen, onClose, friend }) {
 
   // console.log(_id);
 
-  const handleClick = () => {
-    dispatch(requestAddFriend(_id));
-  };
+  // const handleClickAdd = () => {
+  //   dispatch(requestAddFriend(_id));
+  // };
+
+  // const handleClickDelete = () => {
+  //   dispatch(requestDeleteFriend(_id));
+  // };
   return (
     <Modal
       isOpen={isOpen}
@@ -130,12 +146,33 @@ export default function ModalNotice({ isOpen, onClose, friend }) {
           )}
         </li>
         <li className={s.boxButton}>
-          <button type="button" className={s.buttonAdd} onClick={handleClick}>
-            Add to
-            <svg width={18} height={18}>
-              <use href={`${sprite}#icon-heart-wite`} />
-            </svg>
-          </button>
+          {buttonFavorite ? (
+            <button
+              type="button"
+              className={s.buttonAdd}
+              onClick={() => {
+                handleClickDelete(_id);
+              }}
+            >
+              Delete
+              <svg width={18} height={18}>
+                <use href={`${sprite}#icon-basket-white`} />
+              </svg>
+            </button>
+          ) : (
+            <button
+              type="button"
+              className={s.buttonAdd}
+              onClick={() => {
+                handleClickAdd(_id);
+              }}
+            >
+              Add to
+              <svg width={18} height={18}>
+                <use href={`${sprite}#icon-heart-wite`} />
+              </svg>
+            </button>
+          )}
           {(email && (
             <a className={s.linkBtn} href={`mailto:${email}`}>
               Contact

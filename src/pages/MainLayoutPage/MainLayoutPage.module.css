@@ -26,6 +26,8 @@
   color: #fff;
   display: flex;
   align-items: flex-end;
+  background-color: inherit;
+  border: none;
 }
 
 .titleIcon {

@@ -3,6 +3,7 @@ import {
   requestAddFriend,
   requestCategories,
   requestCitiesLocation,
+  requestDeleteFriend,
   requestGender,
   requestIdFriend,
   requestNotices,
@@ -26,7 +27,7 @@ const noticesSlise = createSlice({
     gender: [],
     species: [],
     citiesLocation: [],
-    idFavorites: "",
+    idFavorites: [],
     oneFriend: null,
     isloading: false,
     error: null,
@@ -83,7 +84,14 @@ const noticesSlise = createSlice({
         state.error = null;
         state.idFavorites = action.payload;
       })
-      .addCase(requestAddFriend.rejected, handleRejected);
+      .addCase(requestAddFriend.rejected, handleRejected)
+      .addCase(requestDeleteFriend.pending, handlePending)
+      .addCase(requestDeleteFriend.fulfilled, (state, action) => {
+        state.isloading = false;
+        state.error = null;
+        state.idFavorites = action.payload;
+      })
+      .addCase(requestDeleteFriend.rejected, handleRejected);
   },
 });
 

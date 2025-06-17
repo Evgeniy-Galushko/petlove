@@ -4,8 +4,10 @@ import Pagination from "../../components/Pagination/Pagination.jsx";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  requestAddFriend,
   requestCategories,
   requestCitiesLocation,
+  requestDeleteFriend,
   requestGender,
   requestIdFriend,
   requestNotices,
@@ -16,6 +18,7 @@ import {
   selectCitiesLocation,
   selectdFriend,
   selectGender,
+  selectIdFavorites,
   selectNotices,
   selectSpecies,
 } from "../../redux/notices/selectors.js";
@@ -94,6 +97,14 @@ export default function NoticesPage() {
     setIsModalOneFriend(false);
   };
 
+  const handleClickAdd = (id) => {
+    dispatch(requestAddFriend(id));
+  };
+
+  const handleClickDelete = (id) => {
+    dispatch(requestDeleteFriend(id));
+  };
+
   return (
     <section className={s.sectionNotices}>
       <Toaster
@@ -103,11 +114,15 @@ export default function NoticesPage() {
           style: {},
         }}
       />
-      <ModalNotice
-        isOpen={isModaOneFriend}
-        onClose={closeModalOneFriend}
-        friend={friend}
-      />
+      {friend && (
+        <ModalNotice
+          isOpen={isModaOneFriend}
+          onClose={closeModalOneFriend}
+          friend={friend}
+          handleClickAdd={handleClickAdd}
+          handleClickDelete={handleClickDelete}
+        />
+      )}
       <ModalAttention isOpen={isModalAttention} onClose={closeModalAttention} />
       <ul className={s.notices}>
         <li>
