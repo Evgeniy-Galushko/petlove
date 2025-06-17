@@ -1,7 +1,5 @@
 import s from "./MainLayoutPage.module.css";
 import sprite from "../../img/icon/icon-sprite.svg";
-import { NavLink } from "react-router-dom";
-import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import ProgressBar from "../../components/ProgressBar/ProgressBar.jsx";
 import { useState } from "react";
