@@ -1,24 +1,39 @@
-.button {
-  box-sizing: border-box;
-  border: none;
+.editUserBtn {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
+}
+
+.boxNameIcon {
+  box-sizing: border-box;
+  display: inline-flex;
+  flex-direction: row;
   gap: 4px;
   border-radius: 30px;
   padding: 10px 14px;
-  /* width: 80px; */
   height: 38px;
   background-color: #f6b83d;
-  margin-bottom: 20px;
+}
 
+.name {
   font-family: "Manrope", sans-serif;
   font-weight: 500;
   font-size: 14px;
   line-height: 1.29;
   letter-spacing: -0.02em;
   color: #fff;
-  text-transform: capitalize;
+}
+
+.button {
+  box-sizing: border-box;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  width: 38px;
+  height: 38px;
+  background-color: #fff4df;
 }
 
 .iconUser {

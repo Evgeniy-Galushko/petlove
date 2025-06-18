@@ -11,11 +11,20 @@ export default function EditUserBtn({ setModalUser }) {
   };
 
   return (
-    <button className={s.button} type="button" onClick={openModal}>
-      {user.name ? user.name : "User"}{" "}
-      <svg className={s.iconUser}>
-        <use href={`${sprite}#icon-user-white`} />
-      </svg>
-    </button>
+    <ul className={s.editUserBtn}>
+      <li className={s.boxNameIcon}>
+        <p className={s.name}>{user.name ? user.name : "User"}</p>
+        <svg className={s.iconUser}>
+          <use href={`${sprite}#icon-user-white`} />
+        </svg>
+      </li>
+      <li>
+        <button className={s.button} type="button" onClick={openModal}>
+          <svg width={18} height={18}>
+            <use href={`${sprite}#icon-pencil`} />
+          </svg>
+        </button>
+      </li>
+    </ul>
   );
 }
