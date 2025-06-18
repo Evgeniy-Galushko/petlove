@@ -23,9 +23,6 @@ export default function LoginPage() {
     }
   }, [userDataLogin, token]);
 
-  // console.log(!!token);
-  // console.log(userDataLogin);
-
   return (
     <section className={s.loginSection}>
       <ul className={s.login}>

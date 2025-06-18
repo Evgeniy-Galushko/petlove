@@ -33,8 +33,6 @@ export default function RegistrationForm({ setUserData }) {
   const validationSchema = Yup.object().shape({
     email: Yup.string()
       .matches(format.email, "Email is incorrect!")
-      // .min(3, "Too Short!")
-      // .max(50, "Too Long!")
       .required("Enter a valid Email"),
     password: Yup.string()
       .matches(format.password, "Too Short!")
@@ -53,7 +51,6 @@ export default function RegistrationForm({ setUserData }) {
       email: values.email,
       password: values.password,
     });
-    // console.log(values);
 
     setErrorsEmailRed(false);
     setErrorsEmailGreen(false);
@@ -113,10 +110,6 @@ export default function RegistrationForm({ setUserData }) {
         setErrPasswordRedSecond(true);
       }
     }
-
-    // if () {
-
-    // }
   };
 
   return (
@@ -148,21 +141,6 @@ export default function RegistrationForm({ setUserData }) {
                   handleErro(e.target.type, e.target.value);
                 }}
               />
-              {/* <ErrorMessage
-                name="email"
-                component="span"
-                className={s.errorEmail}
-              /> */}
-              {/* {errorsEmailRed && (
-                <svg className={s.iconEmail}>
-                  <use href={`${sprite}#icon-cross-red`} />
-                </svg>
-              )}
-              {errorsEmailGreen && (
-                <svg className={s.iconEmail}>
-                  <use href={`${sprite}#icon-check-mark-green`} />
-                </svg>
-              )} */}
             </div>
             <div className={s.boxInput}>
               <Field
@@ -252,7 +230,6 @@ export default function RegistrationForm({ setUserData }) {
                   errPasswordGreenSecond && s.errBorderGreen
                 )}
                 onBlur={(e) => {
-                  // console.log();
                   handleErro(e.target.name, e.target.value);
                 }}
               />

@@ -9,25 +9,19 @@ import {
 } from "../../redux/auth/selectors.js";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import {
-  currentEdit,
-  currentUserRequest,
-} from "../../redux/auth/operations.js";
+import { currentUserRequest } from "../../redux/auth/operations.js";
 import { Toaster } from "react-hot-toast";
 import { RingLoader } from "react-spinners";
 import MyNotices from "../../components/MyNotices/MyNotices.jsx";
 
 export default function ProfilePage() {
   const [modalUser, setModalUser] = useState(false);
-  // const [idPet, setIdPet] = useState("");
   const [modal, setModal] = useState(false);
   const navigate = useNavigate();
   const token = useSelector(selectToken);
   const isLoading = useSelector(selectIsLoadin);
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
-
-  // console.log(currentUser);
 
   useEffect(() => {
     dispatch(currentUserRequest());

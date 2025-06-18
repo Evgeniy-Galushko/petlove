@@ -3,7 +3,6 @@ import sprite from "../../img/icon/icon-sprite.svg";
 import Modal from "react-modal";
 import * as Yup from "yup";
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { useState } from "react";
 import { currentEdit } from "../../redux/auth/operations.js";
 import { useDispatch } from "react-redux";
 

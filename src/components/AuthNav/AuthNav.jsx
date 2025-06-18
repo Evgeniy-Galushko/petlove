@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import s from "./AuthNav.module.css";
 import clsx from "clsx";
 

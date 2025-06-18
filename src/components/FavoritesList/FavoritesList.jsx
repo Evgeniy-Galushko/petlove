@@ -2,17 +2,15 @@ import { useDispatch, useSelector } from "react-redux";
 import ModalAttention from "../ModalAttention/ModalAttention.jsx";
 import ModalNotice from "../ModalNotice/ModalNotice.jsx";
 import s from "./FavoritesList.module.css";
-import {
-  selectdFriend,
-  selectIdFavorites,
-} from "../../redux/notices/selectors.js";
+import { selectdFriend } from "../../redux/notices/selectors.js";
 import { selectCurrentUser, selectToken } from "../../redux/auth/selectors.js";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import NoticesItem from "../NoticesItem/NoticesItem.jsx";
 import {
   requestAddFriend,
   requestDeleteFriend,
 } from "../../redux/notices/operations.js";
+import { currentUserRequest } from "../../redux/auth/operations.js";
 
 export default function FavoritesList() {
   const [isModalAttention, setIsModalAttention] = useState(false);
@@ -35,10 +33,13 @@ export default function FavoritesList() {
 
   const handleClickAdd = (id) => {
     dispatch(requestAddFriend(id));
+    closeModalOneFriend();
   };
 
-  const handleClickDelete = (id) => {
-    dispatch(requestDeleteFriend(id));
+  const handleClickDelete = async (id) => {
+    await dispatch(requestDeleteFriend(id));
+    await dispatch(currentUserRequest());
+    closeModalOneFriend();
   };
 
   return (

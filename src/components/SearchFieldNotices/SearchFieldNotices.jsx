@@ -3,8 +3,6 @@ import sprite from "../../img/icon/icon-sprite.svg";
 import s from "./SearchFieldNotices.module.css";
 import clsx from "clsx";
 import { useId } from "react";
-
-import React from "react";
 import Select, { components } from "react-select";
 
 export default function SearchFieldNotices({
@@ -41,10 +39,7 @@ export default function SearchFieldNotices({
   };
 
   const handleSubmit = (values, actions) => {
-    // console.log(values);
     setRequest(values);
-
-    // actions.resetForm();
   };
 
   const handleChangeCetegory = (e) => {
@@ -61,11 +56,6 @@ export default function SearchFieldNotices({
     setSpecie(e.target.value);
     // console.log(e.target.value);
   };
-
-  // const handleChangeCitiesLocation = (e) => {
-  //   // setSpecie(e.target.value);
-  //   console.log(e.target);
-  // };
 
   const handlePopularyChange = (e) => {
     if (e.target.name === "popular") {
@@ -92,13 +82,6 @@ export default function SearchFieldNotices({
     setLocationId("");
   };
 
-  // const options = [
-  //   { value: "chocolate", label: "Chocolate" },
-  //   { value: "strawberry", label: "Strawberry" },
-  //   { value: "vanilla", label: "Vanilla" },
-  // ];
-
-  // console.log(citiesLocation);
   const options = citiesLocation.map(({ cityEn, countyEn, stateEn, _id }) => {
     return { value: _id, label: `${stateEn}, ${cityEn}, ${countyEn}` };
   });

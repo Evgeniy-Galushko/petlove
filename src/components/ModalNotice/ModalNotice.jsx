@@ -1,14 +1,7 @@
 import s from "./ModalNotice.module.css";
 import sprite from "../../img/icon/icon-sprite.svg";
 import Modal from "react-modal";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { star } from "../../utils/menu.js";
-import { useParams } from "react-router-dom";
-import {
-  requestAddFriend,
-  requestDeleteFriend,
-} from "../../redux/notices/operations.js";
+import { useSelector } from "react-redux";
 import { selectIdFavorites } from "../../redux/notices/selectors.js";
 
 export default function ModalNotice({
@@ -57,32 +50,6 @@ export default function ModalNotice({
 
   const buttonFavorite = idFavorites.some((idFavorit) => idFavorit === _id);
 
-  // const arr = star(5);
-  // let stars;
-  // if (popularity >= 5) {
-  //   const arr = star(5);
-  //   stars = arr.map((ar, index) => {
-  //     return (
-  //       <svg key={index} className={s.icon} width={16} height={16}>
-  //         <use href={`${sprite}#icon-star`} />
-  //       </svg>
-  //     );
-  //   });
-  // }
-  // if (popularity < 5) {
-  //   const number = 5 - popularity;
-  //   const arr = star(number);
-  // }
-
-  // console.log(_id);
-
-  // const handleClickAdd = () => {
-  //   dispatch(requestAddFriend(_id));
-  // };
-
-  // const handleClickDelete = () => {
-  //   dispatch(requestDeleteFriend(_id));
-  // };
   return (
     <Modal
       isOpen={isOpen}

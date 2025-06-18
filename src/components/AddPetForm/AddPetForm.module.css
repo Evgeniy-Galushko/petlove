@@ -297,9 +297,14 @@
   font-family: "Manrope", sans-serif;
   font-weight: 500;
   font-size: 12px;
-  line-height: 1.16667;
+  line-height: 1.17;
   letter-spacing: -0.03em;
   color: #ef2447;
+}
+
+.imgError {
+  top: 33px;
+  left: 15px;
 }
 
 .species {
@@ -441,6 +446,11 @@
     line-height: 1.25;
   }
 
+  .imgError {
+    top: 40px;
+    left: 15px;
+  }
+
   .species {
     top: 50px;
     left: 20px;
@@ -470,7 +480,4 @@
     left: 124px;
     top: -5px;
   }
-}
-
-@media screen and (min-width: 1280px) {
 }

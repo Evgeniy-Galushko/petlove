@@ -1,12 +1,11 @@
 import { useState } from "react";
 import sprite from "../../img/icon/icon-sprite.svg";
 import s from "./Favorites.module.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 export default function Favorites({ id, openModal }) {
   const [favorites, setFavorites] = useState(false);
   const dispatch = useDispatch();
-  // const favoritesList = useSelector();
 
   const handlChange = (evt) => {
     setFavorites(evt.target.checked);

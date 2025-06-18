@@ -15,26 +15,24 @@ export default function OurFriendsPage() {
   const friendsData = useSelector(selectFriends);
   const isLoading = useSelector(selectIsLoadin);
 
-  // console.log(friendsData);
-
   useEffect(() => {
     dispatch(requestFriends());
   }, [dispatch]);
 
   return (
     <section className={s.sectionFriends}>
-      <ul>
-        <li>
-          <Title>Our friends</Title>
-        </li>
-        {isLoading ? (
-          <RingLoader color="#f6b83d" className={s.spinners} size={70} />
-        ) : (
+      {isLoading ? (
+        <RingLoader color="#f6b83d" className={s.spinners} size={70} />
+      ) : (
+        <ul>
+          <li>
+            <Title>Our friends</Title>
+          </li>
           <li>
             <FriendsList friendsData={friendsData} />
           </li>
-        )}
-      </ul>
+        </ul>
+      )}
     </section>
   );
 }

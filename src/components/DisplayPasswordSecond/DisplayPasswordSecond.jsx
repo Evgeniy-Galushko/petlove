@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import s from "./DisplayPasswordSecond.module.css";
 import sprite from "../../img/icon/icon-sprite.svg";
 

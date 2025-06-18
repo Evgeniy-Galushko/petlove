@@ -16,8 +16,6 @@ export default function RegistrationPage() {
 
   const user = useSelector(selectUser);
   const token = useSelector(selectToken);
-  // console.log(user);
-  // console.log(!!token);
 
   useEffect(() => {
     dispatch(registrationRequest(userData));

@@ -2,7 +2,7 @@ import { lazy, Suspense, useState } from "react";
 import sprite from "../img/icon/icon-sprite.svg";
 
 import "./App.css";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import Header from "./Header/Header.jsx";
 
 const HomePage = lazy(() => import("../pages/HomePage/HomePage.jsx"));
@@ -54,10 +54,10 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegistrationPage />} />
           <Route path="/profile/" element={<ProfilePage />}>
+            <Route index element={<Navigate to="favorites" replace />} />
             <Route path="favorites" element={<FavoritesList />} />
             <Route path="viewed" element={<ViewedList />} />
           </Route>
-
           <Route path="/add-pet" element={<AddPetPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

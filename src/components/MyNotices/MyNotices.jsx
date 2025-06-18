@@ -1,16 +1,9 @@
-import { Suspense, useEffect } from "react";
-import NoticesList from "../NoticesList/NoticesList.jsx";
+import { Suspense } from "react";
 import s from "./MyNotices.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import { currentUserRequest } from "../../redux/auth/operations.js";
-import { selectCurrentUser } from "../../redux/auth/selectors.js";
 import { NavLink, Outlet } from "react-router-dom";
 import clsx from "clsx";
 
 export default function MyNotices() {
-  const dispatch = useDispatch();
-  const currentUser = useSelector(selectCurrentUser);
-
   const buildLinkClass = ({ isActive }) => {
     return clsx(s.link, isActive && s.active);
   };

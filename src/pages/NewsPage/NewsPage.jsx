@@ -17,7 +17,6 @@ export default function NewsPage() {
   const newsData = useSelector(selectNews);
   const isLoading = useSelector(selectIsLoadin);
   const page = PaginationButton(newsData.totalPages);
-  // setNumberOfPages(PaginationButton(newsData.totalPages));
 
   useEffect(() => {
     dispatch(requestNews({ toPage: toPage, request: request }));
@@ -25,29 +24,31 @@ export default function NewsPage() {
 
   return (
     <section className={s.sectionNews}>
-      <ul>
-        <li className={s.titleAndSearch}>
-          <Title>News</Title>
-          <SearchField setRequest={setRequest} />
-        </li>
-        {isLoading ? (
-          <RingLoader color="#f6b83d" className={s.spinners} size={70} />
-        ) : (
+      {isLoading ? (
+        <RingLoader color="#f6b83d" className={s.spinners} size={70} />
+      ) : (
+        <ul>
+          <li className={s.titleAndSearch}>
+            <Title>News</Title>
+            <SearchField setRequest={setRequest} />
+          </li>
+
           <li className={s.noticesList}>
             <NoticesList newsData={newsData.results} />
           </li>
-        )}
-        <li className={s.pagination}>
-          {newsData.totalPages > 1 && (
-            <Pagination
-              numberOfPages={page}
-              totalPages={newsData.totalPages}
-              setToPage={setToPage}
-              toPage={toPage}
-            />
-          )}
-        </li>
-      </ul>
+
+          <li className={s.pagination}>
+            {newsData.totalPages > 1 && (
+              <Pagination
+                numberOfPages={page}
+                totalPages={newsData.totalPages}
+                setToPage={setToPage}
+                toPage={toPage}
+              />
+            )}
+          </li>
+        </ul>
+      )}
     </section>
   );
 }

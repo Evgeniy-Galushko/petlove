@@ -3,7 +3,7 @@ import sprite from "../../img/icon/icon-sprite.svg";
 import s from "./UserBar.module.css";
 import clsx from "clsx";
 import { useSelector } from "react-redux";
-import { selectCurrentUser, selectUser } from "../../redux/auth/selectors.js";
+import { selectCurrentUser } from "../../redux/auth/selectors.js";
 
 export default function UserBar() {
   const user = useSelector(selectCurrentUser);

@@ -179,7 +179,7 @@ export default function AddPetForm({ species, handleSubmit }) {
                 <ErrorMessage
                   name="imgURL"
                   component="span"
-                  className={s.errorMessage}
+                  className={clsx(s.errorMessage, s.imgError)}
                 />
               </li>
               <li className={clsx(s.boxGeneral, s.position)}>

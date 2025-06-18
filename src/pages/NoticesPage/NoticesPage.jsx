@@ -9,7 +9,6 @@ import {
   requestCitiesLocation,
   requestDeleteFriend,
   requestGender,
-  requestIdFriend,
   requestNotices,
   requestSpecies,
 } from "../../redux/notices/operations.js";
@@ -18,7 +17,7 @@ import {
   selectCitiesLocation,
   selectdFriend,
   selectGender,
-  selectIdFavorites,
+  selectIsLoadin,
   selectNotices,
   selectSpecies,
 } from "../../redux/notices/selectors.js";
@@ -29,6 +28,7 @@ import ModalAttention from "../../components/ModalAttention/ModalAttention.jsx";
 import { selectToken } from "../../redux/auth/selectors.js";
 import ModalNotice from "../../components/ModalNotice/ModalNotice.jsx";
 import { Toaster } from "react-hot-toast";
+import { RingLoader } from "react-spinners";
 
 export default function NoticesPage() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -48,12 +48,11 @@ export default function NoticesPage() {
   const gender = useSelector(selectGender);
   const species = useSelector(selectSpecies);
   const notices = useSelector(selectNotices);
+  const isLoading = useSelector(selectIsLoadin);
   const citiesLocation = useSelector(selectCitiesLocation);
   const page = PaginationButton(notices.totalPages);
   const token = useSelector(selectToken);
   const friend = useSelector(selectdFriend);
-
-  // console.log(friend);
 
   useEffect(() => {
     dispatch(
@@ -99,10 +98,12 @@ export default function NoticesPage() {
 
   const handleClickAdd = (id) => {
     dispatch(requestAddFriend(id));
+    closeModalOneFriend();
   };
 
   const handleClickDelete = (id) => {
     dispatch(requestDeleteFriend(id));
+    closeModalOneFriend();
   };
 
   return (
@@ -124,45 +125,49 @@ export default function NoticesPage() {
         />
       )}
       <ModalAttention isOpen={isModalAttention} onClose={closeModalAttention} />
-      <ul className={s.notices}>
-        <li>
-          <Title>Find your favorite pet</Title>
-        </li>
-        <li className={s.boxFilters}>
-          <SearchFieldNotices
-            setRequest={setRequest}
-            categories={categories}
-            gender={gender}
-            species={species}
-            setPrice={setPrice}
-            price={price}
-            setPopularity={setPopularity}
-            popularity={popularity}
-            setCategory={setCategory}
-            citiesLocation={citiesLocation}
-            setGenders={setGenders}
-            setSpecie={setSpecie}
-            setLocationId={setLocationId}
-            windowWidth={windowWidth}
-          />
-        </li>
-        <li>
-          <NoticesList
-            data={notices.results}
-            setIsModal={token ? setIsModalOneFriend : setIsModalAttention}
-          />
-        </li>
-        <li>
-          {notices.totalPages > 1 && (
-            <Pagination
-              numberOfPages={page}
-              totalPages={notices.totalPages}
-              setToPage={setToPage}
-              toPage={toPage}
+      {isLoading ? (
+        <RingLoader color="#f6b83d" className={s.spinners} size={70} />
+      ) : (
+        <ul className={s.notices}>
+          <li>
+            <Title>Find your favorite pet</Title>
+          </li>
+          <li className={s.boxFilters}>
+            <SearchFieldNotices
+              setRequest={setRequest}
+              categories={categories}
+              gender={gender}
+              species={species}
+              setPrice={setPrice}
+              price={price}
+              setPopularity={setPopularity}
+              popularity={popularity}
+              setCategory={setCategory}
+              citiesLocation={citiesLocation}
+              setGenders={setGenders}
+              setSpecie={setSpecie}
+              setLocationId={setLocationId}
+              windowWidth={windowWidth}
             />
-          )}
-        </li>
-      </ul>
+          </li>
+          <li>
+            <NoticesList
+              data={notices.results}
+              setIsModal={token ? setIsModalOneFriend : setIsModalAttention}
+            />
+          </li>
+          <li>
+            {notices.totalPages > 1 && (
+              <Pagination
+                numberOfPages={page}
+                totalPages={notices.totalPages}
+                setToPage={setToPage}
+                toPage={toPage}
+              />
+            )}
+          </li>
+        </ul>
+      )}
     </section>
   );
 }

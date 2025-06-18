@@ -31,7 +31,7 @@ export const loginRequest = createAsyncThunk(
   async (user, thunkAPI) => {
     try {
       const data = await axios.post("/users/signin", user);
-      console.log(data.data);
+      // console.log(data.data);
       setAuthHeader(data.data.token);
       return data.data;
     } catch (error) {
@@ -91,7 +91,7 @@ export const currentEdit = createAsyncThunk(
 export const addPets = createAsyncThunk(
   "auth/addPets",
   async (value, thunkAPI) => {
-    console.log(value);
+    // console.log(value);
     try {
       const state = thunkAPI.getState();
       const token = state.auth.token;
@@ -99,7 +99,7 @@ export const addPets = createAsyncThunk(
         setAuthHeader(token);
       }
       const data = await axios.post("/users/current/pets/add", value);
-      console.log(data.status);
+      // console.log(data.status);
       if (data.status === 200) {
         toast.success("You have added your pet");
       }
