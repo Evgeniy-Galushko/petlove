@@ -69,10 +69,7 @@ const noticesSlise = createSlice({
         state.citiesLocation = action.payload;
       })
       .addCase(requestCitiesLocation.rejected, handleRejected)
-      .addCase(requestIdFriend.pending, (state) => {
-        state.isloading = true;
-        state.oneFriend = null;
-      })
+      .addCase(requestIdFriend.pending, handlePending)
       .addCase(requestIdFriend.fulfilled, (state, action) => {
         state.isloading = false;
         state.error = null;
@@ -85,7 +82,7 @@ const noticesSlise = createSlice({
         state.idFavorites = action.payload;
       })
       .addCase(requestAddFriend.rejected, handleRejected)
-      .addCase(requestDeleteFriend.pending, handlePending)
+      // .addCase(requestDeleteFriend.pending, handlePending)
       .addCase(requestDeleteFriend.fulfilled, (state, action) => {
         state.isloading = false;
         state.error = null;

@@ -29,23 +29,25 @@ import { selectToken } from "../../redux/auth/selectors.js";
 import ModalNotice from "../../components/ModalNotice/ModalNotice.jsx";
 import { Toaster } from "react-hot-toast";
 import { RingLoader } from "react-spinners";
+import {
+  selectCategory,
+  selectGenders,
+  selectLocationId,
+  selectPopularity,
+  selectPrice,
+  selectRequest,
+  selectSpecie,
+} from "../../redux/filters/selectors.js";
 
 export default function NoticesPage() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [toPage, setToPage] = useState(1);
-  const [request, setRequest] = useState({});
-  const [category, setCategory] = useState("");
-  const [genders, setGenders] = useState("");
-  const [specie, setSpecie] = useState("");
-  const [locationId, setLocationId] = useState("");
-  const [popularity, setPopularity] = useState(null);
-  const [price, setPrice] = useState(null);
   const [isModalAttention, setIsModalAttention] = useState(false);
   const [isModaOneFriend, setIsModalOneFriend] = useState(false);
 
   const dispatch = useDispatch();
   const categories = useSelector(selectCategories);
-  const gender = useSelector(selectGender);
+  const genders = useSelector(selectGender);
   const species = useSelector(selectSpecies);
   const notices = useSelector(selectNotices);
   const isLoading = useSelector(selectIsLoadin);
@@ -53,6 +55,15 @@ export default function NoticesPage() {
   const page = PaginationButton(notices.totalPages);
   const token = useSelector(selectToken);
   const friend = useSelector(selectdFriend);
+  const request = useSelector(selectRequest);
+  const category = useSelector(selectCategory);
+  const gender = useSelector(selectGenders);
+  const specie = useSelector(selectSpecie);
+  const locationId = useSelector(selectLocationId);
+  const popularity = useSelector(selectPopularity);
+  const price = useSelector(selectPrice);
+
+  // console.log(locationId.value);
 
   useEffect(() => {
     dispatch(
@@ -60,11 +71,11 @@ export default function NoticesPage() {
         page: toPage,
         byPopularity: popularity,
         byPrice: price,
-        keyword: request.request,
+        keyword: request,
         category: category,
         species: specie,
         locationId: locationId.value,
-        sex: genders,
+        sex: gender,
       })
     );
     // dispatch(requestIdFriend(idOneFriend));
@@ -79,7 +90,7 @@ export default function NoticesPage() {
   }, [
     dispatch,
     request,
-    genders,
+    gender,
     specie,
     locationId,
     category,
@@ -134,27 +145,16 @@ export default function NoticesPage() {
           </li>
           <li className={s.boxFilters}>
             <SearchFieldNotices
-              setRequest={setRequest}
               categories={categories}
-              gender={gender}
+              genders={genders}
               species={species}
-              setPrice={setPrice}
-              price={price}
-              setPopularity={setPopularity}
-              popularity={popularity}
-              setCategory={setCategory}
               citiesLocation={citiesLocation}
-              setGenders={setGenders}
-              setSpecie={setSpecie}
-              setLocationId={setLocationId}
               windowWidth={windowWidth}
             />
           </li>
           <li>
             <NoticesList
               data={notices.results}
-              handleClickAdd={handleClickAdd}
-              handleClickDelete={handleClickDelete}
               setIsModal={token ? setIsModalOneFriend : setIsModalAttention}
             />
           </li>

@@ -4,21 +4,32 @@ import s from "./SearchFieldNotices.module.css";
 import clsx from "clsx";
 import { useId } from "react";
 import Select, { components } from "react-select";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  resetFilters,
+  setCategory,
+  setGender,
+  setLocationId,
+  setPopularity,
+  setPrice,
+  setRequest,
+  setSpecie,
+} from "../../redux/filters/slice.js";
+import {
+  selectCategory,
+  selectGenders,
+  selectLocationId,
+  selectPopularity,
+  selectPrice,
+  selectRequest,
+  selectSpecie,
+} from "../../redux/filters/selectors.js";
 
 export default function SearchFieldNotices({
-  setRequest,
   categories,
-  gender,
+  genders,
   species,
-  setPrice,
-  price,
-  setPopularity,
-  popularity,
   citiesLocation,
-  setCategory,
-  setGenders,
-  setSpecie,
-  setLocationId,
   windowWidth,
 }) {
   const popularId = useId();
@@ -28,57 +39,59 @@ export default function SearchFieldNotices({
   const categoryId = useId();
   const genderId = useId();
   const typeId = useId();
+  const dispatch = useDispatch();
+  const request = useSelector(selectRequest);
+  const category = useSelector(selectCategory);
+  const gender = useSelector(selectGenders);
+  const specie = useSelector(selectSpecie);
+  const locationId = useSelector(selectLocationId);
+  const popularity = useSelector(selectPopularity);
+  const price = useSelector(selectPrice);
+  // console.log(locationId);
 
   const initialValues = {
-    request: "",
-    // categories: "",
-    // gender: "",
-    // species: "",
-    // location: "",
+    request: request || "",
   };
 
   const handleSubmit = (values, actions) => {
-    setRequest(values);
+    dispatch(setRequest(values.request));
+    // console.log(values);
   };
 
   const handleChangeCetegory = (e) => {
-    setCategory(e.target.value);
+    dispatch(setCategory(e.target.value));
+    // setCategory(e.target.value);
+
     // console.log(e.target.value);
   };
 
   const handleChangeGender = (e) => {
-    setGenders(e.target.value);
+    dispatch(setGender(e.target.value));
     // console.log(e.target.value);
   };
 
   const handleChangeSpecies = (e) => {
-    setSpecie(e.target.value);
+    dispatch(setSpecie(e.target.value));
     // console.log(e.target.value);
   };
 
   const handlePopularyChange = (e) => {
     if (e.target.name === "popular") {
-      setPopularity(e.target.value);
+      dispatch(setPopularity(e.target.value));
     }
     if (e.target.name === "unpopular") {
-      setPopularity(e.target.value);
+      dispatch(setPopularity(e.target.value));
     }
     if (e.target.name === "cheap") {
-      setPrice(e.target.value);
+      dispatch(setPrice(e.target.value));
     }
     if (e.target.name === "expensive") {
-      setPrice(e.target.value);
+      dispatch(setPrice(e.target.value));
     }
   };
 
   const handleReset = () => {
-    setPrice(null);
-    setPopularity(null);
-    setRequest({});
-    setCategory("");
-    setGenders("");
-    setSpecie("");
-    setLocationId("");
+    dispatch(resetFilters());
   };
 
   const options = citiesLocation.map(({ cityEn, countyEn, stateEn, _id }) => {
@@ -100,7 +113,11 @@ export default function SearchFieldNotices({
   return (
     <ul>
       <li className={s.form}>
-        <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+        <Formik
+          initialValues={initialValues}
+          onSubmit={handleSubmit}
+          enableReinitialize={true}
+        >
           <Form>
             <Field
               type="text"
@@ -122,10 +139,10 @@ export default function SearchFieldNotices({
             </svg>
           </label>
           <select
-            // as="select"
             name="categories"
             className={s.inputCategoriesGender}
             id={categoryId}
+            value={category}
             onChange={handleChangeCetegory}
           >
             <option value={""}>All category</option>
@@ -143,14 +160,14 @@ export default function SearchFieldNotices({
             </svg>
           </label>
           <select
-            // as="select"
             name="gender"
             className={s.inputCategoriesGender}
             id={genderId}
+            value={gender}
             onChange={handleChangeGender}
           >
             <option value={""}>All by gender</option>
-            {gender.map((gen, index) => {
+            {genders.map((gen, index) => {
               return (
                 <option key={index} value={gen}>
                   {gen}
@@ -165,10 +182,10 @@ export default function SearchFieldNotices({
           </svg>
         </label>
         <select
-          // as="select"
           name="species"
           className={s.inputSpecies}
           id={typeId}
+          value={specie}
           onChange={handleChangeSpecies}
         >
           <option value={""}>All type</option>
@@ -181,17 +198,11 @@ export default function SearchFieldNotices({
           })}
         </select>
 
-        {/* <select
-          type="text"
-          name="location"
-          className={clsx(s.inputSearch, s.inputSearchWidth)}
-          placeholder="Location"
-        /> */}
-
         <Select
           options={options}
-          onChange={setLocationId}
+          onChange={(option) => dispatch(setLocationId(option))}
           placeholder="Location"
+          value={locationId}
           styles={{
             indicatorSeparator: () => null,
             placeholder: (provided) => ({
@@ -218,12 +229,6 @@ export default function SearchFieldNotices({
           }}
           components={{ DropdownIndicator: CustomDropdownIndicator }}
         />
-
-        {/* <button className={s.buttonLocation} type="submit">
-              <svg className={s.iconSearch}>
-                <use href={`${sprite}#icon-search`} />
-              </svg>
-            </button> */}
       </li>
 
       <li className={s.boxPopularityReset}>

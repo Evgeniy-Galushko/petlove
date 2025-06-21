@@ -14,6 +14,7 @@ import newsReducer from "./news/slice.js";
 import friendsReducer from "./friends/slice.js";
 import noticesReducer from "./notices/slice.js";
 import authReducer from "./auth/slice.js";
+import filterReducer from "./filters/slice.js";
 
 const authPersistConfig = {
   key: "auth",
@@ -27,12 +28,19 @@ const noticesPersistConfig = {
   whitelist: ["idFavorites"],
 };
 
+const filterPersistConfig = {
+  key: "filters",
+  storage,
+  // whitelist: ["idFavorites"],
+};
+
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
     news: newsReducer,
     friends: friendsReducer,
     notices: persistReducer(noticesPersistConfig, noticesReducer),
+    filters: persistReducer(filterPersistConfig, filterReducer),
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

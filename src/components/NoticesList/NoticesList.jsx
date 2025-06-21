@@ -1,13 +1,7 @@
 import NoticesItem from "../NoticesItem/NoticesItem.jsx";
 import s from "./NoticesList.module.css";
 
-export default function NoticesList({
-  data,
-  setIsModal,
-  setIdOneFriend,
-  handleClickDelete,
-  handleClickAdd,
-}) {
+export default function NoticesList({ data, setIsModal }) {
   if (!data) return;
 
   // console.log(data);
