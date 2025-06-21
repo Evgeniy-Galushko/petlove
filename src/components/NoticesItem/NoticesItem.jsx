@@ -1,7 +1,11 @@
 import s from "./NoticesItem.module.css";
 import sprite from "../../img/icon/icon-sprite.svg";
 import clsx from "clsx";
-import { requestIdFriend } from "../../redux/notices/operations.js";
+import {
+  requestAddFriend,
+  requestDeleteFriend,
+  requestIdFriend,
+} from "../../redux/notices/operations.js";
 import { useDispatch, useSelector } from "react-redux";
 import { selectToken } from "../../redux/auth/selectors.js";
 import { selectIdFavorites } from "../../redux/notices/selectors.js";
@@ -30,15 +34,19 @@ export default function NoticesItem({
     setIsModal(true);
     dispatch(requestIdFriend(id));
   };
-  // console.log(idFavorites);
-  // console.log(id);
 
   const buttonFavorite = idFavorites.some((idFavorit) => idFavorit === id);
 
-  // console.log(idFavorites.some((idFavorit) => idFavorit === id));
-
   const openModal = () => {
     setIsModal(true);
+  };
+
+  const handleClickAdd = (id) => {
+    dispatch(requestAddFriend(id));
+  };
+
+  const handleClickDelete = (id) => {
+    dispatch(requestDeleteFriend(id));
   };
 
   return (
@@ -153,7 +161,7 @@ export default function NoticesItem({
                 onClick={
                   token
                     ? () => {
-                        openModalFriend(id);
+                        handleClickDelete(id);
                       }
                     : openModal
                 }
@@ -169,7 +177,7 @@ export default function NoticesItem({
                 onClick={
                   token
                     ? () => {
-                        openModalFriend(id);
+                        handleClickAdd(id);
                       }
                     : openModal
                 }

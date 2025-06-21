@@ -1,8 +1,16 @@
 import NoticesItem from "../NoticesItem/NoticesItem.jsx";
 import s from "./NoticesList.module.css";
 
-export default function NoticesList({ data, setIsModal, setIdOneFriend }) {
+export default function NoticesList({
+  data,
+  setIsModal,
+  setIdOneFriend,
+  handleClickDelete,
+  handleClickAdd,
+}) {
   if (!data) return;
+
+  // console.log(data);
 
   return (
     <ul className={s.noticesList}>

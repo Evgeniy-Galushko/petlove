@@ -153,6 +153,8 @@ export default function NoticesPage() {
           <li>
             <NoticesList
               data={notices.results}
+              handleClickAdd={handleClickAdd}
+              handleClickDelete={handleClickDelete}
               setIsModal={token ? setIsModalOneFriend : setIsModalAttention}
             />
           </li>

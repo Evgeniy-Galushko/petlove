@@ -25,7 +25,6 @@ export default function SearchFieldNotices({
   const unpopularId = useId();
   const cheapId = useId();
   const expensiveId = useId();
-
   const categoryId = useId();
   const genderId = useId();
   const typeId = useId();
