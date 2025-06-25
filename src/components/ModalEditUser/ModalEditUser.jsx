@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { currentEdit } from "../../redux/auth/operations.js";
 import { useDispatch } from "react-redux";
+import { savePhoto } from "../../utils/cloudinary.js";
 
 export default function ModalEditUser({ closeModal, openModal, currentUser }) {
   const dispatch = useDispatch();
@@ -56,11 +57,14 @@ export default function ModalEditUser({ closeModal, openModal, currentUser }) {
   };
 
   const handleSubmit = (values, actions) => {
+    console.log(values);
     dispatch(currentEdit({ values, closeModal }));
     if (currentUser === 200) {
       closeModal();
     }
   };
+
+  // console.log(import.meta.env.VITE_CLOUDINARY_CLOUD_NAME);
 
   return (
     <Modal isOpen={openModal} onRequestClose={closeModal} style={customStyles}>
@@ -99,24 +103,39 @@ export default function ModalEditUser({ closeModal, openModal, currentUser }) {
                 <div className={s.boxAvatar}>
                   <Field
                     type="text"
-                    name="avatar"
-                    id="avatar"
-                    // value={values.avatar}
+                    // name="avatar"
+                    // id="avatar"
+                    value={values.avatar}
                     className={s.inputValuesAvatar}
                     // pattern={condition.avatar}
                     placeholder={currentUser.avatar}
                   />
                   <input
                     className={s.inputSavesImgNone}
-                    // name="avatar"
+                    name="avatar"
                     id="avatar"
                     type="file"
-                    accept="image/*"
-                    onChange={(e) => {
-                      const file = e.currentTarget.files[0];
+                    accept="image/*,.png,.jpg,.jpeg,.gif,.bmp,.webp"
+                    onChange={async (e) => {
+                      const file = e.target.files[0];
                       if (file) {
-                        const url = URL.createObjectURL(file);
-                        setFieldValue("avatar", url);
+                        const formData = new FormData();
+                        formData.append("file", file);
+                        console.log(
+                          import.meta.env.VITE_CLOUDINARY_VITE_UPLOAD_PRESET
+                        );
+                        formData.append(
+                          "upload_preset",
+                          import.meta.env.VITE_CLOUDINARY_VITE_UPLOAD_PRESET
+                        );
+
+                        try {
+                          const respons = await savePhoto(formData);
+                          setFieldValue("avatar", respons.url);
+                          // console.log(respons.url);
+                        } catch (error) {
+                          console.error(error);
+                        }
                       }
                     }}
                   />
