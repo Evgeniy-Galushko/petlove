@@ -1,7 +1,7 @@
 import s from "./UserBlock.module.css";
 import sprite from "../../img/icon/icon-sprite.svg";
 
-export default function UserBlock({ currentUser }) {
+export default function UserBlock({ currentUser, setModalUser }) {
   // console.log(currentUser);
   const { name, email, phone, avatar } = currentUser;
   return (
@@ -14,7 +14,15 @@ export default function UserBlock({ currentUser }) {
             <svg className={s.iconUser}>
               <use href={`${sprite}#icon-user`} />
             </svg>
-            <button className={s.buttonImg}>Upload photo</button>
+            <button
+              className={s.buttonImg}
+              type="button"
+              onClick={() => {
+                setModalUser(true);
+              }}
+            >
+              Upload photo
+            </button>
           </div>
         )}
       </li>

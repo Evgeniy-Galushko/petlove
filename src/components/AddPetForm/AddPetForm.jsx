@@ -4,12 +4,13 @@ import s from "./AddPetForm.module.css";
 import sprite from "../../img/icon/icon-sprite.svg";
 import clsx from "clsx";
 import { NavLink } from "react-router-dom";
+import { savePhoto } from "../../utils/cloudinary.js";
 
 export default function AddPetForm({ species, handleSubmit }) {
   const condition = {
     title: /^[а-яА-Яa-zA-Z0-9 ]{3,50}$/,
     name: /^[а-яА-Яa-zA-Z0-9 ]{3,50}$/,
-    // imgURL: /^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|webp)$/,
+    imgURL: /^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|webp)$/,
     species: /^[а-яА-Яa-zA-Z0-9 ]{3,50}$/,
     birthday: /^\d{4}-\d{2}-\d{2}$/,
     sex: /^[а-яА-Яa-zA-Z0-9 ]{3,50}$/,
@@ -142,12 +143,13 @@ export default function AddPetForm({ species, handleSubmit }) {
                   </svg>
                 )}
               </li>
+              {console.log(values)}
               <li className={clsx(s.boxImgUrl, s.position)}>
                 <Field
                   type="text"
                   name="imgURL"
-                  id="imgURL"
-                  // value={values.imgURL}
+                  // id="imgURL"
+                  value={values.imgURL}
                   className={clsx(
                     s.inputValuesImgUrl,
                     values.imgURL.trim() !== "" && s.inputGeneralBorder
@@ -162,11 +164,21 @@ export default function AddPetForm({ species, handleSubmit }) {
                   type="file"
                   accept="image/*"
                   // required
-                  onChange={(e) => {
-                    const file = e.currentTarget.files[0];
+                  onChange={async (e) => {
+                    const file = e.target.files[0];
                     if (file) {
-                      const url = URL.createObjectURL(file);
-                      setFieldValue("imgURL", url);
+                      const formData = new FormData();
+                      formData.append("file", file);
+                      formData.append(
+                        "upload_preset",
+                        import.meta.env.VITE_CLOUDINARY_VITE_UPLOAD_PRESET
+                      );
+                      try {
+                        const respons = await savePhoto(formData);
+                        setFieldValue("imgURL", respons.url);
+                      } catch (error) {
+                        console.error(error);
+                      }
                     }
                   }}
                 />

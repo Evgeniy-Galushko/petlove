@@ -6,11 +6,16 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import { currentEdit } from "../../redux/auth/operations.js";
 import { useDispatch } from "react-redux";
 import { savePhoto } from "../../utils/cloudinary.js";
+import { useState } from "react";
 
-export default function ModalEditUser({ closeModal, openModal, currentUser }) {
+export default function ModalEditUser({
+  closeModal,
+  openModal,
+  currentUser,
+  avatarImg,
+  setAvatarImg,
+}) {
   const dispatch = useDispatch();
-
-  // console.log(currentUser);
 
   if (!currentUser) return;
 
@@ -35,7 +40,7 @@ export default function ModalEditUser({ closeModal, openModal, currentUser }) {
   const condition = {
     name: /^[а-яА-Яa-zA-Z0-9 ]{3,50}$/,
     email: /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/,
-    // avatar: /^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|webp)$/,
+    avatar: /^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|webp)$/,
     phone: /^\+38\d{10}$/,
   };
 
@@ -62,6 +67,7 @@ export default function ModalEditUser({ closeModal, openModal, currentUser }) {
     if (currentUser === 200) {
       closeModal();
     }
+    setAvatarImg("");
   };
 
   // console.log(import.meta.env.VITE_CLOUDINARY_CLOUD_NAME);
@@ -80,9 +86,9 @@ export default function ModalEditUser({ closeModal, openModal, currentUser }) {
           <h2 className={s.title}>Edit information</h2>
         </li>
         <li className={s.boxImg}>
-          {currentUser.avatar ? (
+          {currentUser.avatar || avatarImg ? (
             <img
-              src={currentUser.avatar}
+              src={avatarImg ? avatarImg : currentUser.avatar}
               alt={currentUser.name}
               className={s.imgUser}
             />
@@ -103,7 +109,7 @@ export default function ModalEditUser({ closeModal, openModal, currentUser }) {
                 <div className={s.boxAvatar}>
                   <Field
                     type="text"
-                    // name="avatar"
+                    name="avatar"
                     // id="avatar"
                     value={values.avatar}
                     className={s.inputValuesAvatar}
@@ -112,7 +118,7 @@ export default function ModalEditUser({ closeModal, openModal, currentUser }) {
                   />
                   <input
                     className={s.inputSavesImgNone}
-                    name="avatar"
+                    // name="avatar"
                     id="avatar"
                     type="file"
                     accept="image/*,.png,.jpg,.jpeg,.gif,.bmp,.webp"
@@ -121,18 +127,14 @@ export default function ModalEditUser({ closeModal, openModal, currentUser }) {
                       if (file) {
                         const formData = new FormData();
                         formData.append("file", file);
-                        console.log(
-                          import.meta.env.VITE_CLOUDINARY_VITE_UPLOAD_PRESET
-                        );
                         formData.append(
                           "upload_preset",
                           import.meta.env.VITE_CLOUDINARY_VITE_UPLOAD_PRESET
                         );
-
                         try {
                           const respons = await savePhoto(formData);
                           setFieldValue("avatar", respons.url);
-                          // console.log(respons.url);
+                          setAvatarImg(respons.url);
                         } catch (error) {
                           console.error(error);
                         }
@@ -140,7 +142,7 @@ export default function ModalEditUser({ closeModal, openModal, currentUser }) {
                     }}
                   />
                   <label htmlFor="avatar" className={s.inputSavesImg}>
-                    Upload photo{" "}
+                    Upload photo
                     <svg className={s.iconInputSavesImg}>
                       <use href={`${sprite}#icon-upload-cloud`} />
                     </svg>

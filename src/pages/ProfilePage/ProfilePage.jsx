@@ -17,6 +17,7 @@ import MyNotices from "../../components/MyNotices/MyNotices.jsx";
 export default function ProfilePage() {
   const [modalUser, setModalUser] = useState(false);
   const [modal, setModal] = useState(false);
+  const [avatarImg, setAvatarImg] = useState("");
   const navigate = useNavigate();
   const token = useSelector(selectToken);
   const isLoading = useSelector(selectIsLoadin);
@@ -31,6 +32,7 @@ export default function ProfilePage() {
   }, [token, dispatch]);
 
   const closeModal = () => {
+    setAvatarImg("");
     setModalUser(false);
   };
 
@@ -49,6 +51,8 @@ export default function ProfilePage() {
         <ul className={s.profileBox}>
           <li className={s.userCard}>
             <ModalEditUser
+              setAvatarImg={setAvatarImg}
+              avatarImg={avatarImg}
               closeModal={closeModal}
               openModal={modalUser}
               currentUser={currentUser}

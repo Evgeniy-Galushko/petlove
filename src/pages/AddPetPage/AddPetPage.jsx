@@ -17,7 +17,7 @@ export default function AddPetPage() {
   const species = useSelector(selectSpecies);
   const status = useSelector(selectStatus);
 
-  console.log(status);
+  // console.log(status);
 
   useEffect(() => {
     dispatch(requestSpecies());

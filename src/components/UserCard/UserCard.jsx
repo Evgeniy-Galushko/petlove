@@ -23,7 +23,7 @@ export default function UserCard({
       <ModalApproveAction isOpen={modal} onClose={closeModal} />
       <li>
         <EditUserBtn setModalUser={setModalUser} />
-        <UserBlock currentUser={currentUser} />
+        <UserBlock currentUser={currentUser} setModalUser={setModalUser} />
       </li>
       <li>
         <PetsBlock currentUser={currentUser} />
