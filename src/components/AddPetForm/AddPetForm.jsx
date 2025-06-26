@@ -143,7 +143,6 @@ export default function AddPetForm({ species, handleSubmit }) {
                   </svg>
                 )}
               </li>
-              {console.log(values)}
               <li className={clsx(s.boxImgUrl, s.position)}>
                 <Field
                   type="text"

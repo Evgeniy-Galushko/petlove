@@ -7,32 +7,34 @@ import { selectSpecies } from "../../redux/notices/selectors.js";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { addPets } from "../../redux/auth/operations.js";
-import { selectStatus, selectToken } from "../../redux/auth/selectors.js";
+import { selectToken } from "../../redux/auth/selectors.js";
 import { Toaster } from "react-hot-toast";
 
 export default function AddPetPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [addPet, setAddPet] = useState(false);
   const token = useSelector(selectToken);
   const species = useSelector(selectSpecies);
-  const status = useSelector(selectStatus);
-
-  // console.log(status);
 
   useEffect(() => {
     dispatch(requestSpecies());
 
-    if (status === 200) {
+    if (addPet) {
       navigate("/profile");
     }
 
     if (!token) {
       navigate("/home");
     }
-  }, [status, token, dispatch]);
+  }, [addPet, token, dispatch]);
+
+  const petAdded = () => {
+    setAddPet(true);
+  };
 
   const handleSubmit = (values, actions) => {
-    dispatch(addPets(values));
+    dispatch(addPets({ values, petAdded }));
     actions.resetForm();
   };
 

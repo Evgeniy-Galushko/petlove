@@ -66,8 +66,8 @@ const authSlise = createSlice({
       .addCase(addPets.fulfilled, (state, action) => {
         state.isloading = false;
         state.error = null;
-        state.currentUser = action.payload.data;
-        state.status = action.payload.status;
+        state.currentUser = action.payload;
+        // state.status = action.payload.status;
       })
       .addCase(addPets.rejected, (state, action) => {
         state.isloading = false;
