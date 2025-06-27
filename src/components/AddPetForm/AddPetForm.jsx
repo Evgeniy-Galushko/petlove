@@ -67,7 +67,7 @@ export default function AddPetForm({ species, handleSubmit }) {
                   value="female"
                   id="female"
                   className={s.inputRadioGender}
-                  required
+                  // required
                 />
                 {values.sex === "female" && (
                   <svg className={s.iconGenderFemaleOk}>
@@ -88,7 +88,7 @@ export default function AddPetForm({ species, handleSubmit }) {
                   value="male"
                   id="male"
                   className={s.inputRadioGender}
-                  required
+                  // required
                 />
                 {values.sex === "male" && (
                   <svg className={s.iconGenderMaleOk}>
@@ -109,7 +109,7 @@ export default function AddPetForm({ species, handleSubmit }) {
                   value="multiple"
                   id="multiple"
                   className={s.inputRadioGender}
-                  required
+                  // required
                 />
                 {values.sex === "multiple" && (
                   <svg className={s.iconGenderMultipleOk}>
@@ -119,7 +119,7 @@ export default function AddPetForm({ species, handleSubmit }) {
                 <ErrorMessage
                   name="sex"
                   component="span"
-                  className={s.errorMessage}
+                  className={clsx(s.errorMessage, s.sexError)}
                 />
                 <label
                   htmlFor="multiple"

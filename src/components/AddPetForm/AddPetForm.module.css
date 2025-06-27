@@ -24,6 +24,8 @@
 
 .inputRadioGender {
   display: none;
+  /* visibility: hidden; */
+  /* opacity: 0; */
 }
 
 .iconGenderFemaleOk {
@@ -300,6 +302,10 @@
   line-height: 1.17;
   letter-spacing: -0.03em;
   color: #ef2447;
+}
+
+.sexError {
+  top: 42px;
 }
 
 .imgError {

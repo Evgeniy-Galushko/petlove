@@ -62,7 +62,7 @@ export default function ModalEditUser({
   };
 
   const handleSubmit = (values, actions) => {
-    console.log(values);
+    // console.log(values);
     dispatch(currentEdit({ values, closeModal }));
     if (currentUser === 200) {
       closeModal();
